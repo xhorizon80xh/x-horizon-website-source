@@ -1,0 +1,78 @@
+<t t-name="website.our-team">
+    <t t-call="website.layout">
+        <div id="wrap" class="oe_structure oe_empty"><section class="s_company_team pb48 o_colored_level pt80" data-snippet="s_company_team" data-name="Team">
+        <div class="container">
+            <h2 class="h3-fs"><strong><font class="text-400">Meet X Horizon Team</font></strong></h2>
+            <p class="lead"><font class="text-400">We are proud to introduce our talented Team:</font></p>
+            <div class="row">
+                <div class="col-lg-6 pt32 o_colored_level pb192" data-name="Team Member">
+                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                        <div class="col-lg-3 pb24 o_not_editable">
+                            <img src="/web/image/1272-a3945a83/WhatsApp%20Image%202026-08-27%20at%209.42.11%20PM%20%281%29.webp" alt="" data-attachment-id="1271" class="img-fluid rounded-circle o_editable_media w-lg-100 mx-lg-auto img o_we_custom_image" data-format-mimetype="image/webp" data-resize-width="690" data-original-id="1271" data-original-src="/web/image/1271-1f5a6799/WhatsApp%20Image%202026-08-27%20at%209.42.11%20PM%20%281%29.jpeg" data-mimetype-before-conversion="image/jpeg" data-mimetype="image/webp"/>
+                        </div>
+                        <div class="col-lg-9">
+                            <h3 class="h5-fs"><strong><font class="text-200">AWAIS BAHOO AWAN</font></strong></h3>
+                            <p class="mb-3"><font class="text-400">User Support &amp;amp; Community Coordinator</font><br/></p>
+                            <p><font class="text-400">He is a&amp;nbsp; bridge between X Horizon and its community.</font></p><p><font class="text-400">He listens to users, understands their concerns and demands, guides them through difficulties, and communicates their feedback to the team. His goal is to make every user feel heard, supported, and valued.</font></p><div class="s_social_media text-start o_not_editable" data-snippet="s_social_media" data-name="Social Media">
+        <h4 class="s_social_media_title d-none">Social Media</h4>
+<a class="s_social_media_facebook" target="_blank" aria-label="Facebook" href="https://www.facebook.com/share/1JEBvgSuNb/">
+            <i class="fa rounded shadow-sm o_editable_media small_social_icon fa-facebook"/>
+        </a>
+<a href="https://www.linkedin.com/your-page" class="s_social_media_linkedin" target="_blank" aria-label="LinkedIn">
+            <i class="fa fa-linkedin rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a class="s_social_media_instagram" target="_blank" aria-label="Instagram" href="https://www.instagram.com/awais_awan6311?igsi=dHBiOWt1bW00Nm83&amp;utm_source=qr">
+            <i class="fa rounded shadow-sm o_editable_media small_social_icon fa-instagram"/>
+        </a>
+<a class="s_social_media_tiktok" target="_blank" aria-label="TikTok" href="https://www.tiktok.com/@awais__bahoo__awan6311?_r=1&amp;_t=ZS-99Elpm9aQSq">
+            <i class="fa rounded shadow-sm o_editable_media small_social_icon fa-tiktok"/>
+        </a>
+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pt32 pb32 o_colored_level" data-name="Team Member">
+                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                        <div class="col-lg-3 pb24 o_not_editable">
+                            <img alt="" src="/web/image/website.s_company_team_image_2" class="img-fluid rounded-circle o_editable_media w-lg-100 mx-lg-auto" loading="lazy" data-mimetype="image/webp"/>
+                        </div>
+                        <div class="col-lg-9">
+                            <h3 class="h5-fs"><font class="text-200"><strong>Hurais Malik</strong></font></h3>
+                            <p class="mb-3"><font class="text-400">Space Observation &amp;amp; Media Coordinator</font></p>
+                            <p><font class="text-400">Captures, documents, and shares real observations of space and astronomical objects for the X Horizon community. He manages the live-captured content page, records celestial events and interesting objects, processes the captured media, and uploads it to keep the platform updated with authentic space observations.</font></p><div class="s_social_media text-start o_not_editable" data-snippet="s_social_media" data-name="Social Media">
+        <h4 class="s_social_media_title d-none">Social Media</h4>
+<a href="https://www.facebook.com/your-page" class="s_social_media_facebook" target="_blank" aria-label="Facebook">
+            <i class="fa fa-facebook rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.twitter.com/your-page" class="s_social_media_twitter" target="_blank" aria-label="X">
+            <i class="fa fa-twitter rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.linkedin.com/your-page" class="s_social_media_linkedin" target="_blank" aria-label="LinkedIn">
+            <i class="fa fa-linkedin rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.youtube.com/your-page" class="s_social_media_youtube" target="_blank" aria-label="YouTube">
+            <i class="fa fa-youtube-play rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.instagram.com/your-page" class="s_social_media_instagram" target="_blank" aria-label="Instagram">
+            <i class="fa fa-instagram rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.github.com/your-page" class="s_social_media_github" target="_blank" aria-label="GitHub">
+            <i class="fa fa-github rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.tiktok.com/your-page" class="s_social_media_tiktok" target="_blank" aria-label="TikTok">
+            <i class="fa fa-tiktok rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+<a href="https://www.discord.com/your-page" class="s_social_media_discord" target="_blank" aria-label="Discord">
+            <i class="fa fa-discord rounded shadow-sm o_editable_media small_social_icon"/>
+        </a>
+</div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section></div>
+    </t>
+</t>

@@ -1,0 +1,209 @@
+<t name="Contact Us" t-name="website.contactus">
+        <t t-call="website.layout" logged_partner="env['ir.http']._get_visitor_from_request().partner_id">
+            <t t-set="contactus_form_values" t-value="{                 'email_to': res_company.email,                 'name': request.params.get('name', ''),                 'phone': request.params.get('phone', ''),                 'email_from': request.params.get('email_from', ''),                 'company': request.params.get('company', ''),                 'subject': request.params.get('subject', ''),             }"/>
+            <span class="hidden" data-for="contactus_form" t-att-data-values="contactus_form_values"/>
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_form_aside o_colored_level o_cc o_cc3 pb40 pt104" data-snippet="s_form_aside" data-name="Form Aside" data-oe-shape-data="{&quot;shape&quot;:&quot;html_builder/Connections/14&quot;,&quot;colors&quot;:{&quot;c5&quot;:&quot;#000000&quot;},&quot;flip&quot;:[],&quot;showOnMobile&quot;:true,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;,&quot;selectedColor&quot;:true}" style="position: relative;">
+                    <div class="o_we_shape o_html_builder_Connections_14 o_shape_show_mobile" style="background-image: url(&quot;/html_editor/shape/html_builder%2FConnections%2F14.svg?c5=%23000000&quot;);"/>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 order-lg-0 o_colored_level" style="order: 1;">
+                                <h1 class="h2-fs"><strong>Contact us</strong></h1>
+                                <p class="lead">
+                                    Contact us about anything related to site&amp;nbsp;or services.
+                                </p>
+                                <section class="s_website_form" data-vcss="001" data-snippet="s_website_form" data-name="Form">
+                                    <div class="container">
+                                        <form id="contactus_form" action="/website/form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail" data-success-mode="message" data-success-page="/contactus-thank-you" data-pre-fill="true">
+                                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                                <div data-name="Field" class="s_website_form_field mb-3 col-lg-6 s_website_form_custom s_website_form_required" data-type="char">
+                                                    <label class="s_website_form_label" style="width: 200px" for="contact1">
+                                                        <span class="s_website_form_label_content">Name</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <input id="contact1" type="text" placeholder="John Doe" class="form-control s_website_form_input" name="name" required="" data-fill-with="name"/>
+                                                </div>
+                                                
+                                                <div data-name="Field" class="s_website_form_field mb-3 col-lg-6 s_website_form_required s_website_form_model_required" data-type="email">
+                                                    <label class="s_website_form_label" style="width: 200px" for="contact3">
+                                                        <span class="s_website_form_label_content">Email</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <input id="contact3" type="email" placeholder="example@mail.com" class="form-control s_website_form_input" name="email_from" required="" data-fill-with="email"/>
+                                                </div>
+                                                
+                                                <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_required s_website_form_model_required" data-type="char">
+                                                    <label class="s_website_form_label" style="width: 200px" for="contact5">
+                                                        <span class="s_website_form_label_content">Subject</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <input id="contact5" type="text" placeholder="Describe your request" class="form-control s_website_form_input" name="subject" required=""/>
+                                                </div>
+                                                <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required" data-type="text">
+                                                    <label class="s_website_form_label" style="width: 200px" for="contact6">
+                                                        <span class="s_website_form_label_content">Message</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <textarea id="contact6" placeholder="Write down your message" class="form-control s_website_form_input" name="description" required="" rows="6"/>
+                                                    <span class="s_website_form_field_description small form-text text-muted">We typically respond within 1-2 working days.</span>
+                                                </div>
+                                                <div class="mb-3 col-12 s_website_form_field s_website_form_dnone">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="contact7">
+                                                            <span class="s_website_form_label_content">Email To</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input id="contact7" type="hidden" class="form-control s_website_form_input" name="email_to"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-0 py-2 col-12 s_website_form_submit s_website_form_no_submit_label text-end" data-name="Submit Button">
+                                                    <div style="width: 200px;" class="s_website_form_label"/>
+                                                    <span id="s_website_form_result"/>
+                                                    <a href="#" role="button" class="btn btn-primary s_website_form_send">Send Message</a>
+                                                </div>
+                                            </div>
+                                        </form><div class="s_website_form_end_message d-none"><div class="oe_structure"><section class="s_text_block o_colored_level rounded px-5 text-center" data-snippet="s_text_block" data-name="Text"><i class="fa fa-paper-plane fa-2x mb-3 rounded-circle text-bg-success" role="img" aria-hidden="true" title="Success"/><h1 class="fw-bolder">Thank you for your feedback!</h1><p class="lead mb-0">Our team will message you back as soon as possible.</p><p class="lead">In the meantime we invite you to visit our <a class="o_translate_inline" href="/">website</a>.</p></section></div></div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-12 col-lg-5 offset-lg-1 pt0 order-lg-0 o_colored_level pb8" style="order: 0;">
+                                <img src="/unsplash/uXchDIKs4qI/1100/space.jpg?unique=c47a6de9" alt="orion nebula photograph in pink purple" data-attachment-id="954" class="img img-fluid rounded o_we_custom_image" data-format-mimetype="image/webp" data-resize-width="962" data-original-id="954" data-original-src="/unsplash/uXchDIKs4qI/space.jpg?unique=8346a220" data-mimetype-before-conversion="image/jpeg" data-mimetype="image/webp" srcset="/unsplash/uXchDIKs4qI/1100/1101/space.jpg?unique=e2cedb1a 750w, /unsplash/uXchDIKs4qI/1100/space.jpg?unique=c47a6de9 962w"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="s_title o_cc pt136 pb128 o_colored_level o_cc3" data-vcss="001" data-snippet="s_title" data-name="Title">
+                    <div class="container">
+                        <div class="s_hr pt32 pb32" data-snippet="s_hr" data-name="Separator">
+        <hr class="w-100 mx-auto"/>
+    </div><h2 class="display-4-fs" style="text-align: center;">An ultimate Space Science Platform covering every aspect of astronomy.</h2>
+                    </div>
+                </section>
+                <section class="s_faq_list pt120 pb56 o_colored_level o_cc o_cc3" data-snippet="s_faq_list" data-name="FAQ List" data-oe-shape-data="{&quot;shape&quot;:&quot;html_builder/Connections/14&quot;,&quot;colors&quot;:{&quot;c5&quot;:&quot;#000000&quot;},&quot;flip&quot;:[&quot;y&quot;],&quot;showOnMobile&quot;:true,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;,&quot;selectedColor&quot;:true}">
+                    <div class="o_we_shape o_html_builder_Connections_14 o_shape_show_mobile" style="background-image: url(&quot;/html_editor/shape/html_builder%2FConnections%2F14.svg?c5=%23000000&amp;flip=y&quot;); background-position: 50% 0%;"/>
+                    <div class="container">
+                        <div class="row s_nb_column_fixed">
+                            <div class="col-lg-12 pb24 o_colored_level">
+                                <h2 class="h3-fs">Need help?</h2>
+                                <p class="lead">In this section, you can address common questions efficiently.</p>
+                            </div>
+                            <div class="col-lg-4 pt16 pb16 o_colored_level">
+                                <h3 class="h6-fs"><strong>What sets us apart?</strong></h3>
+                                <p>We deliver personalized solutions, ensuring that every customer receives top-tier service tailored to their needs.</p>
+                            </div>
+                            <div class="col-lg-4 pt16 pb16 o_colored_level">
+                                <h3 class="h6-fs"><strong>Is the website user-friendly?</strong></h3>
+                                <p>Our website is designed for easy navigation, allowing you to find the information you need quickly and efficiently.</p>
+                            </div>
+                            <div class="col-lg-4 pt16 pb16 o_colored_level">
+                                <h3 class="h6-fs"><strong>Can you trust our partners?</strong></h3>
+                                <p>We collaborate with trusted, high-quality partners to bring you reliable and top-notch products and services.</p>
+                            </div>
+                            <div class="col-lg-4 pt16 pb16 o_colored_level">
+                                <h3 class="h6-fs"><strong>What support do we offer?</strong></h3>
+                                <p>We provide 24/7 support through various channels, including live chat, email, and phone, to assist with any queries.</p>
+                            </div>
+                            <div class="col-lg-4 pt16 pb16 o_colored_level">
+                                <h3 class="h6-fs"><strong>How is your data secured?</strong></h3>
+                                <p>Your data is protected by advanced encryption and security protocols, keeping your personal information safe.</p>
+                            </div>
+                            <div class="col-lg-4 pt16 pb16 o_colored_level">
+                                <h3 class="h6-fs"><strong>Are links to other websites approved?</strong></h3>
+                                <p>Although this Website may be linked to other websites, we are not, directly or indirectly, implying any approval.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="s_hr pt32 pb32 o_colored_level o_cc o_cc3" data-snippet="s_hr" data-name="Separator">
+                    <hr class="w-100 mx-auto"/>
+                </div>
+                <section class="s_accordion_image pt64 pb120 o_colored_level o_cc o_cc3" data-snippet="s_accordion_image" data-name="Accordion Image">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col-lg-7 pt16 o_colored_level">
+                                <section class="s_map pt248 pb248 rounded-3 o_not_editable" data-map-type="m" data-map-zoom="12" data-snippet="s_map" data-map-address="jhang,punjab,pakistan" data-name="Map" data-vxml="001">
+                                    <div class="map_container">
+                                        <div class="css_non_editable_mode_hidden">
+                                            <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none">
+                                                An address must be specified for a map to be embedded
+                                            </div>
+                                        </div>
+                                        <iframe class="s_map_embedded o_not_editable" src="https://maps.google.com/maps?q=jhang%2Cpunjab%2Cpakistan&amp;t=m&amp;z=12&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" aria-label="Map"/>
+                                        <div class="s_map_color_filter"/>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-4 offset-lg-1 pt24 o_colored_level">
+                                <h2 class="h3-fs">Come Visit Us</h2>
+                                <p class="lead">Easy ways to reach us, no matter your favorite transport.</p>
+                                <div class="s_accordion" data-snippet="s_accordion" data-name="Accordion" data-vcss="000">
+                                    <div id="o_contactus_accordion" class="s_accordion_highlight accordion">
+                                        <div class="accordion-item position-relative z-1" data-name="Accordion Item">
+                                            <button type="button" id="o_contactus_accordion_btn_1" class="accordion-header accordion-button justify-content-between gap-2 bg-transparent h6-fs fw-bold text-decoration-none text-reset transition-none collapsed" data-bs-target="#o_contactus_accordion_1" aria-controls="o_contactus_accordion_1" data-bs-toggle="collapse" aria-expanded="false"><span class="flex-grow-1">By Train</span></button>
+                                            <div id="o_contactus_accordion_1" class="accordion-collapse collapse" data-bs-parent="#o_contactus_accordion" role="region" aria-labelledby="o_contactus_accordion_btn_1">
+                                                <div class="accordion-body">
+                                                    <p>the train can be slow but its a safe mean of transnport</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item position-relative z-1" data-name="Accordion Item">
+                                            <button type="button" id="o_contactus_accordion_btn_2" class="accordion-header accordion-button justify-content-between gap-2 bg-transparent h6-fs fw-bold text-decoration-none text-reset transition-none collapsed" data-bs-target="#o_contactus_accordion_2" aria-controls="o_contactus_accordion_2" data-bs-toggle="collapse" aria-expanded="false"><span class="flex-grow-1">By Car</span></button>
+                                            <div id="o_contactus_accordion_2" class="accordion-collapse collapse" data-bs-parent="#o_contactus_accordion" role="region" aria-labelledby="o_contactus_accordion_btn_2">
+                                                <div class="accordion-body">
+                                                    <p>Our city is mainly connected to every big city, you can easily reach by road through your car</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item position-relative z-1" data-name="Accordion Item">
+                                            <button type="button" id="o_contactus_accordion_btn_3" class="accordion-header accordion-button justify-content-between gap-2 bg-transparent h6-fs fw-bold text-decoration-none text-reset transition-none collapsed" data-bs-target="#o_contactus_accordion_3" aria-controls="o_contactus_accordion_3" data-bs-toggle="collapse" aria-expanded="false"><span class="flex-grow-1">By Bike</span></button>
+                                            <div id="o_contactus_accordion_3" class="accordion-collapse collapse" data-bs-parent="#o_contactus_accordion" role="region" aria-labelledby="o_contactus_accordion_btn_3">
+                                                <div class="accordion-body">
+                                                    <p>Bike could be a good source but only if you travel from the surrounding cities</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><section class="s_contact_info pt48 pb64 o_cc o_colored_level o_cc3" data-snippet="s_contact_info" data-name="Contact Info">
+        <div class="container">
+            <div class="row o_grid_mode" data-row-count="11">
+                <div class="o_grid_item g-col-lg-6 g-height-5 col-lg-6 col-10 offset-1 order-lg-0 o_colored_level" style="order: 2;--grid-item-padding-x: 0px; --grid-item-padding-y: 24px; grid-area: 1 / 1 / 6 / 7; z-index: 1;" data-name="Title block">
+                    <h2>Contact Us</h2>
+                    <p class="lead">We'd love to hear from you! If you have any questions, feedback, or need assistance, please feel free to reach out to us using the contact details provided. Our team is here to help and will respond as soon as possible. Thank you for getting in touch!</p>
+                </div>
+                <div class="o_grid_item g-col-lg-6 g-height-2 col-lg-6 col-10 offset-1 order-lg-0 o_colored_level" style="order: 3; --grid-item-padding-x: 0px; --grid-item-padding-y: 16px; grid-area: 6 / 1 / 8 / 7; z-index: 2;" data-name="Info block">
+                    <h3 class="h5-fs">
+                        <i class="fa fa-fw fa-envelope-o" role="presentation"/>
+                        Email
+                    </h3>
+                    <p>
+                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<a class="o_translate_inline" href="https://mail-to:aeroxin1108@gmail.com" title="Send an email">UMAIR SIAL</a>
+                    </p>
+                </div>
+                <div class="o_grid_item g-col-lg-6 g-height-2 col-lg-6 col-10 offset-1 order-lg-0 o_colored_level" style="order: 4; --grid-item-padding-x: 0px; --grid-item-padding-y: 16px; grid-area: 8 / 1 / 10 / 7; z-index: 3;" data-name="Info block">
+                    <h3 class="h5-fs">
+                        <i class="fa fa-fw fa-phone" role="presentation"/>
+                        Phone
+                    </h3>
+                    <p>
+                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<a class="o_translate_inline" href="tel:+923028749914" title="Call Customer Service">+Whatsapp</a>
+                    </p>
+                </div>
+                <div class="o_grid_item g-col-lg-6 g-height-2 col-lg-6 col-10 offset-1 order-lg-0 o_colored_level" style="order: 5; --grid-item-padding-x: 0px; --grid-item-padding-y: 16px; grid-area: 10 / 1 / 12 / 7; z-index: 4;" data-name="Info block">
+                    <h3 class="h5-fs">
+                        <i class="fa fa-home fa-fw" role="presentation"/>&amp;nbsp;Home</h3>
+                    <p>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Jhang , Punjab , Pakistan</p>
+                </div>
+                <div class="o_grid_item o_grid_item_image g-col-lg-6 g-height-6 col-lg-6 col-10 offset-1 order-lg-0 o_colored_level" style="order: 1; --grid-item-padding-x: 0px; --grid-item-padding-y: 0px; grid-area: 6 / 7 / 12 / 13; z-index: 5;" data-name="Image block">
+                    <img src="/web/image/1099-30a0805f/ChatGPT%20Image%20Jul%206%2C%202026%2C%2007_32_06%20PM.webp" alt="" data-attachment-id="1098" class="img img-fluid rounded o_editable_media o_we_custom_image" data-format-mimetype="image/webp" data-resize-width="690" data-original-id="1098" data-original-src="/web/image/1098-81489628/ChatGPT%20Image%20Jul%206%2C%202026%2C%2007_32_06%20PM.png" data-mimetype-before-conversion="image/png" data-mimetype="image/webp" data-quality="100" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </section>
+            </div>
+        </t>
+    </t>

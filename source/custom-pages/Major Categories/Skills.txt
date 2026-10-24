@@ -1,0 +1,432 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Skills Behind Every Stargazer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070707;
+    --panel:#121212;
+    --panel-edge:#1b1b1b;
+    --white:#ffffff;
+    --grey:#9a9a9a;
+    --grey-dim:#6b6b6b;
+    --radius:20px;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', 'Inter', sans-serif;
+    margin:0;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 8vw;
+    overflow:hidden;
+  }
+
+  .hero-stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+
+  .star{
+    position:absolute;
+    background:#ffffff;
+    border-radius:50%;
+  }
+
+  @keyframes twinkle{
+    0%, 100%{ opacity:.15; }
+    50%{ opacity:1; }
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:740px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.06;
+    letter-spacing:-0.02em;
+    font-weight:700;
+    margin-bottom:24px;
+  }
+
+  .hero p{
+    font-size:1.15rem;
+    line-height:1.65;
+    color:var(--grey);
+    max-width:540px;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:44px;
+    left:8vw;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--grey-dim);
+    font-size:.85rem;
+    text-decoration:none;
+  }
+
+  .scroll-cue svg{
+    width:16px;
+    height:16px;
+    stroke:var(--grey-dim);
+    fill:none;
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    animation:bob 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bob{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(6px); }
+  }
+
+  /* ---------- Skills section ---------- */
+
+  .skills{
+    padding:120px 8vw 140px;
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  .section-head{
+    max-width:600px;
+    margin-bottom:64px;
+  }
+
+  .section-head h2{
+    font-size:clamp(1.8rem, 3vw, 2.5rem);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin-bottom:16px;
+  }
+
+  .section-head p{
+    color:var(--grey);
+    font-size:1.05rem;
+    line-height:1.6;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:32px;
+  }
+
+  .card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    height:520px;
+    transition:transform .3s ease;
+  }
+
+  .card:hover{
+    transform:translateY(-6px);
+  }
+
+  .card-visual{
+    flex:1;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(255,255,255,.07), transparent 70%),
+      radial-gradient(circle at 20% 25%, rgba(255,255,255,.09) 1px, transparent 1px),
+      radial-gradient(circle at 78% 65%, rgba(255,255,255,.07) 1px, transparent 1px),
+      radial-gradient(circle at 45% 82%, rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(180deg, var(--panel-edge), var(--panel));
+    background-size:auto, 150px 150px, 170px 170px, 130px 130px, auto;
+  }
+
+  .card-visual svg{
+    width:76px;
+    height:76px;
+    stroke:#ffffff;
+    fill:none;
+    stroke-width:1.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    opacity:.92;
+  }
+
+  .card-content{
+    flex:1;
+    padding:28px 28px 24px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .card-content h3{
+    font-size:1.25rem;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+
+  .card-content p{
+    color:var(--grey);
+    font-size:.93rem;
+    line-height:1.55;
+    margin:0 0 20px;
+    flex-grow:1;
+  }
+
+  .card-btn{
+    width:100%;
+    background:#ffffff;
+    color:#000000;
+    border:none;
+    padding:14px 0;
+    font-family:'Inter', sans-serif;
+    font-weight:700;
+    font-size:.92rem;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+
+  .card-btn:hover{
+    background:#e2e2e2;
+  }
+
+  .card-btn:focus-visible{
+    outline:2px solid #ffffff;
+    outline-offset:3px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    text-align:center;
+    color:var(--grey-dim);
+    font-size:.9rem;
+    padding:0 20px 70px;
+  }
+
+  @media (max-width:640px){
+    .card{ height:auto; min-height:480px; }
+    .card-visual{ min-height:190px; }
+    .hero{ padding:0 6vw; }
+    .skills{ padding:90px 6vw 100px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .star{ animation:none !important; }
+    .scroll-cue svg{ animation:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+
+
+
+  <section class="hero">
+    <div class="hero-stars" id="heroStars"></div>
+    <div class="hero-content">
+      <h1>The skills behind every stargazer</h1>
+      <p>Loving the night sky is the easy part. Turning that curiosity into real astronomical work takes a specific toolkit — here's what to learn first.</p>
+    </div>
+    <a class="scroll-cue" href="#skills">
+      See the skills
+      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+    </a>
+  </section>
+
+  <main class="skills" id="skills">
+    <div class="section-head">
+      <h2>Nine skills, one sky</h2>
+      <p>They aren't ranked, and you don't need all nine to start. Together, though, they cover most of what separates admiring the sky from actually studying it.</p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64"><path d="M22 20 8 32l14 12"></path><path d="M42 20l14 12-14 12"></path><path d="M36 16 28 48"></path></svg>
+        </div>
+        <div class="card-content">
+          <h3>Python programming</h3>
+          <p>The go-to language in astronomy — used to process telescope data, model orbits, and automate research pipelines.</p>
+          <button class="card-btn">Start with Python</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64">
+            <ellipse cx="32" cy="32" rx="26" ry="10"></ellipse>
+            <ellipse cx="32" cy="32" rx="26" ry="10" transform="rotate(60 32 32)"></ellipse>
+            <ellipse cx="32" cy="32" rx="26" ry="10" transform="rotate(120 32 32)"></ellipse>
+            <circle cx="32" cy="32" r="3" fill="#ffffff" stroke="none"></circle>
+          </svg>
+        </div>
+        <div class="card-content">
+          <h3>Physics fundamentals</h3>
+          <p>Mechanics, gravity, and electromagnetism explain why planets orbit, stars shine, and light bends around black holes.</p>
+          <button class="card-btn">Study physics</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64"><path d="M10 8v48h48"></path><path d="M14 46c8-24 20-32 36-30"></path></svg>
+        </div>
+        <div class="card-content">
+          <h3>Mathematics</h3>
+          <p>Calculus, linear algebra, and statistics are the language the universe's equations are actually written in.</p>
+          <button class="card-btn">Sharpen your math</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="4" fill="#ffffff" stroke="none"></circle>
+            <path d="M32 32c10-6 22-2 24 8s-8 20-20 18"></path>
+            <path d="M32 32c-10 6-22 2-24-8s8-20 20-18"></path>
+            <circle cx="50" cy="16" r="1.4" fill="#ffffff" stroke="none"></circle>
+            <circle cx="12" cy="50" r="1.4" fill="#ffffff" stroke="none"></circle>
+            <circle cx="54" cy="46" r="1" fill="#ffffff" stroke="none"></circle>
+          </svg>
+        </div>
+        <div class="card-content">
+          <h3>Astrophysics fundamentals</h3>
+          <p>How stars form, live, and die — and how galaxies, black holes, and the cosmos itself came to be.</p>
+          <button class="card-btn">Explore astrophysics</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64"><path d="M8 56h48"></path><rect x="14" y="34" width="8" height="22"></rect><rect x="28" y="22" width="8" height="34"></rect><rect x="42" y="10" width="8" height="46"></rect></svg>
+        </div>
+        <div class="card-content">
+          <h3>Data analysis &amp; statistics</h3>
+          <p>Telescopes generate oceans of data. Cleaning, plotting, and interpreting it is what turns numbers into discoveries.</p>
+          <button class="card-btn">Learn data analysis</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64">
+            <rect x="0" y="0" width="34" height="10" rx="2" transform="translate(12 22) rotate(-25)"></rect>
+            <line x1="20" y1="46" x2="14" y2="58"></line>
+            <line x1="30" y1="50" x2="26" y2="60"></line>
+            <circle cx="16" cy="30" r="2" fill="#ffffff" stroke="none"></circle>
+          </svg>
+        </div>
+        <div class="card-content">
+          <h3>Telescope operation &amp; astrophotography</h3>
+          <p>Hands-on skill with optics, mounts, and long-exposure imaging to actually capture what you're studying.</p>
+          <button class="card-btn">Learn to observe</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64">
+            <circle cx="14" cy="16" r="4"></circle>
+            <circle cx="14" cy="48" r="4"></circle>
+            <circle cx="32" cy="32" r="4"></circle>
+            <circle cx="50" cy="16" r="4"></circle>
+            <circle cx="50" cy="48" r="4"></circle>
+            <path d="M17 18l12 12M17 46l12-12M36 30l11-11M36 34l11 11"></path>
+          </svg>
+        </div>
+        <div class="card-content">
+          <h3>Machine learning</h3>
+          <p>Algorithms that spot exoplanets, classify galaxies, and sift signal from noise faster than any human could.</p>
+          <button class="card-btn">Get into ML</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64">
+            <ellipse cx="32" cy="32" rx="26" ry="14"></ellipse>
+            <circle cx="14" cy="32" r="3" fill="#ffffff" stroke="none"></circle>
+            <circle cx="50" cy="26" r="2.2" fill="#ffffff" stroke="none"></circle>
+          </svg>
+        </div>
+        <div class="card-content">
+          <h3>Orbital mechanics</h3>
+          <p>The math of motion in space — essential for tracking satellites, planning missions, and predicting eclipses.</p>
+          <button class="card-btn">Understand orbits</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-visual">
+          <svg viewBox="0 0 64 64">
+            <rect x="14" y="10" width="28" height="40" rx="2"></rect>
+            <path d="M20 20h16M20 28h16M20 36h10"></path>
+            <path d="M40 46l12-12 4 4-12 12-6 2z"></path>
+          </svg>
+        </div>
+        <div class="card-content">
+          <h3>Scientific writing &amp; communication</h3>
+          <p>A discovery only matters if others can understand it. Clear writing turns research into shared knowledge.</p>
+          <button class="card-btn">Improve your writing</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>Keep looking up.</footer>
+
+  <script>
+    const starsContainer = document.getElementById('heroStars');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const STAR_COUNT = 140;
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.opacity = (Math.random() * 0.6 + 0.2).toFixed(2);
+      if (!reduceMotion) {
+        const duration = (2 + Math.random() * 3).toFixed(2);
+        const delay = (Math.random() * 3).toFixed(2);
+        star.style.animation = `twinkle ${duration}s ease-in-out ${delay}s infinite`;
+      }
+      starsContainer.appendChild(star);
+    }
+  </script>

@@ -1,0 +1,362 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+
+<style>
+.xhc-root {
+  --xhc-ease:cubic-bezier(.16,1,.3,1);
+  position:relative;
+  isolation:isolate;
+  contain:layout style;
+  display:block;
+  width:100%;
+  overflow:hidden;
+  background:#000;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.5;
+  box-sizing:border-box;
+  padding:42px 0 68px;
+}
+
+.xhc-root *,
+.xhc-root *::before,
+.xhc-root *::after { box-sizing:border-box; }
+
+.xhc-root a { color:inherit; text-decoration:none; }
+.xhc-root img { display:block; max-width:100%; }
+.xhc-root button { font:inherit; border:0; outline:0; cursor:pointer; margin:0; }
+
+/* Local starfield (absolute inside this block only) */
+.xhc-root::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.46) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,.24) 0 1px, transparent 1.5px);
+  background-size:150px 150px, 230px 230px;
+  background-position:20px 40px, 95px 12px;
+  opacity:.3;
+  animation:xhcStarDrift 46s linear infinite;
+}
+
+.xhc-root .xhc-shell {
+  position:relative;
+  z-index:1;
+  width:min(1240px,calc(100% - 40px));
+  margin:0 auto;
+}
+
+.xhc-root .xhc-block + .xhc-block { margin-top:68px; }
+
+@keyframes xhcStarDrift {
+  from { transform:translate3d(0,0,0); }
+  to   { transform:translate3d(-150px,150px,0); }
+}
+
+/* MARQUEE */
+.xhc-root .xhc-marquee {
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  background:rgba(255,255,255,.045);
+  border-radius:18px;
+  padding:12px 0;
+  white-space:nowrap;
+  display:flex;
+}
+
+.xhc-root .xhc-marquee-track {
+  display:flex;
+  flex:none;
+  width:max-content;
+  will-change:transform;
+  animation:xhcMarqueeMove 28s linear infinite;
+}
+
+.xhc-root .xhc-marquee-item {
+  display:block;
+  flex:none;
+  padding:0 36px;
+  color:#dcdcdc;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+@keyframes xhcMarqueeMove {
+  from { transform:translate3d(0,0,0); }
+  to   { transform:translate3d(-50%,0,0); }
+}
+
+/* HEAD */
+.xhc-root .xhc-head {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:28px;
+}
+
+.xhc-root .xhc-head h2 {
+  margin:0;
+  padding:0;
+  color:#fff;
+  font-family:'Space Grotesk',Arial,sans-serif;
+  font-size:clamp(26px,3.4vw,38px);
+  letter-spacing:-.02em;
+  line-height:1.1;
+  font-weight:600;
+}
+
+.xhc-root .xhc-head p {
+  margin:0;
+  max-width:560px;
+  color:#cfcfcf;
+  font-size:14px;
+  line-height:1.65;
+}
+
+.xhc-root .xhc-kicker {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#101010;
+  border-radius:999px;
+  padding:8px 11px;
+  color:#dcdcdc;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.xhc-root .xhc-dot {
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#dcdcdc;
+  box-shadow:0 0 14px rgba(255,255,255,.24);
+}
+
+/* COLLECTIONS */
+.xhc-root .xhc-wrap {
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  background:#050505;
+}
+
+.xhc-root .xhc-track {
+  display:flex;
+  transition:transform .75s var(--xhc-ease);
+  will-change:transform;
+}
+
+.xhc-root .xhc-page {
+  min-width:100%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  padding:8px;
+}
+
+.xhc-root .xhc-tile {
+  position:relative;
+  min-height:430px;
+  border-radius:18px;
+  overflow:hidden;
+  background:#111;
+}
+
+.xhc-root .xhc-tile img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.92) saturate(1.03) contrast(1.02);
+  transition:transform .9s var(--xhc-ease);
+}
+
+.xhc-root .xhc-tile:hover img { transform:scale(1.055); }
+
+.xhc-root .xhc-info {
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  background:rgba(0,0,0,.36);
+  border-radius:15px;
+  padding:14px;
+  backdrop-filter:blur(6px);
+}
+
+.xhc-root .xhc-info h3 { margin:0 0 6px; padding:0; color:#fff; font-size:18px; line-height:1.05; }
+.xhc-root .xhc-info p  { margin:0; color:#d8d8d8; font-size:12px; line-height:1.5; }
+
+.xhc-root .xhc-arrows { display:flex; gap:10px; justify-content:center; margin-top:14px; }
+
+.xhc-root .xhc-arrow {
+  width:48px;
+  height:48px;
+  padding:0;
+  border-radius:50%;
+  background:#000;
+  color:#fff;
+  font-size:22px;
+  display:grid;
+  place-items:center;
+  transition:transform .2s ease, background .2s ease;
+}
+
+.xhc-root .xhc-arrow:hover { background:#1a1a1a; transform:scale(1.08); }
+.xhc-root .xhc-arrow:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+
+/* RESPONSIVE */
+@media (max-width:1050px) {
+  .xhc-root .xhc-page { grid-template-columns:repeat(2,1fr); }
+}
+
+@media (max-width:720px) {
+  .xhc-root { padding:30px 0 50px; }
+  .xhc-root .xhc-shell { width:min(100% - 24px,1240px); }
+  .xhc-root .xhc-block + .xhc-block { margin-top:50px; }
+  .xhc-root .xhc-head { display:block; }
+  .xhc-root .xhc-head p { margin-top:12px; }
+  .xhc-root .xhc-page { grid-template-columns:1fr; }
+  .xhc-root .xhc-tile { min-height:310px; }
+  .xhc-root .xhc-marquee-item { font-size:11px; padding:0 24px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .xhc-root::before,
+  .xhc-root .xhc-marquee-track { animation:none !important; }
+  .xhc-root .xhc-track { transition:none !important; }
+}
+</style>
+
+<div class="xhc-root" data-xhc-root="">
+  <div class="xhc-shell">
+
+    
+    <div class="xhc-block">
+      <div class="xhc-marquee">
+        <div class="xhc-marquee-track">
+          <span class="xhc-marquee-item">Understand Articles · Learn Skills · Build Career · Experience Visuals · Build Knowledge · Give Quizzes · Review · Be Professional · Be an Astronomer ·</span>
+          <span class="xhc-marquee-item" aria-hidden="true">Understand Articles · Learn Skills · Build Career · Experience Visuals · Build Knowledge · Give Quizzes · Review · Be Professional · Be an Astronomer ·</span>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="xhc-block">
+
+      <div class="xhc-head">
+        <div>
+          <div class="xhc-kicker"><span class="xhc-dot"></span>Picture rows</div>
+          <h2>Visual Collections</h2>
+        </div>
+        <p>Browse rotating deep-space image collections with short observation notes, target context, and clean visual summaries.</p>
+      </div>
+
+      <div class="xhc-wrap">
+        <div class="xhc-track" data-xhc-track="">
+
+          <div class="xhc-page">
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Deep Field Atlas" loading="lazy">
+              <div class="xhc-info"><h3>Deep Field Atlas</h3><p>Galaxy fields, dust lanes, faint stars, and high-depth visual notes for fast exploration.</p></div>
+            </article>
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Moon System" loading="lazy">
+              <div class="xhc-info"><h3>Moon System</h3><p>Phases, surface zones, eclipses, limb features, and observation windows in one visual path.</p></div>
+            </article>
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Launch Corridor" loading="lazy">
+              <div class="xhc-info"><h3>Launch Corridor</h3><p>Mission windows, payload stages, engine sequence, orbit insertion, and recovery view.</p></div>
+            </article>
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Orbit Watch" loading="lazy">
+              <div class="xhc-info"><h3>Orbit Watch</h3><p>Low orbit, station passes, satellite motion, track zones, and timing marks.</p></div>
+            </article>
+          </div>
+
+          <div class="xhc-page">
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Nebula Archive" loading="lazy">
+              <div class="xhc-info"><h3>Nebula Archive</h3><p>Bright emission fields, dark clouds, star birth regions, and visual learning layers.</p></div>
+            </article>
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Telescope Field" loading="lazy">
+              <div class="xhc-info"><h3>Telescope Field</h3><p>Target lists, exposure plans, seeing checks, equipment notes, and session logs.</p></div>
+            </article>
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Planet Route" loading="lazy">
+              <div class="xhc-info"><h3>Planet Route</h3><p>Inner worlds, outer giants, moons, rings, atmospheres, and distance comparisons.</p></div>
+            </article>
+            <article class="xhc-tile">
+              <img src="https://images.unsplash.com/photo-1581822261290-991b38693d1b?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Signal Desk" loading="lazy">
+              <div class="xhc-info"><h3>Signal Desk</h3><p>Telemetry style readings, observation values, spectrum notes, and live-board layout.</p></div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="xhc-arrows">
+        <button class="xhc-arrow" type="button" data-xhc-prev="" aria-label="Previous collection">‹</button>
+        <button class="xhc-arrow" type="button" data-xhc-next="" aria-label="Next collection">›</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Scoped to this block only: no global ids, no document-wide listeners.
+  var roots = document.querySelectorAll("[data-xhc-root]");
+
+  Array.prototype.forEach.call(roots, function (root) {
+    if (root.getAttribute("data-xhc-ready")) return;
+    root.setAttribute("data-xhc-ready", "1");
+
+    var track = root.querySelector("[data-xhc-track]");
+    var prev  = root.querySelector("[data-xhc-prev]");
+    var next  = root.querySelector("[data-xhc-next]");
+    var total = track ? Math.max(track.children.length, 1) : 1;
+    var index = 0;
+    var timer = null;
+
+    function inOdooEditor() {
+      var c = document.body && document.body.classList;
+      return !!c && (c.contains("o_web_editor") || c.contains("o_edit_mode"));
+    }
+
+    function move(i) {
+      if (!track) return;
+      index = (i + total) % total;
+      track.style.transform = "translateX(-" + (index * 100) + "%)";
+    }
+
+    function restart() {
+      if (timer) window.clearInterval(timer);
+      if (total <= 1) return;
+      timer = window.setInterval(function () {
+        if (!inOdooEditor()) move(index + 1);
+      }, 4200);
+    }
+
+    if (prev) prev.addEventListener("click", function () { move(index - 1); restart(); });
+    if (next) next.addEventListener("click", function () { move(index + 1); restart(); });
+
+    restart();
+  });
+})();
+</script>

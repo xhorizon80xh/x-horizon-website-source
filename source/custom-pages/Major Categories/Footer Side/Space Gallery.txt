@@ -1,0 +1,951 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>X HORIZON — Space Gallery</title>
+
+<style>
+/* ============================================================
+   X HORIZON — SPACE GALLERY
+   SINGLE HERO / FULLY ISOLATED COMPONENT
+
+   IMAGE URL:
+   Change ONLY the value of --xh-gallery-image below.
+
+   Current image:
+   NASA / ESA / CSA / STScI
+   James Webb Space Telescope — Sombrero Galaxy (NIRCam)
+
+   The image is a genuine telescope observation, not generated art.
+   ============================================================ */
+
+
+/* ============================================================
+   IMAGE URL — CHANGE HERE
+   ============================================================ */
+
+#xh-space-gallery {
+  --xh-gallery-image:
+    url("https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2025/06/STScI-01JX8ZQ2W6G2K2G9N7J7Q5Y8Q3.png?crop=faces%2Cfocalpoint&fit=clip&h=2000&w=2000");
+
+  --xh-gallery-height: 720px;
+}
+
+
+/* ============================================================
+   COMPLETE ISOLATION
+   ============================================================ */
+
+#xh-space-gallery,
+#xh-space-gallery *,
+#xh-space-gallery *::before,
+#xh-space-gallery *::after {
+  box-sizing: border-box !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+#xh-space-gallery {
+  all: initial !important;
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  color: #ffffff !important;
+}
+
+
+/* ============================================================
+   MAIN HERO
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-hero {
+  position: relative !important;
+  width: 100% !important;
+  min-height: var(--xh-gallery-height) !important;
+  overflow: hidden !important;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,.46) 45%,
+      rgba(0,0,0,.86) 100%
+    ),
+    var(--xh-gallery-image) !important;
+
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+/* subtle cinematic darkening */
+#xh-space-gallery .xh-gallery-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.58) 0%,
+      rgba(0,0,0,.20) 48%,
+      rgba(0,0,0,.48) 100%
+    ) !important;
+
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-content {
+  position: relative !important;
+  z-index: 5 !important;
+
+  width: min(850px, calc(100% - 40px)) !important;
+  margin: 0 auto !important;
+
+  min-height: var(--xh-gallery-height) !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+
+  padding:
+    105px
+    20px
+    125px
+    20px !important;
+}
+
+
+/* ============================================================
+   TOP LABEL
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-eyebrow {
+  display: inline-block !important;
+
+  margin: 0 0 20px 0 !important;
+  padding: 0 !important;
+
+  color: rgba(255,255,255,.78) !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+}
+
+
+/* ============================================================
+   MAIN TITLE
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-title {
+  margin: 0 0 12px 0 !important;
+  padding: 0 !important;
+
+  color: #ffffff !important;
+
+  font-size: clamp(42px, 6vw, 72px) !important;
+  line-height: 1.04 !important;
+  font-weight: 700 !important;
+
+  letter-spacing: 1px !important;
+}
+
+
+/* ============================================================
+   SMALL DIVIDER
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-rule {
+  width: 58px !important;
+  height: 1px !important;
+
+  margin: 10px auto 20px auto !important;
+
+  background: rgba(255,255,255,.72) !important;
+
+  border: 0 !important;
+}
+
+
+/* ============================================================
+   DESCRIPTION
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-description {
+  max-width: 650px !important;
+
+  margin: 0 auto 27px auto !important;
+  padding: 0 !important;
+
+  color: rgba(255,255,255,.86) !important;
+
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+  font-weight: 300 !important;
+}
+
+
+/* ============================================================
+   OBSERVATION LABEL
+   ============================================================ */
+
+#xh-space-gallery .xh-observation-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 9px !important;
+
+  margin: 0 0 25px 0 !important;
+  padding: 0 !important;
+
+  color: rgba(255,255,255,.82) !important;
+
+  font-size: 10px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: 2.2px !important;
+  text-transform: uppercase !important;
+}
+
+#xh-space-gallery .xh-observation-dot {
+  width: 6px !important;
+  height: 6px !important;
+
+  display: inline-block !important;
+
+  border-radius: 50% !important;
+
+  background: #ffffff !important;
+}
+
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-width: 205px !important;
+
+  margin: 0 !important;
+  padding: 14px 28px !important;
+
+  color: #ffffff !important;
+  background: transparent !important;
+
+  border: 1px solid rgba(255,255,255,.88) !important;
+  border-radius: 0 !important;
+
+  text-decoration: none !important;
+
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: 1.8px !important;
+  text-transform: uppercase !important;
+
+  transition:
+    background 220ms ease !important,
+    color 220ms ease !important,
+    border-color 220ms ease !important;
+}
+
+#xh-space-gallery .xh-gallery-cta:hover,
+#xh-space-gallery .xh-gallery-cta:focus {
+  color: #111111 !important;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+
+/* ============================================================
+   SEARCH — COMPLETELY ISOLATED
+   ============================================================ */
+
+#xh-space-gallery #xh-gallery-search {
+  all: revert !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: stretch !important;
+
+  width: min(500px, 100%) !important;
+
+  height: 48px !important;
+
+  margin: 30px auto 0 auto !important;
+  padding: 0 !important;
+
+  background: rgba(0,0,0,.18) !important;
+
+  border: 1px solid rgba(255,255,255,.55) !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+#xh-space-gallery #xh-gallery-search,
+#xh-space-gallery #xh-gallery-search * {
+  box-sizing: border-box !important;
+}
+
+
+/* input */
+
+#xh-space-gallery #xh-gallery-search input {
+  all: revert !important;
+
+  box-sizing: border-box !important;
+
+  flex: 1 1 auto !important;
+
+  min-width: 0 !important;
+
+  height: 46px !important;
+
+  margin: 0 !important;
+  padding: 0 17px !important;
+
+  background: transparent !important;
+
+  border: none !important;
+  border-radius: 0 !important;
+
+  outline: none !important;
+  box-shadow: none !important;
+
+  color: #ffffff !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+
+  line-height: 46px !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+
+/* prevent browser autofill from destroying the theme */
+
+#xh-space-gallery #xh-gallery-search input:-webkit-autofill,
+#xh-space-gallery #xh-gallery-search input:-webkit-autofill:hover,
+#xh-space-gallery #xh-gallery-search input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+
+  transition:
+    background-color 9999s ease-out !important;
+
+  box-shadow:
+    0 0 0 1000px transparent inset !important;
+}
+
+
+/* placeholder */
+
+#xh-space-gallery #xh-gallery-search input::placeholder {
+  color: rgba(255,255,255,.60) !important;
+  opacity: 1 !important;
+}
+
+
+/* clear button */
+
+#xh-space-gallery #xh-gallery-search .xh-search-clear {
+  all: revert !important;
+
+  box-sizing: border-box !important;
+
+  flex: 0 0 48px !important;
+
+  width: 48px !important;
+  height: 46px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+
+  border: none !important;
+  border-left: 1px solid rgba(255,255,255,.35) !important;
+  border-radius: 0 !important;
+
+  cursor: pointer !important;
+
+  opacity: .78 !important;
+
+  transition:
+    background 180ms ease,
+    opacity 180ms ease !important;
+}
+
+#xh-space-gallery #xh-gallery-search .xh-search-clear:hover {
+  background: rgba(255,255,255,.10) !important;
+  opacity: 1 !important;
+}
+
+
+/* X icon */
+
+#xh-space-gallery .xh-search-clear svg {
+  width: 15px !important;
+  height: 15px !important;
+
+  display: block !important;
+
+  fill: none !important;
+  stroke: #ffffff !important;
+  stroke-width: 1.5 !important;
+
+  pointer-events: none !important;
+}
+
+
+/* focus */
+
+#xh-space-gallery #xh-gallery-search:focus-within {
+  border-color: #ffffff !important;
+}
+
+
+/* ============================================================
+   LOWER INFORMATION STRIP
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-meta {
+  position: absolute !important;
+
+  left: 24px !important;
+  right: 24px !important;
+  bottom: 22px !important;
+
+  z-index: 8 !important;
+
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+
+  gap: 20px !important;
+
+  pointer-events: none !important;
+}
+
+
+/* left */
+
+#xh-space-gallery .xh-meta-left {
+  text-align: left !important;
+}
+
+
+/* right */
+
+#xh-space-gallery .xh-meta-right {
+  text-align: right !important;
+}
+
+
+#xh-space-gallery .xh-meta-line {
+  display: block !important;
+
+  margin: 0 0 5px 0 !important;
+  padding: 0 !important;
+
+  color: rgba(255,255,255,.70) !important;
+
+  font-size: 9px !important;
+  line-height: 1.4 !important;
+
+  font-weight: 500 !important;
+
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+}
+
+
+#xh-space-gallery .xh-meta-line:last-child {
+  margin-bottom: 0 !important;
+}
+
+
+#xh-space-gallery .xh-meta-strong {
+  color: rgba(255,255,255,.92) !important;
+}
+
+
+/* ============================================================
+   IMAGE CREDIT
+   ============================================================ */
+
+#xh-space-gallery .xh-gallery-credit {
+  position: absolute !important;
+
+  right: 24px !important;
+  top: 20px !important;
+
+  z-index: 8 !important;
+
+  max-width: 280px !important;
+
+  color: rgba(255,255,255,.58) !important;
+
+  font-size: 8px !important;
+  line-height: 1.5 !important;
+
+  letter-spacing: 1px !important;
+
+  text-align: right !important;
+  text-transform: uppercase !important;
+
+  pointer-events: none !important;
+}
+
+
+/* ============================================================
+   SMALL "REAL OBSERVATION" MARKER
+   ============================================================ */
+
+#xh-space-gallery .xh-real-marker {
+  position: absolute !important;
+
+  left: 24px !important;
+  top: 20px !important;
+
+  z-index: 8 !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+
+  gap: 8px !important;
+
+  color: rgba(255,255,255,.66) !important;
+
+  font-size: 8px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: 1.6px !important;
+  text-transform: uppercase !important;
+
+  pointer-events: none !important;
+}
+
+#xh-space-gallery .xh-real-marker::before {
+  content: "" !important;
+
+  width: 5px !important;
+  height: 5px !important;
+
+  border-radius: 50% !important;
+
+  background: #ffffff !important;
+}
+
+
+/* ============================================================
+   SEARCH MESSAGE
+   ============================================================ */
+
+#xh-space-gallery .xh-search-message {
+  display: none !important;
+
+  width: min(500px, 100%) !important;
+
+  margin: 10px auto 0 auto !important;
+
+  color: rgba(255,255,255,.60) !important;
+
+  font-size: 11px !important;
+
+  text-align: center !important;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  #xh-space-gallery .xh-gallery-hero {
+    min-height: 650px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-content {
+    min-height: 650px !important;
+
+    width: calc(100% - 30px) !important;
+
+    padding:
+      105px
+      15px
+      145px
+      15px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-title {
+    font-size: 42px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-description {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  #xh-space-gallery .xh-gallery-meta {
+    left: 15px !important;
+    right: 15px !important;
+    bottom: 17px !important;
+  }
+
+  #xh-space-gallery .xh-meta-line {
+    font-size: 7px !important;
+    letter-spacing: 1px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-credit {
+    right: 15px !important;
+    top: 16px !important;
+
+    max-width: 190px !important;
+
+    font-size: 7px !important;
+  }
+
+  #xh-space-gallery .xh-real-marker {
+    left: 15px !important;
+    top: 16px !important;
+
+    font-size: 7px !important;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  #xh-space-gallery .xh-gallery-hero {
+    min-height: 690px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-content {
+    min-height: 690px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-title {
+    font-size: 37px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-description {
+    max-width: 320px !important;
+  }
+
+  #xh-space-gallery .xh-gallery-meta {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  #xh-space-gallery .xh-meta-left,
+  #xh-space-gallery .xh-meta-right {
+    text-align: left !important;
+  }
+
+  #xh-space-gallery .xh-gallery-credit {
+    display: none !important;
+  }
+}
+</style>
+
+
+
+
+
+<div id="xh-space-gallery">
+
+  <section class="xh-gallery-hero">
+
+
+    
+
+    <div class="xh-real-marker">
+      REAL TELESCOPE OBSERVATION
+    </div>
+
+    <div class="xh-gallery-credit">
+      IMAGE: NASA / ESA / CSA / STScI
+      <br>
+      JWST • NIRCAM
+      <br>
+      SOMBRERO GALAXY — M104
+    </div>
+
+
+    
+
+    <div class="xh-gallery-content">
+
+      <span class="xh-gallery-eyebrow">
+        X HORIZON • SPACE GALLERY
+      </span>
+
+
+      <h1 class="xh-gallery-title">
+        X HORIZON
+      </h1>
+
+
+      <div class="xh-gallery-rule"></div>
+
+
+      <p class="xh-gallery-description">
+        Explore real astronomical observations captured by space
+        telescopes and observatories — from distant galaxies and
+        stellar nurseries to planets, nebulae and the deep universe.
+      </p>
+
+
+      <div class="xh-observation-label">
+        <span class="xh-observation-dot"></span>
+        AUTHENTIC ASTRONOMICAL IMAGERY
+      </div>
+
+
+      
+
+      <a href="/space-gallery" class="xh-gallery-cta" aria-label="Enter X Horizon Space Gallery">
+        ENTER SPACE GALLERY
+      </a>
+
+
+      
+
+      <form id="xh-gallery-search" role="search" autocomplete="off" onsubmit="return false;">
+
+        <input id="xh-gallery-search-input" type="text" name="xh_gallery_search" placeholder="Search galaxies, nebulae, planets, observations..." aria-label="Search Space Gallery" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+        <button type="button" class="xh-search-clear" id="xh-gallery-clear" aria-label="Clear search" title="Clear search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="7" y1="7" x2="17" y2="17"></line>
+            <line x1="17" y1="7" x2="7" y2="17"></line>
+          </svg>
+        </button>
+
+      </form>
+
+
+      <div id="xh-gallery-search-message" class="xh-search-message"></div>
+
+    </div>
+
+
+    
+
+    <div class="xh-gallery-meta">
+
+      <div class="xh-meta-left">
+
+        <span class="xh-meta-line">
+          Page Handler:
+          <span class="xh-meta-strong">
+            Hurais Malik
+          </span>
+        </span>
+
+        <span class="xh-meta-line">
+          Curation &amp; Review:
+          <span class="xh-meta-strong">
+            X Horizon
+          </span>
+        </span>
+
+      </div>
+
+
+      <div class="xh-meta-right">
+
+        <span class="xh-meta-line">
+          Last Updated:
+          <span class="xh-meta-strong">
+            27 Aug 2026
+          </span>
+        </span>
+
+        <span class="xh-meta-line">
+          Telescope Archive
+        </span>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+</div>
+
+
+<script>
+(function () {
+
+  "use strict";
+
+
+  /* ============================================================
+     ROOT
+     ============================================================ */
+
+  var root = document.getElementById("xh-space-gallery");
+
+  if (!root) {
+    return;
+  }
+
+
+  /* ============================================================
+     ISOLATED SEARCH
+     ============================================================ */
+
+  var search =
+    root.querySelector("#xh-gallery-search");
+
+  var input =
+    root.querySelector("#xh-gallery-search-input");
+
+  var clear =
+    root.querySelector("#xh-gallery-clear");
+
+  var message =
+    root.querySelector("#xh-gallery-search-message");
+
+
+  if (!search || !input || !clear) {
+    return;
+  }
+
+
+  /* ============================================================
+     CLEAR BUTTON
+     ============================================================ */
+
+  clear.addEventListener("click", function () {
+
+    input.value = "";
+
+    input.focus();
+
+    if (message) {
+      message.style.display = "none";
+      message.textContent = "";
+    }
+
+  });
+
+
+  /* ============================================================
+     SEARCH
+
+     The hero itself does not redirect users automatically.
+
+     This keeps the search completely independent and safe
+     inside Odoo.
+
+     Replace the search destination below if your gallery
+     search system has a dedicated URL.
+     ============================================================ */
+
+  search.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    var query =
+      input.value.trim();
+
+    if (!query) {
+      input.focus();
+      return;
+    }
+
+
+    /*
+      OPTIONAL SEARCH DESTINATION
+
+      Example:
+
+      window.location.href =
+        "/space-gallery?search=" +
+        encodeURIComponent(query);
+
+      It is intentionally disabled here so the hero does not
+      interfere with an existing Odoo search system.
+    */
+
+
+    if (message) {
+
+      message.textContent =
+        "Searching the Space Gallery for: " + query;
+
+      message.style.display = "block";
+
+    }
+
+  });
+
+
+  /* ============================================================
+     ESCAPE KEY
+     ============================================================ */
+
+  input.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+      input.value = "";
+
+      if (message) {
+        message.style.display = "none";
+        message.textContent = "";
+      }
+
+    }
+
+  });
+
+
+  /* ============================================================
+     PREVENT EXTERNAL FORM BEHAVIOUR
+     ============================================================ */
+
+  search.setAttribute(
+    "novalidate",
+    "novalidate"
+  );
+
+})();
+</script>

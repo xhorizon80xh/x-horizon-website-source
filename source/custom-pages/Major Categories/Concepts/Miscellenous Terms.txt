@@ -1,0 +1,1763 @@
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Horizon — Miscellaneous Space Concepts</title>
+  <meta name="description" content="X Horizon Miscellaneous Space Concepts page with dynamic cards, hidden admin mode, article builder, official-source imagery, and responsive mobile design.">
+  <style>
+    :root{
+      --xhms-black:#000000;
+      --xhms-card:#050505;
+      --xhms-card2:#090909;
+      --xhms-line:#202020;
+      --xhms-line2:#333333;
+      --xhms-text:#f5f7fb;
+      --xhms-muted:#a7b1c2;
+      --xhms-soft:#768396;
+      --xhms-cyan:#ffffff;
+      --xhms-blue:#ffffff;
+      --xhms-silver1:#ffffff;
+      --xhms-silver2:#b9c3d5;
+      --xhms-shadow:0 24px 70px rgba(0,0,0,.74);
+      --xhms-radius:24px;
+      --xhms-max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#000;color:var(--xhms-text);font-family:Inter,Montserrat,Roboto,Arial,sans-serif;overflow-x:hidden}
+    #xhms-page{min-height:100vh;background:#000;isolation:isolate}
+    #xhms-page button,#xhms-page input,#xhms-page textarea,#xhms-page select{font:inherit}
+    #xhms-page a{color:inherit}
+    .xhms-shell{width:min(var(--xhms-max),calc(100% - 34px));margin:0 auto}
+    .xhms-hidden{display:none!important}
+    .xhms-main{position:relative;z-index:1;background:#000}
+    .xhms-hero{min-height:570px;display:flex;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid #171717;background:#000}
+    .xhms-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.82) 43%,rgba(0,0,0,.62) 100%),var(--xhms-hero-img) center/cover no-repeat;filter:saturate(.95) contrast(1.05);transform:scale(1.02);z-index:-2}
+    .xhms-hero:after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1.3px);background-size:74px 74px;opacity:.11;z-index:-1}
+    .xhms-hero-grid{display:grid;grid-template-columns:1.1fr .72fr;gap:34px;align-items:end;padding:80px 0 58px}
+    .xhms-kicker{display:inline-flex;align-items:center;gap:10px;color:#ffffff;border:1px solid #272727;background:#050505;border-radius:999px;padding:9px 14px;font-weight:900;letter-spacing:.12em;font-size:12px;text-transform:uppercase}
+    .xhms-kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--xhms-cyan);box-shadow:0 0 16px rgba(255,255,255,.38)}
+    .xhms-title{margin:22px 0 14px;font-size:clamp(42px,8vw,96px);line-height:.9;letter-spacing:-.08em;font-weight:900;background:linear-gradient(96deg,var(--xhms-silver1),var(--xhms-silver2) 54%,#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase;max-width:980px}
+    .xhms-title span{display:block;color:transparent;-webkit-text-stroke:1px rgba(238,247,255,.55);background:linear-gradient(96deg,rgba(255,255,255,.08),rgba(255,255,255,.08));-webkit-background-clip:text;background-clip:text}
+    .xhms-lead{max-width:760px;color:var(--xhms-muted);font-size:clamp(16px,2vw,20px);line-height:1.65;margin:0 0 28px}
+    .xhms-search-wrap{display:flex;gap:12px;align-items:center;background:#050505;border:1px solid #222;border-radius:999px;padding:8px;box-shadow:var(--xhms-shadow);max-width:760px}
+    .xhms-search-wrap input{flex:1;min-width:0;background:#050505!important;border:0;outline:0;color:#fff;padding:15px 16px;font-weight:750;-webkit-text-fill-color:#fff}
+    .xhms-search-wrap input::placeholder{color:#7b8799}
+    .xhms-search-wrap button,.xhms-btn{border:1px solid #2a2a2a;background:#050505;color:#fff;border-radius:999px;padding:14px 19px;font-weight:900;letter-spacing:.01em;cursor:pointer;transition:.18s ease;white-space:nowrap;box-shadow:none}
+    .xhms-search-wrap button:hover,.xhms-btn:hover{background:#0b0b0b;border-color:#3a3a3a;transform:translateY(-2px)}
+    .xhms-hero-panel{background:#050505;border:1px solid #1f1f1f;border-radius:var(--xhms-radius);padding:22px;box-shadow:var(--xhms-shadow)}
+    .xhms-hero-panel img{display:block;width:100%;height:230px;object-fit:cover;border-radius:18px;border:1px solid #1f1f1f;background:#000}
+    .xhms-hero-panel h3{margin:17px 0 7px;font-size:20px;letter-spacing:-.02em}
+    .xhms-hero-panel p{margin:0;color:var(--xhms-muted);line-height:1.55;font-size:14px}
+    .xhms-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+    .xhms-pill{border:1px solid #222;background:#050505;border-radius:999px;color:#d8e4f7;padding:8px 11px;font-size:12px;font-weight:850;letter-spacing:.04em;text-transform:uppercase}
+    .xhms-grid-section{padding:58px 0 86px;background:#000}
+    .xhms-section-head{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:22px}
+    .xhms-section-head h2{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.045em;line-height:1.02}
+    .xhms-section-head p{margin:0;color:var(--xhms-muted);max-width:560px;line-height:1.55}
+    .xhms-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .xhms-card{min-height:455px;background:#050505;border:1px solid #1e1e1e;border-radius:22px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.75);display:flex;flex-direction:column;position:relative;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .xhms-card:hover{transform:translateY(-4px);border-color:#383838;box-shadow:0 26px 60px rgba(0,0,0,.86)}
+    .xhms-card-media{height:190px;background:#030303;position:relative;overflow:hidden}
+    .xhms-card-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(.96) contrast(1.02);transition:transform .35s ease;background:#000}
+    .xhms-card:hover .xhms-card-media img{transform:scale(1.035)}
+    .xhms-card-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.68));pointer-events:none}
+    .xhms-card-id{position:absolute;top:12px;left:12px;z-index:2;background:rgba(0,0,0,.78);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;color:#ffffff}
+    .xhms-card-body{padding:19px;display:flex;flex-direction:column;flex:1}
+    .xhms-card h3{margin:0 0 9px;font-size:22px;line-height:1.05;letter-spacing:-.03em}
+    .xhms-card p{margin:0;color:var(--xhms-muted);line-height:1.55;font-size:14px}
+    .xhms-source{margin-top:14px;font-size:11px;color:#748197;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+    .xhms-card-actions{margin-top:auto;padding-top:18px;display:flex;gap:9px;align-items:center}
+    .xhms-card-actions .xhms-btn{width:100%;text-align:center;padding:13px 14px;border-radius:14px;background:#050505;border-color:#262626}
+    .xhms-empty{grid-column:1/-1;border:1px dashed #242424;border-radius:18px;color:var(--xhms-muted);padding:24px;text-align:center;background:#050505}
+    .xhms-admin-card-panel{display:none;margin:26px 0 0;background:#050505;border:1px solid #242424;border-radius:24px;padding:18px;box-shadow:var(--xhms-shadow)}
+    #xhms-page.xhms-admin-on .xhms-admin-card-panel{display:block}
+    .xhms-admin-card-panel h3{margin:0 0 14px;font-size:20px}
+    .xhms-form-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .xhms-field{display:flex;flex-direction:column;gap:7px}
+    .xhms-field label{color:#cbd5e1;font-weight:850;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+    .xhms-field input,.xhms-field textarea,.xhms-field select{width:100%;border:1px solid #202020;background:#050505;color:#fff;border-radius:14px;outline:0;padding:12px;min-height:46px;-webkit-text-fill-color:#fff}
+    .xhms-field textarea{resize:vertical;min-height:92px}
+    .xhms-field.xhms-wide{grid-column:span 2}
+    .xhms-admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .xhms-danger{background:#18080b!important;border-color:rgba(248,113,113,.35)!important;color:#fecaca!important}
+    .xhms-card-admin-actions{display:none;gap:8px;margin-top:10px}
+    #xhms-page.xhms-admin-on .xhms-card-admin-actions{display:flex}
+    .xhms-mini-btn{background:#050505;color:#fff;border:1px solid #262626;border-radius:12px;padding:10px 12px;font-weight:900;cursor:pointer;font-size:12px;flex:1}
+    .xhms-mini-btn:hover{background:#0b0b0b;border-color:#3a3a3a}
+    .xhms-article{display:none;min-height:100vh;background:#000;position:relative}
+    .xhms-article.xhms-active{display:block}
+    .xhms-article-hero{position:relative;min-height:430px;display:flex;align-items:end;overflow:hidden;border-bottom:1px solid #171717;background:#000}
+    .xhms-article-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.52),#000 100%),var(--xhms-article-img) center/cover no-repeat;z-index:0;filter:saturate(.95) contrast(1.05)}
+    .xhms-article-top{position:relative;z-index:1;padding:64px 0 32px;width:100%}
+    .xhms-back{border:1px solid #252525;background:#050505;color:#fff;border-radius:999px;padding:11px 15px;font-weight:900;cursor:pointer;margin-bottom:20px}
+    .xhms-article-title{margin:0;font-size:clamp(36px,7vw,86px);letter-spacing:-.075em;line-height:.92;background:linear-gradient(95deg,#fff,#b8c5d8 52%,#dcfbff);-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase;max-width:980px}
+    .xhms-article-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .xhms-article-search{margin-top:24px;max-width:780px}
+    .xhms-article-body{width:100%;max-width:none;margin:0;padding:40px 16px 92px;background:#000}
+    .xhms-article-layout{display:block;width:100%}
+    .xhms-article-canvas{width:100%;min-height:720px;background:#000;border:1px dashed #242424;border-radius:18px;padding:18px}
+    .xhms-block{position:relative;border:1px solid #202020;background:var(--block-bg,#050505);border-radius:var(--block-radius,18px);padding:var(--block-pad,18px);margin:12px 0;color:var(--block-color,#f4f7fb);font-size:var(--block-size,16px);font-weight:var(--block-weight,400);line-height:1.65;overflow:visible;width:var(--block-width,auto);max-width:100%;text-align:var(--block-align,left);border-style:var(--block-border-style,solid)}
+    .xhms-block:hover,.xhms-block:focus-within{border-color:#333}
+    .xhms-block.xhms-selected{outline:2px solid #f4f4f5;box-shadow:0 0 0 4px rgba(255,255,255,.055);background:#050505}
+    .xhms-block h2,.xhms-block h3{margin:0;line-height:1.08;letter-spacing:-.04em;font-size:inherit;color:inherit}
+    .xhms-block p{margin:0;color:inherit}
+    .xhms-block .xhms-long-text{white-space:pre-wrap}
+    .xhms-block [contenteditable="true"]{outline:0}
+    .xhms-block[data-align="center"]{margin-left:auto;margin-right:auto}
+    .xhms-block[data-align="right"]{margin-left:auto;margin-right:0}
+    .xhms-block-picture{padding:12px;background:#050505}
+    .xhms-block-picture img{display:block;width:100%;height:var(--block-img-height,auto);object-fit:contain;border-radius:calc(var(--block-radius,18px) - 4px);background:#030303}
+    .xhms-caption{padding:10px 8px 2px;color:#b9c6d7;font-size:13px}
+    .xhms-taglist{display:flex;gap:9px;flex-wrap:wrap}
+    .xhms-taglist span{display:inline-flex;background:#050505;border:1px solid #222;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:850;color:#ffffff}
+    .xhms-frame{width:100%;min-height:var(--block-frame-height,320px);height:var(--block-frame-height,auto);border:1px solid #222;border-radius:14px;background:#050505;display:block}
+    .xhms-equation-frame{background:#050505}
+    .xhms-block-label{display:none;position:absolute;top:8px;right:10px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7c899c;font-weight:900;background:rgba(0,0,0,.55);padding:4px 7px;border-radius:999px;border:1px solid #202020}
+    #xhms-page.xhms-article-admin-on .xhms-block-label{display:inline-block}
+    .xhms-dropzone{background:#050505;border:1px dashed #2a2a2a;border-radius:16px;color:#888;text-align:center;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;min-height:42px;padding:8px;margin:8px 0;display:flex;align-items:center;justify-content:center}
+    .xhms-dropzone.xhms-over{background:#111;border-color:#f2f2f2;color:#fff}
+    .xhms-editor-dock{display:none;position:fixed;right:16px;top:16px;z-index:90;width:min(350px,calc(100% - 32px));max-height:calc(100vh - 32px);overflow:auto;background:#050505;border:1px solid #242424;border-radius:24px;padding:16px;box-shadow:var(--xhms-shadow)}
+    #xhms-page.xhms-article-admin-on .xhms-editor-dock{display:block}
+    .xhms-editor-dock.is-collapsed{display:none!important}
+    .xhms-editor-dock h3{margin:0 0 6px;font-size:18px;letter-spacing:-.03em}
+    .xhms-editor-dock p{margin:0 0 13px;color:var(--xhms-muted);font-size:13px;line-height:1.45}
+    .xhms-tool-list{display:grid;gap:9px}
+    .xhms-tool{border:1px solid #202020;background:#050505;color:#fff;border-radius:15px;padding:12px;text-align:left;font-weight:900;cursor:grab;transition:.18s ease}
+    .xhms-tool:hover{border-color:#3a3a3a;background:#0b0b0b}
+    .xhms-tool small{display:block;color:#9ca3af;font-weight:700;margin-top:4px;line-height:1.35}
+    .xhms-editor-note{margin-top:14px;border:1px solid #222;background:#050505;border-radius:16px;padding:12px;color:#aab3c2;font-size:12px;line-height:1.45}
+    .xhms-article-save-panel{margin:14px 0;padding:13px;border:1px solid #242424;border-radius:16px;background:#030303}
+    .xhms-article-save-panel h4{margin:0 0 10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#f8fafc}
+    .xhms-article-save-grid{display:grid;gap:8px}
+    .xhms-article-save-grid label{display:flex;flex-direction:column;gap:6px;color:#cbd5e1;font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
+    .xhms-article-save-grid input,.xhms-article-save-grid textarea{width:100%;background:#050505;border:1px solid #242424;border-radius:12px;color:#fff;padding:11px;min-height:42px;resize:vertical}
+    .xhms-article-save-grid textarea{min-height:68px}
+    .xhms-editor-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .xhms-editor-actions button{background:#050505;border:1px solid #2a2a2a;color:#fff;border-radius:12px;padding:10px 11px;font-size:12px;font-weight:900;cursor:pointer}
+    .xhms-save-state{margin-top:9px;color:#8f98a8;font-size:11px;font-weight:800;line-height:1.35}
+    .xhms-save-state.xhms-ok{color:#cbd5e1}
+    .xhms-save-state.xhms-warn{color:#fecaca}
+    .xhms-floating-editor{display:none;position:fixed;right:18px;bottom:18px;z-index:80;border:1px solid #262626;background:#050505;color:#fff;border-radius:999px;padding:13px 16px;font-weight:900;box-shadow:0 18px 54px rgba(0,0,0,.85);cursor:pointer}
+    #xhms-page.xhms-article-admin-on .xhms-floating-editor.xhms-show{display:block}
+    .xhms-editbar{display:none;position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;background:#050505;border:1px solid #242424;border-radius:22px;padding:10px;box-shadow:0 20px 70px rgba(0,0,0,.7);gap:8px;align-items:center;max-width:min(980px,calc(100% - 24px));overflow:auto}
+    .xhms-editbar.xhms-show{display:flex}
+    .xhms-editbar label{font-size:11px;color:#cbd5e1;font-weight:900;display:flex;align-items:center;gap:6px;white-space:nowrap}
+    .xhms-editbar input[type="color"]{width:38px;height:34px;padding:0;border-radius:10px;border:1px solid #242424;background:#050505}
+    .xhms-editbar input[type="range"]{width:95px}
+    .xhms-editbar select,.xhms-editbar button{border:1px solid #242424;background:#050505;color:#fff;border-radius:12px;padding:9px 10px;font-size:12px;font-weight:850;white-space:nowrap;cursor:pointer}
+    .xhms-line-style{box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+    .xhms-line-style:before{content:"";position:absolute;left:0;top:0;height:100%;width:4px;background:#f8fafc}
+    .xhms-motion-float{animation:xhmsFloat 4s ease-in-out infinite}
+    .xhms-motion-pulse{animation:xhmsPulse 2s ease-in-out infinite}
+    .xhms-motion-rise{animation:xhmsRise .45s ease both}
+    @keyframes xhmsFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes xhmsPulse{0%,100%{box-shadow:0 0 0 rgba(255,255,255,0)}50%{box-shadow:0 0 38px rgba(255,255,255,.10)}}
+    @keyframes xhmsRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .xhms-search-hit{outline:2px solid #f4f4f5!important;background:#080808!important}
+    .xhms-block-drag-handle{display:none;position:absolute;top:8px;left:8px;z-index:8;background:#080808;border:1px solid #282828;border-radius:999px;color:#fff;font-size:11px;font-weight:900;padding:5px 8px;cursor:grab;user-select:none}
+    #xhms-page.xhms-article-admin-on .xhms-block-drag-handle{display:inline-flex}
+    .xhms-block-actions{display:none;position:absolute;top:8px;right:8px;z-index:8;gap:6px;align-items:center}
+    #xhms-page.xhms-article-admin-on .xhms-block-actions{display:flex}
+    .xhms-block-action{background:#050505;border:1px solid #262626;color:#fff;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;cursor:pointer}
+    .xhms-empty-block{min-height:110px;border:1px dashed #2a2a2a;border-radius:14px;background:#030303;color:#8f98a8;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-weight:850}
+    .xhms-content-inspector{display:none;position:fixed;right:16px;bottom:88px;z-index:110;width:min(560px,calc(100% - 32px));background:#050505;border:1px solid #242424;border-radius:20px;padding:12px;box-shadow:0 22px 70px rgba(0,0,0,.72)}
+    .xhms-content-inspector.xhms-show{display:block}
+    .xhms-inspector-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+    .xhms-inspector-head strong{font-size:14px;letter-spacing:.02em}
+    .xhms-inspector-head button{width:34px;height:34px;border-radius:10px;background:#090909;color:#fff;border:1px solid #242424;font-weight:900;cursor:pointer}
+    .xhms-inspector-label{display:block;color:#cbd5e1;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px}
+    .xhms-content-inspector textarea,.xhms-content-inspector input,.xhms-content-inspector select{width:100%;background:#030303;border:1px solid #242424;border-radius:12px;color:#fff;padding:12px;box-shadow:none}
+    .xhms-content-inspector textarea{min-height:260px;font-family:ui-monospace,Consolas,monospace;line-height:1.5;resize:vertical}
+    .xhms-inspector-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .xhms-inspector-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+    .xhms-inspector-actions button{background:#050505;color:#fff;border:1px solid #2a2a2a;border-radius:12px;padding:10px 13px;font-weight:900;cursor:pointer}
+    .xhms-footer-note{color:#77859b;font-size:12px;line-height:1.45;margin-top:18px;text-align:center}
+    @media (max-width:1050px){.xhms-hero-grid{grid-template-columns:1fr;padding-top:58px}.xhms-hero-panel{max-width:680px}.xhms-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.xhms-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:780px){.xhms-shell{width:min(100% - 22px,var(--xhms-max))}.xhms-hero{min-height:650px}.xhms-hero-grid{grid-template-columns:1fr;gap:18px;padding:44px 0 36px}.xhms-title{font-size:clamp(38px,15vw,70px);letter-spacing:-.06em;line-height:.92}.xhms-lead{font-size:14px;line-height:1.55}.xhms-search-wrap{border-radius:20px;align-items:stretch;flex-direction:column}.xhms-search-wrap button{width:100%;border-radius:14px}.xhms-hero-panel img{height:220px}.xhms-section-head{display:block}.xhms-section-head p{margin-top:10px}.xhms-cards{grid-template-columns:1fr}.xhms-card{min-height:0}.xhms-card-media{height:210px}.xhms-card-body{padding:15px}.xhms-card h3{font-size:20px}.xhms-form-grid{grid-template-columns:1fr}.xhms-field.xhms-wide{grid-column:auto}.xhms-admin-actions{display:grid;grid-template-columns:1fr}.xhms-admin-actions .xhms-btn{width:100%}.xhms-card-admin-actions{flex-direction:column}.xhms-card-admin-actions .xhms-mini-btn{width:100%}.xhms-article-hero{min-height:500px}.xhms-article-title{font-size:clamp(38px,15vw,72px)}.xhms-article-body{padding:24px 10px 110px}.xhms-article-canvas{min-height:620px;padding:10px}.xhms-editor-dock{left:10px;right:10px;top:10px;width:auto;max-height:calc(100vh - 20px);border-radius:18px;padding:12px}.xhms-editor-actions{grid-template-columns:1fr}.xhms-editbar{left:8px;right:8px;bottom:8px;transform:none;max-width:none;overflow-x:auto;display:none;border-radius:16px;padding:8px;gap:6px}.xhms-editbar.xhms-show{display:flex}.xhms-editbar label{min-width:max-content;font-size:10px}.xhms-editbar input[type="range"]{width:72px}.xhms-editbar select,.xhms-editbar button{padding:8px 9px;font-size:11px}.xhms-content-inspector{left:8px;right:8px;width:auto;bottom:78px;max-height:calc(100vh - 96px);overflow:auto;border-radius:16px}.xhms-content-inspector textarea{min-height:190px}.xhms-inspector-grid{grid-template-columns:1fr}.xhms-floating-editor{right:10px;bottom:72px;padding:11px 13px}.xhms-block-actions{top:6px;right:6px;gap:4px;flex-wrap:wrap}.xhms-block-action{font-size:10px;padding:6px 8px}.xhms-block-drag-handle{top:6px;left:6px;font-size:10px;padding:5px 7px}}
+
+
+    /* Final reference card + navy button override */
+    #xhms-page .xhms-card{
+      background:#050505!important;
+      background-image:none!important;
+      border:0!important;
+      outline:0!important;
+      box-shadow:none!important;
+      filter:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+      border-radius:24px!important;
+      overflow:hidden!important;
+      transform:none!important;
+    }
+    #xhms-page .xhms-card:hover{
+      background:#050505!important;
+      border:0!important;
+      box-shadow:none!important;
+      transform:translateY(-4px)!important;
+    }
+    #xhms-page .xhms-card-body{
+      background:#050505!important;
+      background-image:none!important;
+    }
+    #xhms-page .xhms-card-media{
+      background:#000!important;
+      border:0!important;
+      box-shadow:none!important;
+    }
+    #xhms-page .xhms-card-media img{
+      background:#000!important;
+    }
+    #xhms-page .xhms-card-media:after{
+      background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))!important;
+    }
+    #xhms-page .xhms-card h3{color:#edf2fb!important;}
+    #xhms-page .xhms-card p,
+    #xhms-page .xhms-source{color:#a6b3c7!important;}
+    #xhms-page .xhms-card-actions{gap:10px!important;}
+    #xhms-page .xhms-card-actions .xhms-btn,
+    #xhms-page .xhms-card .xhms-btn,
+    #xhms-page .xhms-card button{
+      width:100%!important;
+      background:#ffffff!important;
+      background-image:none!important;
+      border:0!important;
+      outline:0!important;
+      box-shadow:none!important;
+      color:#fff!important;
+      border-radius:12px!important;
+      padding:13px 14px!important;
+      font-weight:900!important;
+      text-shadow:none!important;
+      filter:none!important;
+    }
+    #xhms-page .xhms-card-actions .xhms-btn:hover,
+    #xhms-page .xhms-card .xhms-btn:hover,
+    #xhms-page .xhms-card button:hover{
+      background:#f2f2f2!important;
+      border:0!important;
+      box-shadow:none!important;
+      transform:none!important;
+      color:#fff!important;
+    }
+
+  
+/* =========================================================
+   FINAL ALL ELEMENTS PATCH — X Horizon upgraded main + theme
+   ========================================================= */
+:root{--xh-ease:cubic-bezier(.16,1,.3,1)!important}
+html,body{background:#000!important;color:#fff!important;overflow-x:hidden!important}
+
+/* Loader */
+.xh-loader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#000;transition:opacity .65s var(--xh-ease),visibility .65s var(--xh-ease);pointer-events:auto}
+.xh-loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.xh-load-mark{position:relative;width:min(310px,82vw);height:118px;display:grid;place-items:center;overflow:hidden}
+.xh-load-x{position:absolute;left:42px;top:6px;z-index:2;color:#fff;font-size:96px;line-height:1;font-weight:900;letter-spacing:-.12em;text-shadow:0 0 26px rgba(255,255,255,.18)}
+.xh-load-word{position:absolute;left:112px;top:45px;z-index:3;color:#eee;font-size:22px;font-weight:900;letter-spacing:.20em;opacity:.18;line-height:1;text-transform:uppercase;will-change:opacity}
+.xh-loader.loading .xh-load-word{animation:xhLoaderWordBlink .42s steps(2,end) infinite}
+.xh-loader.ready .xh-load-word{opacity:1!important;animation:none!important;color:#fff!important;text-shadow:0 0 18px rgba(255,255,255,.22)}
+.xh-load-line{position:absolute;left:42px;bottom:10px;width:222px;height:4px;border-radius:99px;background:#161616;overflow:hidden}
+.xh-load-fill{display:block;width:0;height:100%;border-radius:inherit;background:#d8d8d8;box-shadow:0 0 16px rgba(255,255,255,.28)}
+@keyframes xhLoaderWordBlink{0%,100%{opacity:.16}50%{opacity:.76}}
+
+/* Page stars + solid background */
+#xhms-page{background:#000!important;background-image:none!important;color:#fff!important;overflow:hidden!important}
+#xhms-page::before{content:""!important;position:fixed!important;inset:0!important;z-index:-5!important;background-image:radial-gradient(circle,rgba(255,255,255,.42) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(255,255,255,.20) 0 1px,transparent 1.5px)!important;background-size:150px 150px,230px 230px!important;background-position:20px 40px,95px 12px!important;opacity:.26!important;animation:xhStarDriftMisc 46s linear infinite!important;pointer-events:none!important}
+#xhms-page::after{content:""!important;position:fixed!important;inset:0!important;z-index:-4!important;background:radial-gradient(circle at 14% 5%,rgba(255,255,255,.07),transparent 26rem),radial-gradient(circle at 88% 8%,rgba(255,255,255,.05),transparent 28rem)!important;pointer-events:none!important}
+@keyframes xhStarDriftMisc{from{transform:translate3d(0,0,0)}to{transform:translate3d(-150px,150px,0)}}
+
+/* Upgraded main section: search above heading, no circular/kicker pill, no side card */
+#xhms-page .xhms-main,
+#xhms-page .xhms-grid-section,
+#xhms-page .xhms-article,
+#xhms-page .xhms-article-body{background:#000!important;background-image:none!important}
+#xhms-page .xhms-hero{
+  position:relative!important;
+  min-height:100vh!important;
+  width:100%!important;
+  display:grid!important;
+  place-items:center!important;
+  align-items:center!important;
+  text-align:center!important;
+  padding:108px 20px 76px!important;
+  background:#000!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+#xhms-page .xhms-hero::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.70) 68%,#000 100%),
+    var(--xhms-hero-img) center/cover no-repeat!important;
+  filter:brightness(.90) saturate(1.06) contrast(1.05)!important;
+  transform:scale(1.01)!important;
+}
+#xhms-page .xhms-hero::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:
+    linear-gradient(90deg,transparent,rgba(255,255,255,.86),transparent) left bottom/100% 2px no-repeat,
+    radial-gradient(circle at 50% 48%,rgba(0,0,0,.05) 0 24%,rgba(0,0,0,.46) 72%,#000 100%)!important;
+  box-shadow:inset 0 -2px 0 rgba(255,255,255,.04)!important;
+  pointer-events:none!important;
+}
+#xhms-page .xhms-hero-grid{
+  position:relative!important;
+  z-index:3!important;
+  width:min(760px,calc(100% - 34px))!important;
+  max-width:none!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:0!important;
+  padding:48px 0 42px!important;
+  text-align:center!important;
+  transform:translateY(-16px)!important;
+}
+#xhms-page .xhms-hero-grid>div{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;width:100%!important}
+#xhms-page .xhms-hero-panel,
+#xhms-page .xhms-kicker{display:none!important}
+#xhms-page .xhms-search-wrap{
+  order:0!important;
+  width:min(520px,100%)!important;
+  max-width:520px!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  gap:6px!important;
+  background:rgba(255,255,255,.045)!important;
+  border:0!important;
+  border-radius:14px!important;
+  padding:6px!important;
+  box-shadow:none!important;
+  backdrop-filter:blur(12px)!important;
+  -webkit-backdrop-filter:blur(12px)!important;
+  margin:0 auto 18px!important;
+}
+#xhms-page .xhms-search-wrap input,
+#xhms-page #xhms-card-search{
+  flex:1 1 auto!important;
+  min-width:0!important;
+  width:auto!important;
+  min-height:46px!important;
+  height:46px!important;
+  padding:0 14px!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:10px!important;
+  background:transparent!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:.02em!important;
+  box-shadow:none!important;
+  color-scheme:dark!important;
+}
+#xhms-page .xhms-search-wrap input::placeholder{color:rgba(255,255,255,.62)!important;-webkit-text-fill-color:rgba(255,255,255,.62)!important}
+#xhms-page .xhms-search-wrap button,
+#xhms-page #xhms-clear-search{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:96px!important;
+  height:46px!important;
+  min-height:46px!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  background-image:none!important;
+  color:#000!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  padding:0 20px!important;
+  font-size:12px!important;
+  font-weight:800!important;
+  letter-spacing:.04em!important;
+  text-transform:none!important;
+  cursor:pointer!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+}
+#xhms-page #xhms-clear-search:hover{background:#e7e7e7!important;color:#000!important;transform:scale(1.035)!important}
+#xhms-page .xhms-title{
+  order:1!important;
+  margin:18px 0 16px!important;
+  max-width:760px!important;
+  color:#fff!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:clamp(45px,7.8vw,92px)!important;
+  line-height:.9!important;
+  letter-spacing:-.04em!important;
+  font-weight:800!important;
+  text-align:center!important;
+  text-transform:none!important;
+}
+#xhms-page .xhms-title span{
+  display:block!important;
+  color:#fff!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:#fff!important;
+  -webkit-text-stroke:0!important;
+}
+#xhms-page .xhms-lead{order:2!important;max-width:680px!important;color:#cfcfcf!important;font-size:clamp(15px,1.8vw,18px)!important;line-height:1.64!important;margin:0 auto 18px!important;text-align:center!important}
+#xhms-page .xhms-toolbar{order:3!important;justify-content:center!important;margin-top:0!important}
+#xhms-page .xhms-toolbar .xhms-pill:not(#xhms-count-pill):not(#xhms-admin-pill){display:none!important}
+#xhms-page .xhms-pill{
+  background:rgba(255,255,255,.045)!important;
+  border:0!important;
+  border-radius:999px!important;
+  color:#dedede!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+
+/* Solid navy cards/buttons/admin/editor theme */
+#xhms-page .xhms-card,
+#xhms-page .xhms-card-body,
+#xhms-page .xhms-admin-card-panel,
+#xhms-page .xhms-article-canvas,
+#xhms-page .xhms-editor-dock,
+#xhms-page .xhms-editbar,
+#xhms-page .xhms-content-inspector,
+#xhms-page .xhms-block,
+#xhms-page .xhms-tool,
+#xhms-page .xhms-empty,
+#xhms-page .xhms-article-save-panel,
+#xhms-page .xhms-taglist span{
+  background:#050505!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+#xhms-page .xhms-cards{display:grid!important;visibility:visible!important;opacity:1!important}
+#xhms-page .xhms-card{display:flex!important;visibility:visible!important;opacity:1!important;border-radius:24px!important;overflow:hidden!important;transform:none!important}
+#xhms-page .xhms-card:hover{background:#050505!important;border:0!important;box-shadow:none!important;transform:translateY(-4px)!important}
+#xhms-page .xhms-card-media,
+#xhms-page .xhms-block-picture,
+#xhms-page .xhms-empty-block{background:#000!important;background-image:none!important;border:0!important;box-shadow:none!important}
+#xhms-page .xhms-card-media::after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))!important}
+#xhms-page .xhms-card h3{color:#edf2fb!important}
+#xhms-page .xhms-card p,
+#xhms-page .xhms-source,
+#xhms-page .xhms-section-head p,
+#xhms-page .xhms-footer-note{color:#a6b3c7!important}
+#xhms-page button,
+#xhms-page .xhms-btn,
+#xhms-page .xhms-back,
+#xhms-page .xhms-mini-btn,
+#xhms-page .xhms-block-action,
+#xhms-page .xhms-floating-editor,
+#xhms-page .xhms-inspector-actions button,
+#xhms-page .xhms-inspector-head button,
+#xhms-page .xhms-editor-actions button,
+#xhms-page .xhms-card-actions .xhms-btn,
+#xhms-page .xhms-card .xhms-btn,
+#xhms-page .xhms-card button,
+#xhms-page #xhms-clear-article-search{
+  background:#050505!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  color:#ffffff!important;
+  filter:none!important;
+  text-shadow:none!important;
+  border-radius:12px!important;
+  font-weight:900!important;
+}
+#xhms-page button:hover,
+#xhms-page .xhms-btn:hover,
+#xhms-page .xhms-back:hover,
+#xhms-page .xhms-mini-btn:hover,
+#xhms-page .xhms-block-action:hover,
+#xhms-page .xhms-floating-editor:hover,
+#xhms-page .xhms-inspector-actions button:hover,
+#xhms-page .xhms-inspector-head button:hover,
+#xhms-page .xhms-editor-actions button:hover,
+#xhms-page .xhms-card-actions .xhms-btn:hover,
+#xhms-page .xhms-card .xhms-btn:hover,
+#xhms-page .xhms-card button:hover,
+#xhms-page #xhms-clear-article-search:hover{
+  background:#0b0b0b!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+  color:#ffffff!important;
+}
+#xhms-page input,
+#xhms-page textarea,
+#xhms-page select,
+#xhms-page .xhms-field input,
+#xhms-page .xhms-field textarea,
+#xhms-page .xhms-field select,
+#xhms-page .xhms-content-inspector textarea,
+#xhms-page .xhms-content-inspector input,
+#xhms-page .xhms-content-inspector select,
+#xhms-page .xhms-article-save-grid input,
+#xhms-page .xhms-article-save-grid textarea{
+  background:#000000!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+}
+#xhms-page input:focus,
+#xhms-page textarea:focus,
+#xhms-page select:focus{border:0!important;outline:0!important;box-shadow:none!important}
+#xhms-page .xhms-card-id,
+#xhms-page .xhms-block-label,
+#xhms-page .xhms-block-drag-handle{background:#050505!important;background-image:none!important;border:0!important;box-shadow:none!important;color:#ffffff!important}
+#xhms-page .xhms-article-canvas,
+#xhms-page .xhms-block,
+#xhms-page .xhms-dropzone,
+#xhms-page .xhms-frame,
+#xhms-page .xhms-equation-frame{border:0!important;outline:0!important;box-shadow:none!important;background:#050505!important;background-image:none!important}
+#xhms-page .xhms-block.xhms-selected,
+#xhms-page .xhms-search-hit{outline:0!important;border:0!important;box-shadow:none!important;background:#0b0b0b!important}
+#xhms-page .xhms-danger,
+#xhms-page .xhms-admin-actions .xhms-danger,
+#xhms-page #xhms-edit-delete,
+#xhms-page .xhms-danger-btn{background:#180708!important;border:0!important;color:#ffffff!important}
+@media (max-width:700px){
+  #xhms-page .xhms-hero{min-height:100svh!important;padding:92px 16px 58px!important}
+  #xhms-page .xhms-hero-grid{width:100%!important;transform:none!important}
+  #xhms-page .xhms-search-wrap{width:min(520px,100%)!important;flex-direction:row!important;align-items:center!important;border-radius:14px!important}
+  #xhms-page .xhms-search-wrap button,#xhms-page #xhms-clear-search{width:auto!important;min-width:86px!important}
+  .xh-load-line{left:42px;width:222px}
+}
+
+  </style>
+
+
+
+  <div class="xh-loader loading" id="xh-loader" aria-hidden="true">
+    <div class="xh-load-mark">
+      <div class="xh-load-x">X</div>
+      <div class="xh-load-word">Horizon</div>
+      <div class="xh-load-line"><span class="xh-load-fill"></span></div>
+    </div>
+  </div>
+
+  <div id="xhms-page" data-theme-lock="x-horizon-17" style="--xhms-hero-img:url('https://images-assets.nasa.gov/image/iss063e026129/iss063e026129~large.jpg')">
+    <main id="xhms-main" class="xhms-main">
+      <section id="xhms-hero" class="xhms-hero">
+        <img class="xhms-hero-bg-hard" src="https://images-assets.nasa.gov/image/iss063e026129/iss063e026129~large.jpg" alt="" aria-hidden="true" loading="eager">
+        <div class="xhms-shell xhms-hero-grid">
+          <div>
+            <div class="xhms-kicker">X Horizon Concepts • Final Category</div>
+            <h1 class="xhms-title">Miscellaneous <span>Space Concepts</span></h1>
+            <p class="xhms-lead">A final cleaned category focused on future civilization, space law, planetary defense, SETI, governance, space economy, habitats, and speculative megastructures — without repeating previous 16 concept categories.</p>
+            <div class="xhms-search-wrap" id="xhms-search-wrap">
+              <input id="xhms-card-search" type="search" autocomplete="off" placeholder="Search SETI, Space Law, Planetary Defense, Dyson Sphere…">
+              <button id="xhms-clear-search" type="button">Search</button>
+            </div>
+            <div class="xhms-toolbar">
+              <span class="xhms-pill" id="xhms-count-pill">45 Concepts</span>
+              <span class="xhms-pill">No Previous-Category Repeats</span>
+              <span class="xhms-pill xhms-hidden" id="xhms-admin-pill"></span>
+            </div>
+          </div>
+          <aside class="xhms-hero-panel">
+            <img id="xhms-hero-img" src="https://images-assets.nasa.gov/image/iss063e026129/iss063e026129~large.jpg" alt="Earth limb and space view from orbit" loading="lazy" onerror="xhmsImgError(this)">
+            <h3>Future space civilization layer</h3>
+            <p>Final category for law, defense, settlement, space economy, SETI, and large-scale future concepts.</p>
+          </aside>
+        </div>
+      </section>
+      <div class="xhms-main-terminator" aria-hidden="true"></div>
+      <section id="xhms-grid-section" class="xhms-grid-section">
+        <div class="xhms-shell">
+          <div class="xhms-section-head">
+            <h2>Cleaned Miscellaneous Cards</h2>
+            <p>Removed repeated astronomy, solar, planetary, human-spaceflight, and technology terms already covered in previous concept pages.</p>
+          </div>
+          <div id="xhms-admin-card-panel" class="xhms-admin-card-panel">
+            <h3>Hidden Card Admin</h3>
+            <div class="xhms-form-grid">
+              <div class="xhms-field"><label for="xhms-admin-select">Select Card</label><select id="xhms-admin-select"></select></div>
+              <div class="xhms-field"><label for="xhms-admin-id">Card ID</label><input id="xhms-admin-id" placeholder="MS-046"></div>
+              <div class="xhms-field xhms-wide"><label for="xhms-admin-title">Title</label><input id="xhms-admin-title" placeholder="New concept title"></div>
+              <div class="xhms-field xhms-wide"><label for="xhms-admin-desc">Short Description</label><textarea id="xhms-admin-desc" placeholder="Card description"></textarea></div>
+              <div class="xhms-field xhms-wide"><label for="xhms-admin-img">Official Image URL</label><input id="xhms-admin-img" placeholder="https://..."></div>
+              <div class="xhms-field"><label for="xhms-admin-source">Source Label</label><input id="xhms-admin-source" placeholder="NASA / official source"></div>
+              <div class="xhms-field"><label for="xhms-admin-tags">Tags</label><input id="xhms-admin-tags" placeholder="future, law, SETI"></div>
+            </div>
+            <div class="xhms-admin-actions">
+              <button class="xhms-btn" id="xhms-new-card" type="button">New Blank Card</button>
+              <button class="xhms-btn" id="xhms-save-card" type="button">Add / Update Card</button>
+              <button class="xhms-btn xhms-danger" id="xhms-delete-card" type="button">Delete Selected</button>
+              <button class="xhms-btn" id="xhms-reset-cards" type="button">Reset Default 45</button>
+            </div>
+          </div>
+          <div id="xhms-cards" class="xhms-cards" aria-live="polite"></div>
+          <p class="xhms-footer-note">Official-source image URLs include fallback protection so the page remains stable if a remote image fails to load.</p>
+        </div>
+      </section>
+    </main>
+    <section id="xhms-article" class="xhms-article" aria-live="polite"></section>
+    <div id="xhms-editbar" class="xhms-editbar" aria-label="Selected block tools">
+      <label>Font <input id="xhms-edit-size" type="range" min="10" max="92" value="16"></label>
+      <label>Width <input id="xhms-edit-width" type="range" min="20" max="100" value="100"></label>
+      <label>Height <input id="xhms-edit-height" type="range" min="0" max="900" value="0"></label>
+      <label>Padding <input id="xhms-edit-padding" type="range" min="0" max="90" value="18"></label>
+      <label>Radius <input id="xhms-edit-radius" type="range" min="0" max="48" value="18"></label>
+      <label>Color <input id="xhms-edit-color" type="color" value="#f4f7fb"></label>
+      <label>Background <input id="xhms-edit-bg" type="color" value="#050505"></label>
+      <select id="xhms-edit-align" aria-label="Alignment"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select>
+      <select id="xhms-edit-motion" aria-label="Motion"><option value="none">No motion</option><option value="float">Float</option><option value="pulse">Pulse</option><option value="rise">Rise</option></select>
+      <select id="xhms-edit-weight" aria-label="Font weight"><option value="400">Regular</option><option value="600">Semi Bold</option><option value="800">Bold</option><option value="900">Black</option></select>
+      <select id="xhms-edit-border" aria-label="Border style"><option value="solid">Solid Border</option><option value="dashed">Dashed Border</option><option value="dotted">Dotted Border</option><option value="none">No Border</option></select>
+      <button id="xhms-edit-line" type="button">Line</button>
+      <button id="xhms-edit-edit" type="button">Edit Content</button>
+      <button id="xhms-edit-up" type="button">Up</button>
+      <button id="xhms-edit-down" type="button">Down</button>
+      <button id="xhms-edit-copy" type="button">Duplicate</button>
+      <button id="xhms-edit-delete" type="button" class="xhms-danger">Delete</button>
+    </div>
+    <div id="xhms-content-inspector" class="xhms-content-inspector" aria-label="Selected content editor">
+      <div class="xhms-inspector-head"><strong id="xhms-inspector-title">Edit Content Block</strong><button id="xhms-inspector-close" type="button">×</button></div>
+      <label id="xhms-inspector-url-label" class="xhms-inspector-label" for="xhms-inspector-url">Image URL / Source URL</label>
+      <input id="xhms-inspector-url" type="url" placeholder="Paste image URL here">
+      <label id="xhms-inspector-caption-label" class="xhms-inspector-label" for="xhms-inspector-caption">Caption / Source</label>
+      <input id="xhms-inspector-caption" type="text" placeholder="Caption or official source">
+      <label id="xhms-inspector-text-label" class="xhms-inspector-label" for="xhms-inspector-text">Text / Embed Code / Equation Code</label>
+      <textarea id="xhms-inspector-text" spellcheck="false" placeholder="Paste text, external embed code, or equation code here"></textarea>
+      <div class="xhms-inspector-grid">
+        <label class="xhms-inspector-label">Width %<input id="xhms-inspector-width" type="number" min="10" max="100" step="1"></label>
+        <label class="xhms-inspector-label">Frame / image height px<input id="xhms-inspector-height" type="number" min="0" max="1600" step="10"></label>
+      </div>
+      <div class="xhms-inspector-actions"><button id="xhms-inspector-save" type="button">Apply</button><button id="xhms-inspector-cancel" type="button">Cancel</button></div>
+    </div>
+    <button id="xhms-floating-editor" class="xhms-floating-editor" type="button">Editor Tools</button>
+  </div>
+
+
+  <script>
+    /* X Horizon root Firebase/admin bridge — reference-style connection, no hardcoded page key */
+    window.XHorizonFirebaseConfigurator = window.XHorizonFirebaseConfigurator || {
+      unlock:function(key, onSuccess){
+        key = String(key || '').trim();
+        if(!key) return Promise.resolve(false);
+
+        if(window.XHorizonAdmin && typeof window.XHorizonAdmin.unlock === 'function'){
+          return window.XHorizonAdmin.unlock(key, onSuccess);
+        }
+
+        if(window.xHorizonAdmin && typeof window.xHorizonAdmin.unlock === 'function'){
+          return window.xHorizonAdmin.unlock(key, onSuccess);
+        }
+
+        if(window.XHorizonMainAdmin && typeof window.XHorizonMainAdmin.validate === 'function'){
+          return Promise.resolve(window.XHorizonMainAdmin.validate(key)).then(function(ok){
+            if(ok && typeof onSuccess === 'function') onSuccess();
+            return !!ok;
+          });
+        }
+
+        console.warn('Root admin validator missing. Add XHorizonAdmin.unlock or XHorizonMainAdmin.validate in the main Firebase/root JS.');
+        return Promise.resolve(false);
+      }
+    };
+  </script>
+
+  <script>
+  (function(){
+    'use strict';
+    const STORAGE_CARDS = 'xhms_miscellaneous_space_concepts_cards_v1';
+    const STORAGE_ARTICLES = 'xhms_miscellaneous_space_concepts_articles_v1';
+    const page = document.getElementById('xhms-page');
+    const main = document.getElementById('xhms-main');
+    const articleMount = document.getElementById('xhms-article');
+    const cardGrid = document.getElementById('xhms-cards');
+    const cardSearch = document.getElementById('xhms-card-search');
+    const countPill = document.getElementById('xhms-count-pill');
+    const adminPill = document.getElementById('xhms-admin-pill');
+    const floatingEditor = document.getElementById('xhms-floating-editor');
+    const editbar = document.getElementById('xhms-editbar');
+    const inspector = document.getElementById('xhms-content-inspector');
+    const fallbackSvg = encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 760'><defs><linearGradient id='g' x1='0' x2='1'><stop stop-color='#000'/><stop offset='1' stop-color='#050505'/></linearGradient></defs><rect width='1200' height='760' fill='url(#g)'/><g fill='white' opacity='.42'><circle cx='120' cy='95' r='2'/><circle cx='280' cy='210' r='1.6'/><circle cx='820' cy='120' r='2.4'/><circle cx='980' cy='330' r='1.8'/><circle cx='430' cy='560' r='1.4'/><circle cx='1100' cy='650' r='2.2'/></g><path d='M280 560 C420 280 760 280 910 545' stroke='#dce8ff' stroke-opacity='.24' stroke-width='34' fill='none'/><path d='M420 520 L780 220 M780 520 L420 220' stroke='#ffffff' stroke-opacity='.18' stroke-width='12' stroke-linecap='round'/><text x='72' y='130' fill='#f4f7fb' font-family='Arial' font-size='58' font-weight='700'>X Horizon</text><text x='72' y='190' fill='#aab6c8' font-family='Arial' font-size='28'>Image fallback</text></svg>");
+    const FALLBACK = 'data:image/svg+xml;charset=UTF-8,' + fallbackSvg;
+    window.xhmsImgError = function(el){ if(el && el.src !== FALLBACK){ el.src = FALLBACK; el.classList.add('xhms-fallback-img'); } };
+    const defaultCards = [
+  {
+    "id": "MS-001",
+    "slug": "space",
+    "title": "Space",
+    "desc": "The vast physical domain beyond Earth where planets, stars, galaxies, spacecraft, radiation, and vacuum conditions exist.",
+    "image": "https://images-assets.nasa.gov/image/as11-40-5874/as11-40-5874~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "space, outer space, universe"
+  },
+  {
+    "id": "MS-002",
+    "slug": "vacuum",
+    "title": "Vacuum",
+    "desc": "A region with extremely low particle density; space is not perfectly empty but is far thinner than any laboratory vacuum on Earth.",
+    "image": "https://svs.gsfc.nasa.gov/vis/a000000/a004600/a004618/goes_printStill.000920_print.jpg",
+    "source": "NASA SVS",
+    "tags": "vacuum, low density, environment"
+  },
+  {
+    "id": "MS-003",
+    "slug": "fireball",
+    "title": "Fireball",
+    "desc": "A very bright meteor event produced when a meteoroid enters an atmosphere and shines more intensely than normal meteors.",
+    "image": "https://images-assets.nasa.gov/image/PIA19333/PIA19333~large.jpg",
+    "source": "NASA / JPL",
+    "tags": "fireball, meteor, atmosphere"
+  },
+  {
+    "id": "MS-004",
+    "slug": "bolide",
+    "title": "Bolide",
+    "desc": "An exceptionally bright fireball that may explode or fragment in the atmosphere, sometimes producing sonic booms or debris.",
+    "image": "https://images-assets.nasa.gov/image/PIA21889/PIA21889~large.jpg",
+    "source": "NASA / JPL",
+    "tags": "bolide, airburst, bright meteor"
+  },
+  {
+    "id": "MS-005",
+    "slug": "karman-line",
+    "title": "Kármán Line",
+    "desc": "A commonly used boundary near 100 kilometers altitude that marks the transition between aeronautics and astronautics.",
+    "image": "https://images-assets.nasa.gov/image/iss063e026129/iss063e026129~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "karman line, atmosphere, boundary"
+  },
+  {
+    "id": "MS-006",
+    "slug": "deep-space",
+    "title": "Deep Space",
+    "desc": "The region far beyond Earth orbit where spacecraft rely on long-distance communication, autonomous operations, and careful navigation.",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/08/canberra-dss-43-29.jpg?w=2048",
+    "source": "NASA Deep Space Network",
+    "tags": "deep space, exploration, DSN"
+  },
+  {
+    "id": "MS-007",
+    "slug": "cislunar-space",
+    "title": "Cislunar Space",
+    "desc": "The region between Earth and the Moon, increasingly important for Artemis, lunar stations, logistics, navigation, and communication.",
+    "image": "https://images-assets.nasa.gov/image/art001e000672/art001e000672~large.jpg",
+    "source": "NASA Artemis",
+    "tags": "cislunar, moon, Artemis"
+  },
+  {
+    "id": "MS-008",
+    "slug": "interplanetary-space",
+    "title": "Interplanetary Space",
+    "desc": "The region between planets, filled with solar wind, dust, magnetic fields, radiation, and spacecraft trajectories.",
+    "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/Cassini_interplanet_trajectory.png?crop=faces%2Cfocalpoint&fit=clip&h=1248&w=2000",
+    "source": "NASA Solar System Exploration",
+    "tags": "interplanetary, solar system, cruise"
+  },
+  {
+    "id": "MS-009",
+    "slug": "outer-space-treaty",
+    "title": "Outer Space Treaty",
+    "desc": "The foundational international treaty setting principles for peaceful space exploration and non-appropriation of celestial bodies.",
+    "image": "https://images-assets.nasa.gov/image/S66-62939/S66-62939~large.jpg",
+    "source": "NASA History",
+    "tags": "outer space treaty, law, cooperation"
+  },
+  {
+    "id": "MS-010",
+    "slug": "space-law",
+    "title": "Space Law",
+    "desc": "The body of treaties, principles, national laws, licensing rules, liability frameworks, and governance norms for activities in outer space.",
+    "image": "https://images-assets.nasa.gov/image/S68-56050/S68-56050~large.jpg",
+    "source": "NASA History",
+    "tags": "space law, governance, treaty"
+  },
+  {
+    "id": "MS-011",
+    "slug": "space-ethics",
+    "title": "Space Ethics",
+    "desc": "The study of responsible behavior in exploration, resource use, contamination prevention, debris reduction, and long-term human expansion.",
+    "image": "https://images-assets.nasa.gov/image/iss070e045799/iss070e045799~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "ethics, responsibility, exploration"
+  },
+  {
+    "id": "MS-012",
+    "slug": "planetary-protection",
+    "title": "Planetary Protection",
+    "desc": "Policies and practices designed to prevent harmful biological contamination of other worlds and protect Earth from returned samples.",
+    "image": "https://images-assets.nasa.gov/image/PIA25681/PIA25681~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "planetary protection, contamination, samples"
+  },
+  {
+    "id": "MS-013",
+    "slug": "planetary-defense",
+    "title": "Planetary Defense",
+    "desc": "The organized effort to find, track, characterize, and potentially deflect asteroids or comets that could threaten Earth.",
+    "image": "https://images-assets.nasa.gov/image/PIA25183/PIA25183~large.jpg",
+    "source": "NASA / Johns Hopkins APL",
+    "tags": "planetary defense, asteroid, DART"
+  },
+  {
+    "id": "MS-014",
+    "slug": "near-earth-object",
+    "title": "Near-Earth Object",
+    "desc": "An asteroid or comet whose orbit brings it into Earth’s neighborhood, making tracking important for science and safety.",
+    "image": "https://images-assets.nasa.gov/image/PIA21924/PIA21924~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "NEO, asteroid, orbit"
+  },
+  {
+    "id": "MS-015",
+    "slug": "potentially-hazardous-object",
+    "title": "Potentially Hazardous Object",
+    "desc": "A near-Earth object with an orbit and size that make close approaches and potential impact risk scientifically important.",
+    "image": "https://images-assets.nasa.gov/image/PIA24378/PIA24378~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "PHO, hazard, impact risk"
+  },
+  {
+    "id": "MS-016",
+    "slug": "asteroid-mining",
+    "title": "Asteroid Mining",
+    "desc": "A proposed future industry focused on extracting water, metals, and other resources from asteroids for space infrastructure.",
+    "image": "https://images-assets.nasa.gov/image/PIA20489/PIA20489~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "asteroid mining, resources, future"
+  },
+  {
+    "id": "MS-017",
+    "slug": "in-situ-resource-utilization",
+    "title": "In-Situ Resource Utilization",
+    "desc": "The use of local space resources such as lunar ice, Martian atmosphere, or regolith to support missions without launching everything from Earth.",
+    "image": "https://images-assets.nasa.gov/image/PIA23623/PIA23623~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "ISRU, local resources, lunar ice"
+  },
+  {
+    "id": "MS-018",
+    "slug": "space-colonization",
+    "title": "Space Colonization",
+    "desc": "The long-term concept of establishing self-sustaining human communities beyond Earth.",
+    "image": "https://images-assets.nasa.gov/image/iss070e067531/iss070e067531~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "colonization, future, human expansion"
+  },
+  {
+    "id": "MS-019",
+    "slug": "space-settlement",
+    "title": "Space Settlement",
+    "desc": "Permanent or semi-permanent human living systems in orbit, on moons, or on planetary surfaces.",
+    "image": "https://images-assets.nasa.gov/image/s72-40818/s72-40818~large.jpg",
+    "source": "NASA Ames / Historical Space Settlement Art",
+    "tags": "space settlement, habitat, future"
+  },
+  {
+    "id": "MS-020",
+    "slug": "space-habitat",
+    "title": "Space Habitat",
+    "desc": "A pressurized living environment engineered to provide air, water, radiation protection, temperature control, and crew support.",
+    "image": "https://images-assets.nasa.gov/image/iss065e269616/iss065e269616~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "habitat, station, life support"
+  },
+  {
+    "id": "MS-021",
+    "slug": "artificial-gravity",
+    "title": "Artificial Gravity",
+    "desc": "A proposed method of producing gravity-like acceleration, often by rotating a spacecraft or habitat.",
+    "image": "https://images-assets.nasa.gov/image/s74-17893/s74-17893~large.jpg",
+    "source": "NASA Ames / Space Colony Studies",
+    "tags": "artificial gravity, rotation, habitat"
+  },
+  {
+    "id": "MS-022",
+    "slug": "space-agriculture",
+    "title": "Space Agriculture",
+    "desc": "Growing plants in spacecraft or off-world habitats to provide food, oxygen support, psychological benefits, and biological research data.",
+    "image": "https://images-assets.nasa.gov/image/iss065e225136/iss065e225136~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "space agriculture, plants, food"
+  },
+  {
+    "id": "MS-023",
+    "slug": "closed-ecological-system",
+    "title": "Closed Ecological System",
+    "desc": "A controlled life-support ecosystem that recycles air, water, nutrients, and biological waste inside a sealed habitat.",
+    "image": "https://images-assets.nasa.gov/image/jsc2017e136946/jsc2017e136946~large.jpg",
+    "source": "NASA Johnson Space Center",
+    "tags": "closed ecology, life support, recycling"
+  },
+  {
+    "id": "MS-024",
+    "slug": "terraforming",
+    "title": "Terraforming",
+    "desc": "A speculative process of transforming an environment such as Mars to become more Earth-like over extremely long timescales.",
+    "image": "https://images-assets.nasa.gov/image/PIA04591/PIA04591~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "terraforming, Mars, future"
+  },
+  {
+    "id": "MS-025",
+    "slug": "paraterraforming",
+    "title": "Paraterraforming",
+    "desc": "A more localized alternative to terraforming where enclosed regions are engineered to be habitable without changing an entire planet.",
+    "image": "https://images-assets.nasa.gov/image/PIA23302/PIA23302~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "paraterraforming, domes, habitat"
+  },
+  {
+    "id": "MS-026",
+    "slug": "space-tourism",
+    "title": "Space Tourism",
+    "desc": "Commercial human spaceflight for private passengers, ranging from suborbital flights to orbital stays and future lunar experiences.",
+    "image": "https://images-assets.nasa.gov/image/iss070e013215/iss070e013215~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "tourism, passengers, commercial"
+  },
+  {
+    "id": "MS-027",
+    "slug": "commercial-spaceflight",
+    "title": "Commercial Spaceflight",
+    "desc": "Launches and missions operated by private companies under regulatory and mission agreements, often supporting cargo, crew, and services.",
+    "image": "https://images-assets.nasa.gov/image/KSC-20200530-PH-SPX01_0006/KSC-20200530-PH-SPX01_0006~large.jpg",
+    "source": "NASA / Kennedy Space Center",
+    "tags": "commercial spaceflight, crew, launch"
+  },
+  {
+    "id": "MS-028",
+    "slug": "private-space-industry",
+    "title": "Private Space Industry",
+    "desc": "The network of companies developing launch vehicles, spacecraft, satellites, stations, services, manufacturing, and space infrastructure.",
+    "image": "https://images-assets.nasa.gov/image/KSC-20201115-PH-SPX01_0002/KSC-20201115-PH-SPX01_0002~large.jpg",
+    "source": "NASA / Kennedy Space Center",
+    "tags": "private space, industry, infrastructure"
+  },
+  {
+    "id": "MS-029",
+    "slug": "reusable-launch-economy",
+    "title": "Reusable Launch Economy",
+    "desc": "The economic model built around recovering and reusing rocket stages or spacecraft to reduce launch cost and increase flight rate.",
+    "image": "https://images-assets.nasa.gov/image/KSC-20200429-PH-SPX01_0003/KSC-20200429-PH-SPX01_0003~large.jpg",
+    "source": "NASA / Kennedy Space Center",
+    "tags": "reusable launch, economy, rocket"
+  },
+  {
+    "id": "MS-030",
+    "slug": "space-economy",
+    "title": "Space Economy",
+    "desc": "The total economic activity enabled by satellites, launch services, data, exploration, communications, navigation, manufacturing, and future resources.",
+    "image": "https://images-assets.nasa.gov/image/KSC-20221116-PH-KLS01_0049/KSC-20221116-PH-KLS01_0049~large.jpg",
+    "source": "NASA / Artemis",
+    "tags": "space economy, infrastructure, services"
+  },
+  {
+    "id": "MS-031",
+    "slug": "space-insurance",
+    "title": "Space Insurance",
+    "desc": "Risk management and insurance for launch, deployment, spacecraft operations, third-party liability, and mission failure scenarios.",
+    "image": "https://images-assets.nasa.gov/image/iss056e091494/iss056e091494~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "insurance, risk, spacecraft"
+  },
+  {
+    "id": "MS-032",
+    "slug": "space-governance",
+    "title": "Space Governance",
+    "desc": "The coordination of space activities through treaties, standards, licensing, traffic management, debris rules, and international cooperation.",
+    "image": "https://images-assets.nasa.gov/image/iss067e268540/iss067e268540~large.jpg",
+    "source": "NASA Image and Video Library",
+    "tags": "governance, cooperation, rules"
+  },
+  {
+    "id": "MS-033",
+    "slug": "seti",
+    "title": "SETI",
+    "desc": "The Search for Extraterrestrial Intelligence, focused on detecting evidence of technology or communication from distant civilizations.",
+    "image": "https://images-assets.nasa.gov/image/PIA23689/PIA23689~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "SETI, intelligence, radio"
+  },
+  {
+    "id": "MS-034",
+    "slug": "extraterrestrial-intelligence",
+    "title": "Extraterrestrial Intelligence",
+    "desc": "Hypothetical intelligent life beyond Earth, studied through astrobiology, technosignatures, communication theory, and civilization-scale questions.",
+    "image": "https://images-assets.nasa.gov/image/PIA22081/PIA22081~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "ETI, life, intelligence"
+  },
+  {
+    "id": "MS-035",
+    "slug": "technosignature",
+    "title": "Technosignature",
+    "desc": "Observable evidence of technology beyond Earth, such as radio leakage, atmospheric pollution, laser pulses, city lights, or megastructure effects.",
+    "image": "https://images-assets.nasa.gov/image/PIA25684/PIA25684~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "technosignature, technology, alien life"
+  },
+  {
+    "id": "MS-036",
+    "slug": "biosignature",
+    "title": "Biosignature",
+    "desc": "A detectable sign that may indicate biological activity, such as atmospheric gases, surface pigments, or chemical disequilibrium.",
+    "image": "https://images-assets.nasa.gov/image/PIA22098/PIA22098~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "biosignature, life, exoplanet"
+  },
+  {
+    "id": "MS-037",
+    "slug": "drake-equation",
+    "title": "Drake Equation",
+    "desc": "A framework for estimating the number of detectable technological civilizations in the Milky Way using astrophysical and biological factors.",
+    "image": "https://images-assets.nasa.gov/image/PIA22946/PIA22946~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "Drake equation, civilizations, estimate"
+  },
+  {
+    "id": "MS-038",
+    "slug": "fermi-paradox",
+    "title": "Fermi Paradox",
+    "desc": "The tension between the vast number of stars and planets and the lack of confirmed evidence for extraterrestrial civilizations.",
+    "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000922/GSFC_20171208_Archive_e000922~large.jpg",
+    "source": "NASA / Goddard",
+    "tags": "Fermi paradox, silence, civilizations"
+  },
+  {
+    "id": "MS-039",
+    "slug": "great-filter",
+    "title": "Great Filter",
+    "desc": "A proposed barrier in the development of life or civilizations that may explain why advanced detectable civilizations appear rare.",
+    "image": "https://images-assets.nasa.gov/image/PIA23865/PIA23865~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "great filter, life, risk"
+  },
+  {
+    "id": "MS-040",
+    "slug": "kardashev-scale",
+    "title": "Kardashev Scale",
+    "desc": "A speculative scale that classifies civilizations by their energy use, from planetary to stellar and galactic levels.",
+    "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001890/GSFC_20171208_Archive_e001890~large.jpg",
+    "source": "NASA / Goddard",
+    "tags": "Kardashev, energy, civilization"
+  },
+  {
+    "id": "MS-041",
+    "slug": "dyson-sphere",
+    "title": "Dyson Sphere",
+    "desc": "A hypothetical megastructure or swarm built to capture a large fraction of a star’s energy output.",
+    "image": "https://images-assets.nasa.gov/image/PIA18906/PIA18906~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "Dyson sphere, megastructure, star energy"
+  },
+  {
+    "id": "MS-042",
+    "slug": "oneill-cylinder",
+    "title": "O’Neill Cylinder",
+    "desc": "A proposed rotating space settlement made of paired cylindrical habitats that could create artificial gravity through rotation.",
+    "image": "https://images-assets.nasa.gov/image/acd19-0237-004/acd19-0237-004~large.jpg",
+    "source": "NASA Ames / Space Settlement Concepts",
+    "tags": "O'Neill cylinder, habitat, rotation"
+  },
+  {
+    "id": "MS-043",
+    "slug": "stanford-torus",
+    "title": "Stanford Torus",
+    "desc": "A ring-shaped space habitat concept designed to rotate and generate artificial gravity along the inner surface.",
+    "image": "https://images-assets.nasa.gov/image/acd19-0237-005/acd19-0237-005~large.jpg",
+    "source": "NASA Ames / Stanford Torus Concept",
+    "tags": "Stanford torus, ring habitat, artificial gravity"
+  },
+  {
+    "id": "MS-044",
+    "slug": "space-elevator",
+    "title": "Space Elevator",
+    "desc": "A proposed tether-based transportation system extending from Earth or another body to space, requiring extreme materials and precise dynamics.",
+    "image": "https://images-assets.nasa.gov/image/PIA04440/PIA04440~large.jpg",
+    "source": "NASA / JPL-Caltech",
+    "tags": "space elevator, tether, future transport"
+  },
+  {
+    "id": "MS-045",
+    "slug": "cosmic-calendar",
+    "title": "Cosmic Calendar",
+    "desc": "A teaching model that compresses the history of the universe into one calendar year to show the scale of cosmic time.",
+    "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000809/GSFC_20171208_Archive_e000809~large.jpg",
+    "source": "NASA / Goddard",
+    "tags": "cosmic calendar, time, universe"
+  }
+];
+    let cards = load(STORAGE_CARDS, defaultCards);
+    let articles = load(STORAGE_ARTICLES, createDefaultArticles(cards));
+    let adminUnlocked = false;
+    let articleAdminUnlocked = false;
+    let currentSlug = '';
+    let selectedIndex = -1;
+    let draggedIndex = null;
+
+    function load(key, fallback){ try{ const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(fallback)); }catch(e){ return JSON.parse(JSON.stringify(fallback)); } }
+    function saveCards(){ localStorage.setItem(STORAGE_CARDS, JSON.stringify(cards)); }
+    function saveArticles(message){ localStorage.setItem(STORAGE_ARTICLES, JSON.stringify(articles)); setSaveState(message || 'Saved'); }
+    function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m])); }
+    function normalizeKey(value){ return String(value||'').trim().toLowerCase(); }
+    function requestRootAdminUnlock(value, onUnlock){
+      const key = String(value || '').trim();
+      if(!key) return false;
+
+      function status(message){
+        if(adminPill){
+          adminPill.classList.remove('xhms-hidden');
+          adminPill.textContent = message;
+        }
+      }
+
+      const bridge =
+        (window.XHorizonAdmin && typeof window.XHorizonAdmin.unlock === 'function' && window.XHorizonAdmin) ||
+        (window.xHorizonAdmin && typeof window.xHorizonAdmin.unlock === 'function' && window.xHorizonAdmin) ||
+        (window.XHorizonFirebaseConfigurator && typeof window.XHorizonFirebaseConfigurator.unlock === 'function' && window.XHorizonFirebaseConfigurator) ||
+        null;
+
+      if(!bridge){
+        status('Admin root config missing');
+        return false;
+      }
+
+      let unlockedByCallback = false;
+      let settled = false;
+      const finish = () => {
+        if(settled) return;
+        settled = true;
+        unlockedByCallback = true;
+        status('Admin unlocked');
+        if(typeof onUnlock === 'function') onUnlock();
+      };
+
+      status('Checking admin key...');
+      try{
+        const result = bridge.unlock(key, finish);
+        Promise.resolve(result).then(function(ok){
+          if((ok === true || (ok && (ok.ok || ok.success || ok.unlocked))) && !unlockedByCallback) finish();
+          if(ok === false && !unlockedByCallback) status('Wrong admin key');
+        }).catch(function(err){
+          console.error('X Horizon admin unlock failed:', err);
+          if(!unlockedByCallback) status('Firebase admin check failed');
+        });
+      }catch(err){
+        console.error('X Horizon admin unlock failed:', err);
+        status('Firebase admin check failed');
+      }
+      return true;
+    }
+    function slugify(value){ return String(value||'card').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || 'card'; }
+    function createDefaultArticles(cardList){ const obj = {}; cardList.forEach(card => { obj[card.slug] = { slug:card.slug,title:card.title,image:card.image,source:card.source,tags:card.tags,customImage:false,blocks: defaultArticleBlocks(card) }; }); return obj; }
+    function defaultArticleBlocks(card){ return [
+      {type:'heading',content:card.title,style:{size:42,width:100,align:'left',weight:900,bg:'#050505',color:'#f4f7fb'}},
+      {type:'long',content:starterText(card),style:{size:17,width:100,align:'left',weight:400,bg:'#050505',color:'#d6deea'}},
+      {type:'picture',content:card.image,caption:card.source,style:{size:15,width:100,align:'left',weight:400,bg:'#050505',color:'#f4f7fb',height:420}},
+      {type:'tags',content:card.tags,style:{size:14,width:100,align:'left',weight:600,bg:'#050505',color:'#f4f7fb'}}
+    ]; }
+    function starterText(card){
+      const t = card.title.toLowerCase();
+      if(t.includes('treaty') || t.includes('law') || t.includes('governance')) return card.title + ' belongs to the governance layer of space activity. This article can explain the definition, legal origin, mission relevance, international cooperation issues, safety responsibilities, and how future exploration depends on shared rules.';
+      if(t.includes('seti') || t.includes('intelligence') || t.includes('technosignature') || t.includes('biosignature')) return card.title + ' connects astronomy with the search for life beyond Earth. This article can explain what scientists look for, what evidence would count, how false positives are avoided, and why the concept matters for exoplanet research.';
+      if(t.includes('defense') || t.includes('object') || t.includes('asteroid')) return card.title + ' is part of planetary risk awareness. This article can explain detection, tracking, orbit prediction, hazard assessment, and why early discovery is the most important step.';
+      if(t.includes('habitat') || t.includes('settlement') || t.includes('colonization') || t.includes('agriculture') || t.includes('gravity')) return card.title + ' belongs to future human expansion. This article can explain engineering needs, life support, radiation, closed-loop systems, economics, and the difference between concept studies and practical missions.';
+      if(t.includes('dyson') || t.includes('cylinder') || t.includes('torus') || t.includes('elevator') || t.includes('kardashev')) return card.title + ' is a speculative future-space concept. This article can clearly separate confirmed science from engineering proposals, describe the physics idea, and explain why it appears in long-term space civilization discussions.';
+      return card.title + ' can be explained through definition, origin, scientific importance, mission connection, examples, limitations, and future relevance inside the X Horizon concept system.';
+    }
+    function ensureArticleMeta(card){ if(!articles[card.slug]) articles[card.slug] = createDefaultArticles([card])[card.slug]; const a = articles[card.slug]; a.slug = a.slug || card.slug; a.title = a.title || card.title; a.image = a.image || card.image || FALLBACK; a.source = a.source || card.source || 'Official source'; a.tags = a.tags || card.tags || ''; a.blocks = Array.isArray(a.blocks) ? a.blocks : defaultArticleBlocks(card); return a; }
+    function renderCards(filter=''){
+      const q = normalizeKey(filter);
+      const shown = cards.filter(card => !q || [card.id,card.title,card.desc,card.tags,card.source].join(' ').toLowerCase().includes(q));
+      cardGrid.innerHTML = shown.length ? shown.map(card => `<article class="xhms-card" data-slug="${esc(card.slug)}" data-card-id="${esc(card.id)}"><div class="xhms-card-media"><span class="xhms-card-id">${esc(card.id)}</span><img src="${esc(card.image || FALLBACK)}" alt="${esc(card.title)} visual reference" loading="lazy" onerror="xhmsImgError(this)"></div><div class="xhms-card-body"><h3>${esc(card.title)}</h3><p>${esc(card.desc)}</p><div class="xhms-source">${esc(card.source || 'Official source / fallback')}</div><div class="xhms-card-actions"><button class="xhms-btn" type="button" data-open-article="${esc(card.slug)}">Open Article</button></div><div class="xhms-card-admin-actions"><button class="xhms-mini-btn" type="button" data-edit-card="${esc(card.id)}">Edit Card</button><button class="xhms-mini-btn xhms-danger" type="button" data-delete-card-inline="${esc(card.id)}">Delete</button></div></div></article>`).join('') : '<div class="xhms-empty">No concept cards match this search.</div>';
+      countPill.textContent = `${shown.length} / ${cards.length} Concepts`;
+      renderAdminSelect();
+    }
+    function renderAdminSelect(){ const select = document.getElementById('xhms-admin-select'); if(!select) return; select.innerHTML = '<option value="">Create new card</option>' + cards.map(c => `<option value="${esc(c.id)}">${esc(c.id)} — ${esc(c.title)}</option>`).join(''); }
+    function fillCardForm(card){ document.getElementById('xhms-admin-id').value = card?.id || nextCardId(); document.getElementById('xhms-admin-title').value = card?.title || ''; document.getElementById('xhms-admin-desc').value = card?.desc || ''; document.getElementById('xhms-admin-img').value = card?.image || ''; document.getElementById('xhms-admin-source').value = card?.source || ''; document.getElementById('xhms-admin-tags').value = card?.tags || ''; }
+    function nextCardId(){ const nums = cards.map(c => parseInt(String(c.id).replace(/\D/g,''),10)).filter(Boolean); return 'MS-' + (Math.max(0,...nums)+1).toString().padStart(3,'0'); }
+    function unlockAdmin(){ adminUnlocked = true; page.classList.add('xhms-admin-on'); adminPill.classList.remove('xhms-hidden'); adminPill.textContent = 'Admin unlocked'; renderAdminSelect(); }
+    function unlockArticleAdmin(){ articleAdminUnlocked = true; page.classList.add('xhms-article-admin-on'); articleMount.classList.add('xhms-article-admin-on'); const dock = document.getElementById('xhms-editor-dock'); if(dock) dock.classList.remove('is-collapsed'); floatingEditor.classList.remove('xhms-show'); renderArticleBlocks(); }
+    function cardBySlug(slug){ return cards.find(c => c.slug === slug); }
+    function getArticle(){ const card = cardBySlug(currentSlug); return card ? ensureArticleMeta(card) : null; }
+    function openArticle(slug){ const card = cardBySlug(slug); if(!card) return; currentSlug = slug; selectedIndex = -1; const article = ensureArticleMeta(card); main.style.display='none'; articleMount.classList.add('xhms-active'); articleMount.style.setProperty('--xhms-article-img', `url('${article.image || card.image || FALLBACK}')`); articleMount.innerHTML = `<div class="xhms-article-hero"><div class="xhms-shell xhms-article-top"><button id="xhms-back-btn" class="xhms-back" type="button">← Back to Cards</button><h1 class="xhms-article-title">${esc(article.title || card.title)}</h1><div class="xhms-article-meta"><span class="xhms-pill">${esc(card.id)}</span><span class="xhms-pill">${esc(article.source || card.source)}</span><span class="xhms-pill">Article Builder</span></div><div class="xhms-article-search"><div class="xhms-search-wrap"><input id="xhms-article-search-input" type="search" placeholder="Search this article…"><button id="xhms-clear-article-search" type="button">Search</button></div></div></div></div><div class="xhms-article-body"><div class="xhms-article-layout"><div id="xhms-article-canvas" class="xhms-article-canvas"></div><aside id="xhms-editor-dock" class="xhms-editor-dock"><h3>Article Builder</h3><p>Add content blocks, drag to reorder, edit style, and save article content locally.</p><div class="xhms-article-save-panel"><h4>Article Save / Edit</h4><div class="xhms-article-save-grid"><label>Article Title <input id="xhms-article-edit-title" value="${esc(article.title || card.title)}"></label><label>Hero Image <input id="xhms-article-edit-image" value="${esc(article.image || card.image || '')}"></label><label>Source <input id="xhms-article-edit-source" value="${esc(article.source || card.source || '')}"></label><label>Tags <textarea id="xhms-article-edit-tags">${esc(article.tags || card.tags || '')}</textarea></label></div><div class="xhms-editor-actions"><button id="xhms-save-article-info" type="button">Save Info</button><button id="xhms-save-article-now" type="button">Save Article</button><button id="xhms-delete-article-content" type="button">Delete Blocks</button><button id="xhms-reset-article-content" type="button">Reset Article</button></div><div id="xhms-save-state" class="xhms-save-state">Ready</div></div><div class="xhms-tool-list">${toolButton('embed','Embed Code','Simulation, iframe, 3D model, calculator, or custom HTML/CSS/JS.')}${toolButton('equation','Equation Embed','Paste external equation code and preview it inside an isolated frame.')}${toolButton('picture','Picture','Official source image, NASA image, caption, preview placement.')}${toolButton('heading','Heading','Add an editable article heading.')}${toolButton('short','Short Description','Add a compact intro or summary block.')}${toolButton('long','Long Context','Add a full editable explanation section.')}${toolButton('tags','Tags','Add searchable article tags.')}</div><div class="xhms-editor-note">Use Save Article for manual saving. Drag blocks to reorder them. Every block has Edit, Copy, and Delete controls when article admin is unlocked.</div></aside></div></div>`; document.getElementById('xhms-back-btn').addEventListener('click', closeArticle); document.getElementById('xhms-clear-article-search').addEventListener('click', () => {
+      const i = document.getElementById('xhms-article-search-input');
+      const value = i ? i.value : '';
+      if(value && requestRootAdminUnlock(value, () => {
+        unlockArticleAdmin();
+        if(i) i.value = '';
+        articleSearch('');
+      })) return;
+      articleSearch(value || '');
+    }); const xhmsArticleSearchInput = document.getElementById('xhms-article-search-input'); xhmsArticleSearchInput.addEventListener('keydown', e => { if(e.key === 'Enter' && requestRootAdminUnlock(e.target.value, () => { unlockArticleAdmin(); e.target.value=''; articleSearch(''); })){ e.preventDefault(); } }); xhmsArticleSearchInput.addEventListener('input', e => { articleSearch(e.target.value); }); bindArticleManager(); bindTools(); renderArticleBlocks(); window.scrollTo({top:0,behavior:'smooth'}); }
+    function closeArticle(){ captureInlineEdits(); if(currentSlug) saveArticles('Saved'); articleMount.classList.remove('xhms-active'); articleMount.innerHTML=''; main.style.display='block'; page.classList.remove('xhms-article-admin-on'); articleAdminUnlocked=false; hideEditbar(); inspector.classList.remove('xhms-show'); window.scrollTo({top:0,behavior:'smooth'}); }
+    function toolButton(type,title,small){ return `<button class="xhms-tool" draggable="true" data-tool="${type}" type="button">${title}<small>${small}</small></button>`; }
+    function frameDoc(code){ return `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#050505;color:#fff;font-family:Arial,sans-serif;min-height:100%;} body{padding:14px;} img,iframe,video{max-width:100%;}</style></head><body>${code}
+
+<style id="xhms-light-black-cards-final-patch">
+/* Final small visual adjustment: cards slightly lighter black, buttons stay white */
+#xhms-page .xhms-card,
+#xhms-page .xhms-card-body{
+  background:#101010!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#xhms-page .xhms-card:hover{
+  background:#151515!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  transform:translateY(-4px)!important;
+}
+#xhms-page .xhms-card-media{
+  background:#050505!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#xhms-page .xhms-card-media::after{
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.58))!important;
+}
+#xhms-page .xhms-card h3{color:#ffffff!important;}
+#xhms-page .xhms-card p,
+#xhms-page .xhms-source{color:#c6cbd4!important;}
+#xhms-page .xhms-card-actions .xhms-btn,
+#xhms-page .xhms-card .xhms-btn,
+#xhms-page .xhms-card button{
+  background:#ffffff!important;
+  background-image:none!important;
+  color:#000000!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#xhms-page .xhms-card-actions .xhms-btn:hover,
+#xhms-page .xhms-card .xhms-btn:hover,
+#xhms-page .xhms-card button:hover{
+  background:#e8e8e8!important;
+  color:#000000!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+</style>
+</body></html>`; }
+    function blockStyle(block){ const s = block.style || {}; const style = [`--block-size:${Number(s.size||16)}px`,`--block-width:${Number(s.width||100)}%`,`--block-pad:${Number(s.padding||18)}px`,`--block-radius:${Number(s.radius||18)}px`,`--block-color:${esc(s.color||'#f4f7fb')}`,`--block-bg:${esc(s.bg||'#050505')}`,`--block-align:${esc(s.align||'left')}`,`--block-weight:${esc(s.weight||400)}`,`--block-border-style:${esc(s.border||'solid')}`]; if(s.height){ if(block.type === 'picture') style.push(`--block-img-height:${Number(s.height)}px`); else style.push(`--block-frame-height:${Number(s.height)}px`); } return style.join(';'); }
+    function blockClasses(block,index){ const s = block.style || {}; return `${selectedIndex === index ? ' xhms-selected' : ''}${s.motion && s.motion !== 'none' ? ' xhms-motion-' + s.motion : ''}${s.line ? ' xhms-line-style' : ''}`; }
+    function renderBlock(block,index){ const classes = blockClasses(block,index); const style = blockStyle(block); const base = `data-block-index="${index}" data-align="${esc(block.style?.align||'left')}" draggable="${articleAdminUnlocked}" style="${style}"`; const label = `<span class="xhms-block-label">${esc(block.type)}</span>`; const actions = `<span class="xhms-block-drag-handle">Drag</span><span class="xhms-block-actions"><button class="xhms-block-action" data-block-edit="${index}" type="button">Edit</button><button class="xhms-block-action" data-block-copy="${index}" type="button">Copy</button><button class="xhms-block-action xhms-danger" data-block-delete="${index}" type="button">Delete</button></span>`; const content = String(block.content || ''); const emptyAdmin = msg => articleAdminUnlocked ? `<div class="xhms-empty-block">${esc(msg)}</div>` : '';
+      if(block.type === 'heading') return `<section class="xhms-block${classes}" ${base}>${actions}${label}<h2 contenteditable="${articleAdminUnlocked}">${esc(content)}</h2></section>`;
+      if(block.type === 'short') return `<section class="xhms-block${classes}" ${base}>${actions}${label}<p contenteditable="${articleAdminUnlocked}">${esc(content)}</p></section>`;
+      if(block.type === 'long') return `<section class="xhms-block${classes}" ${base}>${actions}${label}<div class="xhms-long-text" contenteditable="${articleAdminUnlocked}">${esc(content)}</div></section>`;
+      if(block.type === 'tags'){ const tags = content.split(',').map(t=>t.trim()).filter(Boolean); const tagHTML = tags.length ? tags.map(t=>`<span>${esc(t)}</span>`).join('') : emptyAdmin('Paste comma-separated tags in Edit.'); return `<section class="xhms-block${classes}" ${base}>${actions}${label}<div class="xhms-taglist">${tagHTML}</div></section>`; }
+      if(block.type === 'picture'){ const img = content ? `<img src="${esc(content)}" alt="Article image" loading="lazy" onerror="xhmsImgError(this)">` : emptyAdmin('Paste image URL in Edit.'); const cap = block.caption ? `<div class="xhms-caption" contenteditable="${articleAdminUnlocked}">${esc(block.caption)}</div>` : (articleAdminUnlocked ? `<div class="xhms-caption" contenteditable="${articleAdminUnlocked}">Add caption/source in Edit</div>` : ''); return `<section class="xhms-block xhms-block-picture${classes}" ${base}>${actions}${label}${img}${cap}</section>`; }
+      if(block.type === 'equation'){ const inner = content ? `<iframe class="xhms-frame xhms-equation-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" srcdoc="${esc(frameDoc(content))}"></iframe>` : emptyAdmin('Paste external equation code in Edit.'); return `<section class="xhms-block${classes}" ${base}>${actions}${label}${inner}</section>`; }
+      if(block.type === 'embed'){ const inner = content ? `<iframe class="xhms-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" srcdoc="${esc(frameDoc(content))}"></iframe>` : emptyAdmin('Paste simulation / iframe / embed code in Edit.'); return `<section class="xhms-block${classes}" ${base}>${actions}${label}${inner}</section>`; }
+      return `<section class="xhms-block${classes}" ${base}>${actions}${label}<div contenteditable="${articleAdminUnlocked}">${esc(content)}</div></section>`;
+    }
+    function renderArticleBlocks(){ const article = getArticle(); const canvas = document.getElementById('xhms-article-canvas'); if(!article || !canvas) return; canvas.innerHTML = article.blocks.length ? article.blocks.map(renderBlock).join('') : '<div class="xhms-blank-canvas"><div class="xhms-empty-block">Article canvas is empty. Unlock article admin and add content blocks.</div></div>'; bindBlockEvents(); showEditbar(); }
+    function bindBlockEvents(){ const canvas = document.getElementById('xhms-article-canvas'); if(!canvas) return; canvas.querySelectorAll('.xhms-block').forEach(el => { el.addEventListener('click', e => { const edit = e.target.closest('[data-block-edit]'); const copy = e.target.closest('[data-block-copy]'); const del = e.target.closest('[data-block-delete]'); if(edit){ selectedIndex=Number(edit.dataset.blockEdit); openInspector(); return; } if(copy){ copyBlock(Number(copy.dataset.blockCopy)); return; } if(del){ deleteBlock(Number(del.dataset.blockDelete)); return; } selectedIndex = Number(el.dataset.blockIndex); renderArticleBlocks(); }); el.addEventListener('dragstart', e => { if(!articleAdminUnlocked) return; draggedIndex = Number(el.dataset.blockIndex); e.dataTransfer.effectAllowed = 'move'; }); el.addEventListener('dragover', e => { if(articleAdminUnlocked) e.preventDefault(); }); el.addEventListener('drop', e => { if(!articleAdminUnlocked) return; e.preventDefault(); const to = Number(el.dataset.blockIndex); moveBlock(draggedIndex,to); draggedIndex=null; }); }); canvas.querySelectorAll('[contenteditable="true"]').forEach(el => el.addEventListener('input', () => setSaveState('Unsaved inline edit','warn'))); }
+    function addBlock(type){ const article = getArticle(); if(!article) return; const contentMap = {heading:'New Heading',short:'Short description block.',long:'Write long context here...',picture:'',tags:'space, future',embed:'',equation:''}; article.blocks.push({type,content:contentMap[type] || '',caption:'',style:{size:type==='heading'?34:16,width:100,align:'left',weight:type==='heading'?900:400,bg:'#050505',color:'#f4f7fb',padding:18,radius:18,border:'solid',motion:'none',line:false}}); selectedIndex = article.blocks.length - 1; saveArticles('Block added'); renderArticleBlocks(); if(['picture','embed','equation'].includes(type)) openInspector(); }
+    function bindTools(){ document.querySelectorAll('.xhms-tool').forEach(btn => { btn.addEventListener('click', () => addBlock(btn.dataset.tool)); btn.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', btn.dataset.tool); }); }); const canvas = document.getElementById('xhms-article-canvas'); if(canvas){ canvas.addEventListener('dragover', e => { if(articleAdminUnlocked) e.preventDefault(); }); canvas.addEventListener('drop', e => { if(!articleAdminUnlocked) return; const type = e.dataTransfer.getData('text/plain'); if(type && !String(type).match(/^\d+$/)) addBlock(type); }); } }
+    function captureInlineEdits(){ const article = getArticle(); const canvas = document.getElementById('xhms-article-canvas'); if(!article || !canvas) return; canvas.querySelectorAll('.xhms-block').forEach(blockEl => { const i = Number(blockEl.dataset.blockIndex); const block = article.blocks[i]; if(!block) return; if(['heading','short','long'].includes(block.type)){ const editable = blockEl.querySelector('[contenteditable="true"]'); if(editable) block.content = editable.innerText.trim(); } if(block.type === 'picture'){ const cap = blockEl.querySelector('.xhms-caption'); if(cap) block.caption = cap.innerText.trim(); } }); }
+    function articleSearch(term){ const q = normalizeKey(term); document.querySelectorAll('.xhms-block').forEach(el => { el.classList.remove('xhms-search-hit'); if(q && el.innerText.toLowerCase().includes(q)) el.classList.add('xhms-search-hit'); }); }
+    function bindArticleManager(){ const saveBtn = document.getElementById('xhms-save-article-now'); const infoBtn = document.getElementById('xhms-save-article-info'); const deleteBtn = document.getElementById('xhms-delete-article-content'); const resetBtn = document.getElementById('xhms-reset-article-content'); if(saveBtn) saveBtn.addEventListener('click', saveArticleNow); if(infoBtn) infoBtn.addEventListener('click', saveArticleInfo); if(deleteBtn) deleteBtn.addEventListener('click', deleteCurrentArticleContent); if(resetBtn) resetBtn.addEventListener('click', resetCurrentArticleContent); setSaveState('Ready'); }
+    function setSaveState(text, mode='ok'){ const state = document.getElementById('xhms-save-state'); if(!state) return; const stamp = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); state.textContent = `${text} • ${stamp}`; state.classList.toggle('xhms-ok', mode !== 'warn'); state.classList.toggle('xhms-warn', mode === 'warn'); }
+    function saveArticleNow(){ captureInlineEdits(); saveArticles('Saved'); renderArticleBlocks(); }
+    function saveArticleInfo(){ const article = getArticle(); const card = cardBySlug(currentSlug); if(!article || !card) return; captureInlineEdits(); article.title = document.getElementById('xhms-article-edit-title')?.value.trim() || card.title; article.image = document.getElementById('xhms-article-edit-image')?.value.trim() || card.image || FALLBACK; article.source = document.getElementById('xhms-article-edit-source')?.value.trim() || card.source || 'Official source'; article.tags = document.getElementById('xhms-article-edit-tags')?.value.trim() || card.tags || ''; article.customImage = true; saveArticles('Article info saved'); openArticle(currentSlug); if(articleAdminUnlocked) unlockArticleAdmin(); }
+    function deleteCurrentArticleContent(){ const article = getArticle(); if(!article) return; if(confirm('Delete all blocks from this article?')){ article.blocks = []; saveArticles('Article blocks deleted'); selectedIndex=-1; renderArticleBlocks(); } }
+    function resetCurrentArticleContent(){ const card = cardBySlug(currentSlug); if(!card) return; if(confirm('Reset this article to default blocks?')){ articles[currentSlug] = createDefaultArticles([card])[currentSlug]; saveArticles('Article reset'); selectedIndex=-1; renderArticleBlocks(); } }
+    function moveBlock(from,to){ const article = getArticle(); if(!article || from===null || from===to || from<0 || to<0) return; const [item] = article.blocks.splice(from,1); article.blocks.splice(to,0,item); selectedIndex=to; saveArticles('Block moved'); renderArticleBlocks(); }
+    function copyBlock(index){ const article = getArticle(); if(!article || !article.blocks[index]) return; article.blocks.splice(index+1,0,JSON.parse(JSON.stringify(article.blocks[index]))); selectedIndex=index+1; saveArticles('Block duplicated'); renderArticleBlocks(); }
+    function deleteBlock(index){ const article = getArticle(); if(!article || !article.blocks[index]) return; article.blocks.splice(index,1); selectedIndex=-1; saveArticles('Block deleted'); renderArticleBlocks(); }
+    function selectedBlock(){ const article = getArticle(); return article && selectedIndex >= 0 ? article.blocks[selectedIndex] : null; }
+    function showEditbar(){ if(articleAdminUnlocked && selectedBlock()) editbar.classList.add('xhms-show'); else editbar.classList.remove('xhms-show'); syncEditbar(); }
+    function hideEditbar(){ editbar.classList.remove('xhms-show'); }
+    function syncEditbar(){ const block = selectedBlock(); if(!block) return; const s = block.style = block.style || {}; document.getElementById('xhms-edit-size').value = s.size || 16; document.getElementById('xhms-edit-width').value = s.width || 100; document.getElementById('xhms-edit-height').value = s.height || 0; document.getElementById('xhms-edit-padding').value = s.padding || 18; document.getElementById('xhms-edit-radius').value = s.radius || 18; document.getElementById('xhms-edit-color').value = s.color || '#f4f7fb'; document.getElementById('xhms-edit-bg').value = s.bg || '#050505'; document.getElementById('xhms-edit-align').value = s.align || 'left'; document.getElementById('xhms-edit-motion').value = s.motion || 'none'; document.getElementById('xhms-edit-weight').value = s.weight || 400; document.getElementById('xhms-edit-border').value = s.border || 'solid'; }
+    function applyStyle(key,value){ const block = selectedBlock(); if(!block) return; block.style = block.style || {}; block.style[key] = value; saveArticles('Style updated'); renderArticleBlocks(); }
+    function openInspector(){ const block = selectedBlock(); if(!block) return; inspector.classList.add('xhms-show'); document.getElementById('xhms-inspector-title').textContent = 'Edit ' + block.type + ' Block'; document.getElementById('xhms-inspector-url').value = ['picture'].includes(block.type) ? (block.content || '') : ''; document.getElementById('xhms-inspector-caption').value = block.caption || ''; document.getElementById('xhms-inspector-text').value = ['picture'].includes(block.type) ? '' : (block.content || ''); document.getElementById('xhms-inspector-width').value = block.style?.width || 100; document.getElementById('xhms-inspector-height').value = block.style?.height || 0; }
+    function closeInspector(){ inspector.classList.remove('xhms-show'); }
+    function applyInspector(){ const block = selectedBlock(); if(!block) return; if(block.type === 'picture'){ block.content = document.getElementById('xhms-inspector-url').value.trim(); block.caption = document.getElementById('xhms-inspector-caption').value.trim(); } else { block.content = document.getElementById('xhms-inspector-text').value; block.caption = document.getElementById('xhms-inspector-caption').value.trim(); } block.style = block.style || {}; block.style.width = Number(document.getElementById('xhms-inspector-width').value || 100); block.style.height = Number(document.getElementById('xhms-inspector-height').value || 0); saveArticles('Content updated'); closeInspector(); renderArticleBlocks(); }
+
+    cardSearch.addEventListener('keydown', e => {
+      if(e.key === 'Enter' && requestRootAdminUnlock(e.target.value, () => {
+        unlockAdmin();
+        e.target.value = '';
+        renderCards('');
+      })){
+        e.preventDefault();
+      }
+    });
+    cardSearch.addEventListener('input', e => { renderCards(e.target.value); });
+    document.getElementById('xhms-clear-search').addEventListener('click', () => {
+      const value = cardSearch.value;
+      if(value && requestRootAdminUnlock(value, () => {
+        unlockAdmin();
+        cardSearch.value = '';
+        renderCards('');
+      })) return;
+      renderCards(value || '');
+    });
+    cardGrid.addEventListener('click', e => { const open = e.target.closest('[data-open-article]'); const edit = e.target.closest('[data-edit-card]'); const del = e.target.closest('[data-delete-card-inline]'); if(open){ openArticle(open.dataset.openArticle); return; } if(edit){ const card = cards.find(c => c.id === edit.dataset.editCard); fillCardForm(card); document.getElementById('xhms-admin-select').value = card.id; page.classList.add('xhms-admin-on'); return; } if(del){ const id = del.dataset.deleteCardInline; if(confirm('Delete card ' + id + '?')){ cards = cards.filter(c => c.id !== id); saveCards(); renderCards(cardSearch.value); } } });
+    document.getElementById('xhms-admin-select').addEventListener('change', e => { const card = cards.find(c => c.id === e.target.value); fillCardForm(card); });
+    document.getElementById('xhms-new-card').addEventListener('click', () => fillCardForm(null));
+    document.getElementById('xhms-save-card').addEventListener('click', () => { const id = document.getElementById('xhms-admin-id').value.trim() || nextCardId(); const title = document.getElementById('xhms-admin-title').value.trim() || 'Untitled Concept'; const old = cards.find(c => c.id === id); const card = { id, slug: old?.slug || slugify(title), title, desc: document.getElementById('xhms-admin-desc').value.trim(), image: document.getElementById('xhms-admin-img').value.trim() || FALLBACK, source: document.getElementById('xhms-admin-source').value.trim() || 'Official source / fallback', tags: document.getElementById('xhms-admin-tags').value.trim() }; const index = cards.findIndex(c => c.id === id); if(index >= 0) cards[index] = card; else cards.push(card); ensureArticleMeta(card); saveCards(); saveArticles('Article metadata prepared'); renderCards(cardSearch.value); fillCardForm(card); });
+    document.getElementById('xhms-delete-card').addEventListener('click', () => { const id = document.getElementById('xhms-admin-select').value || document.getElementById('xhms-admin-id').value.trim(); if(!id) return; if(confirm('Delete selected card ' + id + '?')){ const old = cards.find(c => c.id === id); cards = cards.filter(c => c.id !== id); if(old) delete articles[old.slug]; saveCards(); saveArticles('Card article removed'); renderCards(cardSearch.value); fillCardForm(null); } });
+    document.getElementById('xhms-reset-cards').addEventListener('click', () => { if(confirm('Reset default 45 Miscellaneous cards?')){ cards = JSON.parse(JSON.stringify(defaultCards)); articles = createDefaultArticles(cards); saveCards(); saveArticles('Defaults reset'); renderCards(''); } });
+    floatingEditor.addEventListener('click', () => { const dock = document.getElementById('xhms-editor-dock'); if(dock) dock.classList.remove('is-collapsed'); floatingEditor.classList.remove('xhms-show'); });
+    document.getElementById('xhms-edit-size').addEventListener('input', e => applyStyle('size', Number(e.target.value)));
+    document.getElementById('xhms-edit-width').addEventListener('input', e => applyStyle('width', Number(e.target.value)));
+    document.getElementById('xhms-edit-height').addEventListener('input', e => applyStyle('height', Number(e.target.value)));
+    document.getElementById('xhms-edit-padding').addEventListener('input', e => applyStyle('padding', Number(e.target.value)));
+    document.getElementById('xhms-edit-radius').addEventListener('input', e => applyStyle('radius', Number(e.target.value)));
+    document.getElementById('xhms-edit-color').addEventListener('input', e => applyStyle('color', e.target.value));
+    document.getElementById('xhms-edit-bg').addEventListener('input', e => applyStyle('bg', e.target.value));
+    document.getElementById('xhms-edit-align').addEventListener('change', e => applyStyle('align', e.target.value));
+    document.getElementById('xhms-edit-motion').addEventListener('change', e => applyStyle('motion', e.target.value));
+    document.getElementById('xhms-edit-weight').addEventListener('change', e => applyStyle('weight', e.target.value));
+    document.getElementById('xhms-edit-border').addEventListener('change', e => applyStyle('border', e.target.value));
+    document.getElementById('xhms-edit-line').addEventListener('click', () => { const b = selectedBlock(); if(!b) return; b.style = b.style || {}; b.style.line = !b.style.line; saveArticles('Line toggled'); renderArticleBlocks(); });
+    document.getElementById('xhms-edit-edit').addEventListener('click', openInspector);
+    document.getElementById('xhms-edit-up').addEventListener('click', () => moveBlock(selectedIndex, Math.max(0, selectedIndex-1)));
+    document.getElementById('xhms-edit-down').addEventListener('click', () => { const article=getArticle(); if(article) moveBlock(selectedIndex, Math.min(article.blocks.length-1, selectedIndex+1)); });
+    document.getElementById('xhms-edit-copy').addEventListener('click', () => copyBlock(selectedIndex));
+    document.getElementById('xhms-edit-delete').addEventListener('click', () => deleteBlock(selectedIndex));
+    document.getElementById('xhms-inspector-close').addEventListener('click', closeInspector);
+    document.getElementById('xhms-inspector-cancel').addEventListener('click', closeInspector);
+    document.getElementById('xhms-inspector-save').addEventListener('click', applyInspector);
+    document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeInspector(); } });
+    renderCards(''); fillCardForm(null);
+  })();
+  </script>
+
+  <script>
+  (function(){
+    function ready(fn){ if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn); else fn(); }
+
+    ready(function(){
+      const loader = document.getElementById('xh-loader');
+      if(loader){
+        const fill = loader.querySelector('.xh-load-fill');
+        let progress = 0;
+        const timer = setInterval(function(){
+          progress = Math.min(100, progress + 7 + Math.random()*13);
+          if(fill) fill.style.width = progress + '%';
+          if(progress >= 100){
+            clearInterval(timer);
+            loader.classList.remove('loading');
+            loader.classList.add('ready');
+            setTimeout(function(){ loader.classList.add('done'); }, 520);
+          }
+        }, 62);
+        window.addEventListener('load', function(){
+          if(fill) fill.style.width = '100%';
+          loader.classList.remove('loading');
+          loader.classList.add('ready');
+          setTimeout(function(){ loader.classList.add('done'); }, 520);
+        }, {once:true});
+      }
+
+      const mainBtn = document.getElementById('xhms-clear-search');
+      if(mainBtn) mainBtn.textContent = 'Search';
+
+      document.addEventListener('click', function(e){
+        const articleBtn = e.target && e.target.closest && e.target.closest('#xhms-clear-article-search');
+        if(articleBtn) articleBtn.textContent = 'Search';
+      }, true);
+    });
+  })();
+  </script>
+
+<style id="xhms-final-visual-theme-fix">
+/* =========================================================
+   FINAL MISC PAGE FIX — main image + terminator + cards/editor theme
+   ========================================================= */
+html,body{background:#000!important;color:#fff!important;overflow-x:hidden!important}
+#xhms-page{background:#000!important;background-image:none!important;color:#fff!important;--xhms-hero-img:url('https://images-assets.nasa.gov/image/iss063e026129/iss063e026129~large.jpg')!important;}
+
+/* Main section: real hard background image, centered X Horizon layout */
+#xhms-page .xhms-hero{
+  position:relative!important;
+  min-height:100vh!important;
+  width:100%!important;
+  display:grid!important;
+  place-items:center!important;
+  align-items:center!important;
+  text-align:center!important;
+  padding:96px 20px 76px!important;
+  background:#000!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+#xhms-page .xhms-hero-bg-hard{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  display:block!important;
+  opacity:1!important;
+  filter:brightness(.82) saturate(.96) contrast(1.04)!important;
+  transform:scale(1.01)!important;
+  pointer-events:none!important;
+  background:#000!important;
+}
+#xhms-page .xhms-hero::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.64) 67%,#000 100%),
+    radial-gradient(circle at 50% 44%,rgba(0,0,0,.02) 0 18%,rgba(0,0,0,.42) 72%,#000 100%)!important;
+  filter:none!important;
+  transform:none!important;
+  pointer-events:none!important;
+}
+#xhms-page .xhms-hero::after{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  z-index:2!important;
+  height:76px!important;
+  background:
+    linear-gradient(90deg,transparent 0%,rgba(255,255,255,.92) 50%,transparent 100%) left bottom/100% 2px no-repeat,
+    linear-gradient(180deg,transparent,#000 74%)!important;
+  opacity:1!important;
+  pointer-events:none!important;
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.09)!important;
+}
+#xhms-page .xhms-hero-grid{
+  position:relative!important;
+  z-index:3!important;
+  width:min(760px,calc(100% - 28px))!important;
+  max-width:760px!important;
+  margin:0 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:0!important;
+  padding:38px 0 42px!important;
+  text-align:center!important;
+  transform:translateY(-10px)!important;
+}
+#xhms-page .xhms-hero-grid>div{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;width:100%!important;max-width:760px!important}
+#xhms-page .xhms-hero-panel{display:none!important}
+#xhms-page .xhms-kicker{display:none!important}
+
+/* Search goes in the top hero slot; heading smaller */
+#xhms-page #xhms-search-wrap,
+#xhms-page .xhms-hero .xhms-search-wrap{
+  order:1!important;
+  width:min(520px,100%)!important;
+  max-width:520px!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  gap:6px!important;
+  margin:0 auto 24px!important;
+  padding:6px!important;
+  border:0!important;
+  border-radius:14px!important;
+  background:rgba(255,255,255,.055)!important;
+  box-shadow:none!important;
+  backdrop-filter:blur(12px)!important;
+  -webkit-backdrop-filter:blur(12px)!important;
+}
+#xhms-page .xhms-hero .xhms-search-wrap input,
+#xhms-page #xhms-card-search{
+  flex:1 1 auto!important;
+  min-width:0!important;
+  width:auto!important;
+  height:46px!important;
+  min-height:46px!important;
+  padding:0 14px!important;
+  background:transparent!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  border-radius:10px!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:.02em!important;
+}
+#xhms-page .xhms-hero .xhms-search-wrap input::placeholder{color:rgba(255,255,255,.62)!important;-webkit-text-fill-color:rgba(255,255,255,.62)!important}
+#xhms-page .xhms-hero .xhms-search-wrap button,
+#xhms-page #xhms-clear-search{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:96px!important;
+  height:46px!important;
+  min-height:46px!important;
+  padding:0 20px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:0!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#000!important;
+  box-shadow:none!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  letter-spacing:.04em!important;
+  text-transform:none!important;
+}
+#xhms-page #xhms-clear-search:hover{background:#e7e7e7!important;color:#000!important;transform:scale(1.035)!important}
+#xhms-page .xhms-title{
+  order:2!important;
+  max-width:760px!important;
+  margin:0 0 14px!important;
+  color:#fff!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:#fff!important;
+  font-size:clamp(34px,5.7vw,68px)!important;
+  line-height:.94!important;
+  letter-spacing:-.045em!important;
+  font-weight:850!important;
+  text-align:center!important;
+  text-transform:none!important;
+}
+#xhms-page .xhms-title span{display:block!important;color:#fff!important;background:none!important;-webkit-text-fill-color:#fff!important;-webkit-text-stroke:0!important}
+#xhms-page .xhms-lead{order:3!important;max-width:660px!important;margin:0 auto 18px!important;color:#d6d6d6!important;font-size:clamp(14px,1.55vw,18px)!important;line-height:1.62!important;text-align:center!important}
+#xhms-page .xhms-toolbar{order:4!important;justify-content:center!important;align-items:center!important;margin-top:4px!important;gap:8px!important}
+#xhms-page .xhms-pill{background:rgba(255,255,255,.055)!important;border:0!important;box-shadow:none!important;color:#e6e6e6!important;border-radius:999px!important}
+
+/* Full page + cards theme: solid navy cards, no glass, no borders */
+#xhms-page,
+#xhms-page .xhms-main,
+#xhms-page .xhms-grid-section,
+#xhms-page .xhms-article,
+#xhms-page .xhms-article-body{background:#000!important;background-image:none!important;color:#fff!important}
+#xhms-page *,#xhms-page *::before,#xhms-page *::after{text-shadow:none!important}
+#xhms-page .xhms-card,
+#xhms-page .xhms-card-body,
+#xhms-page .xhms-admin-card-panel,
+#xhms-page .xhms-editor-dock,
+#xhms-page .xhms-editbar,
+#xhms-page .xhms-content-inspector,
+#xhms-page .xhms-block,
+#xhms-page .xhms-tool,
+#xhms-page .xhms-empty,
+#xhms-page .xhms-article-save-panel,
+#xhms-page .xhms-taglist span,
+#xhms-page .xhms-article-canvas,
+#xhms-page .xhms-frame,
+#xhms-page .xhms-dropzone{
+  background:#050505!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#xhms-page .xhms-card{
+  min-height:455px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  visibility:visible!important;
+  opacity:1!important;
+  border-radius:24px!important;
+  overflow:hidden!important;
+  transform:none!important;
+}
+#xhms-page .xhms-cards{display:grid!important;visibility:visible!important;opacity:1!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}
+#xhms-page .xhms-card:hover{background:#050505!important;transform:translateY(-4px)!important;border:0!important;box-shadow:none!important}
+#xhms-page .xhms-card-media{background:#000!important;border:0!important;box-shadow:none!important;overflow:hidden!important}
+#xhms-page .xhms-card-media img{display:block!important;background:#000!important;object-position:center!important;filter:none!important}
+#xhms-page .xhms-card-media::after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))!important}
+#xhms-page .xhms-card h3,#xhms-page .xhms-section-head h2,#xhms-page .xhms-admin-card-panel h3,#xhms-page .xhms-editor-dock h3{color:#edf2fb!important;background:none!important;-webkit-text-fill-color:initial!important}
+#xhms-page .xhms-card p,#xhms-page .xhms-section-head p,#xhms-page .xhms-source,#xhms-page .xhms-editor-dock p,#xhms-page .xhms-footer-note{color:#a6b3c7!important}
+#xhms-page .xhms-card-actions .xhms-btn,
+#xhms-page .xhms-card .xhms-btn,
+#xhms-page .xhms-card button,
+#xhms-page .xhms-btn,
+#xhms-page .xhms-back,
+#xhms-page .xhms-mini-btn,
+#xhms-page .xhms-block-action,
+#xhms-page .xhms-floating-editor,
+#xhms-page .xhms-inspector-actions button,
+#xhms-page .xhms-inspector-head button,
+#xhms-page .xhms-editor-actions button{
+  background:#050505!important;
+  background-image:none!important;
+  color:#fff!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  filter:none!important;
+  border-radius:12px!important;
+}
+#xhms-page .xhms-card-actions .xhms-btn:hover,
+#xhms-page .xhms-card .xhms-btn:hover,
+#xhms-page .xhms-card button:hover,
+#xhms-page .xhms-btn:hover,
+#xhms-page .xhms-back:hover,
+#xhms-page .xhms-mini-btn:hover,
+#xhms-page .xhms-block-action:hover,
+#xhms-page .xhms-floating-editor:hover,
+#xhms-page .xhms-editor-actions button:hover{background:#0b0b0b!important;border:0!important;box-shadow:none!important;transform:none!important;color:#fff!important}
+
+/* Editor and admin inputs */
+#xhms-page input,
+#xhms-page textarea,
+#xhms-page select,
+#xhms-page .xhms-field input,
+#xhms-page .xhms-field textarea,
+#xhms-page .xhms-field select,
+#xhms-page .xhms-content-inspector textarea,
+#xhms-page .xhms-content-inspector input,
+#xhms-page .xhms-content-inspector select,
+#xhms-page .xhms-article-save-grid input,
+#xhms-page .xhms-article-save-grid textarea{
+  background:#000!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  color-scheme:dark!important;
+}
+#xhms-page input:focus,#xhms-page textarea:focus,#xhms-page select:focus{border:0!important;outline:0!important;box-shadow:none!important}
+#xhms-page input:-webkit-autofill,#xhms-page textarea:-webkit-autofill,#xhms-page select:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #000 inset!important;-webkit-text-fill-color:#fff!important;caret-color:#fff!important}
+#xhms-page .xhms-content-inspector{right:16px!important;bottom:88px!important;z-index:110!important;width:min(560px,calc(100% - 32px))!important;border-radius:20px!important;padding:12px!important}
+#xhms-page .xhms-editor-dock{right:16px!important;top:16px!important;z-index:90!important;width:min(350px,calc(100% - 32px))!important;border-radius:24px!important;padding:16px!important}
+#xhms-page .xhms-editbar{background:#050505!important;border:0!important;box-shadow:none!important;border-radius:20px!important}
+#xhms-page .xhms-block.xhms-selected,#xhms-page .xhms-search-hit{outline:0!important;border:0!important;box-shadow:none!important;background:#0b0b0b!important}
+#xhms-page .xhms-card-id,#xhms-page .xhms-block-label,#xhms-page .xhms-block-drag-handle{background:#050505!important;border:0!important;box-shadow:none!important;color:#fff!important}
+#xhms-page .xhms-danger,#xhms-page #xhms-edit-delete{background:#180708!important;color:#fff!important;border:0!important}
+
+@media (max-width:1050px){#xhms-page .xhms-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:780px){
+  #xhms-page .xhms-hero{min-height:100svh!important;padding:84px 12px 64px!important}
+  #xhms-page .xhms-title{font-size:clamp(31px,11vw,54px)!important;letter-spacing:-.035em!important}
+  #xhms-page #xhms-search-wrap{width:min(480px,100%)!important;margin-bottom:20px!important}
+  #xhms-page .xhms-cards{grid-template-columns:1fr!important}
+  #xhms-page .xhms-search-wrap{flex-direction:row!important;align-items:center!important;border-radius:14px!important}
+  #xhms-page .xhms-search-wrap button{width:auto!important;border-radius:10px!important}
+  #xhms-page .xhms-editor-dock{left:10px!important;right:10px!important;top:10px!important;width:auto!important;max-height:calc(100vh - 20px)!important}
+  #xhms-page .xhms-content-inspector{left:8px!important;right:8px!important;width:auto!important;bottom:78px!important;max-height:calc(100vh - 96px)!important}
+}
+</style>
+<script id="xhms-final-visual-theme-fix-script">
+(function(){
+  var heroUrl = 'https://images-assets.nasa.gov/image/iss063e026129/iss063e026129~large.jpg';
+  function fixHero(){
+    var page = document.getElementById('xhms-page');
+    var hero = document.getElementById('xhms-hero');
+    if(page) page.style.setProperty('--xhms-hero-img', "url('" + heroUrl + "')");
+    if(hero && !hero.querySelector('.xhms-hero-bg-hard')){
+      var img = document.createElement('img');
+      img.className = 'xhms-hero-bg-hard';
+      img.src = heroUrl;
+      img.alt = '';
+      img.setAttribute('aria-hidden','true');
+      hero.insertBefore(img, hero.firstChild);
+    }
+    var bg = hero && hero.querySelector('.xhms-hero-bg-hard');
+    if(bg){
+      bg.onerror = function(){ this.onerror = null; this.src = 'https://images-assets.nasa.gov/image/as11-40-5874/as11-40-5874~large.jpg'; };
+      if(!bg.src || bg.src.indexOf('iss063e026129') === -1) bg.src = heroUrl;
+    }
+    var btn = document.getElementById('xhms-clear-search');
+    if(btn) btn.textContent = 'Search';
+    var kicker = document.querySelector('#xhms-page .xhms-kicker');
+    if(kicker) kicker.style.display = 'none';
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fixHero); else fixHero();
+  window.addEventListener('load', fixHero);
+  setTimeout(fixHero, 250);
+})();
+</script>
+
+
+
+<style id="xhms-final-line-black-white-fix">
+/* FINAL FIX: terminator after hero, black cards, white buttons */
+#xhms-page .xhms-hero{border-bottom:0!important;box-shadow:none!important;}
+#xhms-page .xhms-hero::after{
+  content:""!important;position:absolute!important;inset:0!important;z-index:2!important;height:auto!important;
+  background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.24) 58%,#000 100%)!important;
+  opacity:1!important;pointer-events:none!important;box-shadow:none!important;
+}
+#xhms-page .xhms-main-terminator{
+  display:block!important;width:100%!important;height:2px!important;margin:0!important;padding:0!important;position:relative!important;z-index:8!important;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.95) 50%,transparent 100%)!important;
+  box-shadow:none!important;pointer-events:none!important;
+}
+#xhms-page .xhms-grid-section{padding-top:58px!important;background:#000!important;background-image:none!important;}
+
+/* Cards: black, no blue/navy */
+#xhms-page .xhms-cards{display:grid!important;visibility:visible!important;opacity:1!important;}
+#xhms-page .xhms-card,#xhms-page .xhms-card:hover,#xhms-page .xhms-card-body,#xhms-page .xhms-card-media,#xhms-page .xhms-empty,#xhms-page .xhms-card-id{
+  background:#050505!important;background-image:none!important;border:0!important;outline:0!important;box-shadow:none!important;filter:none!important;color:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+#xhms-page .xhms-card:hover{transform:translateY(-4px)!important;}
+#xhms-page .xhms-card h3{color:#fff!important;-webkit-text-fill-color:#fff!important;background:none!important;}
+#xhms-page .xhms-card p,#xhms-page .xhms-source{color:#cfcfcf!important;}
+#xhms-page .xhms-card-media img{background:#000!important;filter:none!important;}
+#xhms-page .xhms-card-media::after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.78))!important;}
+
+/* Buttons: white with black text */
+#xhms-page .xhms-card-actions .xhms-btn,#xhms-page .xhms-card .xhms-btn,#xhms-page .xhms-card button,#xhms-page .xhms-btn:not(.xhms-danger),#xhms-page .xhms-search-wrap button,#xhms-page #xhms-clear-search,#xhms-page #xhms-clear-article-search,#xhms-page .xhms-back,#xhms-page .xhms-mini-btn:not(.xhms-danger),#xhms-page .xhms-block-action,#xhms-page .xhms-floating-editor,#xhms-page .xhms-inspector-actions button,#xhms-page .xhms-inspector-head button,#xhms-page .xhms-editor-actions button:not(.xhms-danger){
+  background:#fff!important;background-image:none!important;color:#000!important;-webkit-text-fill-color:#000!important;border:0!important;outline:0!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;
+}
+#xhms-page .xhms-card-actions .xhms-btn:hover,#xhms-page .xhms-card .xhms-btn:hover,#xhms-page .xhms-card button:hover,#xhms-page .xhms-btn:not(.xhms-danger):hover,#xhms-page .xhms-search-wrap button:hover,#xhms-page #xhms-clear-search:hover,#xhms-page #xhms-clear-article-search:hover,#xhms-page .xhms-back:hover,#xhms-page .xhms-mini-btn:not(.xhms-danger):hover,#xhms-page .xhms-block-action:hover,#xhms-page .xhms-floating-editor:hover,#xhms-page .xhms-editor-actions button:not(.xhms-danger):hover{
+  background:#e9e9e9!important;color:#000!important;-webkit-text-fill-color:#000!important;border:0!important;box-shadow:none!important;transform:none!important;
+}
+
+/* Editor/admin: black theme, no blue */
+#xhms-page .xhms-admin-card-panel,#xhms-page .xhms-editor-dock,#xhms-page .xhms-editbar,#xhms-page .xhms-content-inspector,#xhms-page .xhms-article-save-panel,#xhms-page .xhms-article-canvas,#xhms-page .xhms-block,#xhms-page .xhms-tool,#xhms-page .xhms-dropzone,#xhms-page .xhms-frame,#xhms-page .xhms-taglist span{
+  background:#050505!important;background-image:none!important;border:0!important;outline:0!important;box-shadow:none!important;color:#fff!important;filter:none!important;
+}
+#xhms-page .xhms-tool:hover,#xhms-page .xhms-block.xhms-selected,#xhms-page .xhms-search-hit{background:#0b0b0b!important;border:0!important;outline:0!important;box-shadow:none!important;}
+#xhms-page input,#xhms-page textarea,#xhms-page select,#xhms-page .xhms-field input,#xhms-page .xhms-field textarea,#xhms-page .xhms-field select,#xhms-page .xhms-content-inspector textarea,#xhms-page .xhms-content-inspector input,#xhms-page .xhms-content-inspector select,#xhms-page .xhms-article-save-grid input,#xhms-page .xhms-article-save-grid textarea{
+  background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border:0!important;outline:0!important;box-shadow:none!important;
+}
+</style>
+<script id="xhms-terminator-placement-fix">
+(function(){
+  function placeLine(){
+    var grid=document.getElementById('xhms-grid-section');
+    if(!grid) return;
+    var line=document.querySelector('#xhms-page .xhms-main-terminator');
+    if(!line){line=document.createElement('div');line.className='xhms-main-terminator';line.setAttribute('aria-hidden','true');}
+    if(line.nextElementSibling!==grid){grid.parentNode.insertBefore(line,grid);}
+    var btn=document.getElementById('xhms-clear-search'); if(btn) btn.textContent='Search';
+    var artBtn=document.getElementById('xhms-clear-article-search'); if(artBtn) artBtn.textContent='Search';
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',placeLine); else placeLine();
+  window.addEventListener('load',placeLine);
+  setTimeout(placeLine,250);
+})();
+</script>

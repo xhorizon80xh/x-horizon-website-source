@@ -1,0 +1,100 @@
+<t t-name="website.founder-1">
+    <t t-call="website.layout">
+        <div id="wrap" class="oe_structure oe_empty"><section class="s_carousel_wrapper p-0" data-vxml="001" data-vcss="001" data-snippet="s_carousel" data-name="Carousel">
+        <div class="s_carousel carousel slide s_carousel_boxed o_colored_level" data-bs-ride="true" data-bs-interval="10600" id="myCarousel1783142224500" data-scroll-background-ratio="0">
+            
+            <div class="carousel-inner">
+                
+                <div class="carousel-item oe_img_bg o_bg_img_center o_cc o_colored_level o_bg_img_origin_border_box o_cc3 pb256 pt120 o_background_video active" style="background-image: url(&quot;/web/image/979-c6edaa66/ChatGPT%20Image%20Jul%203%2C%202026%2C%2011_01_19%20PM.webp&quot;);" data-name="Slide" data-attachment-id="977" data-format-mimetype="image/webp" data-resize-width="1593" data-original-id="977" data-original-src="/web/image/977-dadd504d/ChatGPT%20Image%20Jul%203%2C%202026%2C%2011_01_19%20PM.png" data-mimetype-before-conversion="image/png" data-mimetype="image/webp" data-bg-video-src="https://www.youtube.com/embed/4TNuYsOrU8E?rel=0&amp;autoplay=1&amp;mute=1&amp;enablejsapi=1&amp;controls=0&amp;loop=1&amp;playlist=4TNuYsOrU8E&amp;fs=0" data-scroll-background-ratio="0">
+                    <div class="o_we_bg_filter bg-black-25"/>
+                    <div class="oe_unremovable container-fluid">
+                        <div class="row">
+                            <div class="carousel-content col-lg-6 o_colored_level" data-scroll-background-ratio="0">
+                                <h2 class="display-3-fs">Founder</h2>
+                                <p class="lead">X Horizon was founded and developed by <strong>Umair Sial</strong>, a Pakistani student with a deep passion for astronomy, space exploration, and scientific learning. He is working toward building a career in space science while creating a platform that makes astronomy easier, more engaging, and accessible to students around the world.</p><p><a class="o_translate_inline btn btn-primary" href="/founder">About me</a></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item oe_img_bg o_bg_img_center pt96 pb96 o_colored_level o_bg_img_origin_border_box o_cc o_cc3" style="background-image: url(&quot;/unsplash/zdDEvIxauYE/1337/avatar in shadow.jpg?unique=2f09c889&quot;);" data-name="Slide" data-attachment-id="974" data-format-mimetype="image/webp" data-resize-width="1593" data-original-id="974" data-original-src="/unsplash/zdDEvIxauYE/avatar in shadow.jpg?unique=c9c4ad1f" data-mimetype-before-conversion="image/jpeg" data-mimetype="image/webp" data-quality="100">
+        
+                    <div class="container oe_unremovable">
+                        <div class="row">
+                            <div class="carousel-content col-lg-8 offset-lg-2 text-center pt48 pb40 o_colored_level">
+                                <h2 class="display-3-fs">UMAIR SIAL</h2>
+                                <div class="s_hr pt8 pb24" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="w-25 mx-auto"/>
+                                </div>
+                                <p class="lead">A proud student of Daanish School Boys, Umair Sial discovered his passion for astronomy and space science during his seven years of boarding life. The discipline, guidance, and experiences he gained at the school helped shape his ambitions and inspired him to work toward a future in space science.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item oe_img_bg o_bg_img_center pt128 pb128 o_cc o_cc5 o_colored_level o_bg_img_origin_border_box" style="background-image: url(&quot;/web/image/1338-6842a5c9/ChatGPT%20Image%20Jul%203%2C%202026%2C%2010_49_54%20PM.webp&quot;);" data-name="Slide" data-attachment-id="976" data-format-mimetype="image/webp" data-resize-width="1448" data-original-id="976" data-original-src="/web/image/976-0e7ee8de/ChatGPT%20Image%20Jul%203%2C%202026%2C%2010_49_54%20PM.png" data-mimetype-before-conversion="image/png" data-mimetype="image/webp" data-quality="100">
+        <div class="o_we_bg_filter bg-black-50"/>
+                    <div class="oe_unremovable container-fluid">
+                        <div class="row">
+                            <div class="carousel-content col-lg-6 offset-lg-6 pb24 pt24 o_colored_level">
+                                <h2 class="h3-fs">Daanish School</h2>
+                                <p>Daanish School is one of Pakistan’s prominent residential educational institutions, providing deserving students with quality education, modern facilities, and a supportive boarding environment. Along with academic excellence, the school develops discipline, confidence, leadership, independence, and strong moral values. Through dedicated teachers, extracurricular opportunities, and career guidance, Daanish School prepares its students to pursue higher education, achieve their ambitions, and contribute positively to society.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev o_not_editable" aria-label="Previous" title="Previous" data-bs-target="#myCarousel1783142224500" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"/>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next o_not_editable" aria-label="Next" title="Next" data-bs-target="#myCarousel1783142224500" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"/>
+                <span class="visually-hidden">Next</span>
+            </button>
+            
+            <div class="carousel-indicators o_not_editable">
+                <button type="button" class="active" aria-label="Carousel indicator" data-bs-target="#myCarousel1783142224500" data-bs-slide-to="0" aria-current="true"/>
+                <button type="button" aria-label="Carousel indicator" data-bs-target="#myCarousel1783142224500" data-bs-slide-to="1"/>
+                <button type="button" aria-label="Carousel indicator" data-bs-target="#myCarousel1783142224500" data-bs-slide-to="2"/>
+            </div>
+        </div>
+    </section><section class="s_text_image pt80 pb80 o_colored_level o_cc o_cc3" data-snippet="s_image_text" data-name="Image - Text">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pt16 pb16 o_colored_level">
+                    <img src="/web/image/980-2db86073/daanish_school_pak_logo.webp" alt="daanish school logo" data-attachment-id="975" class="img img-fluid mx-auto rounded img-thumbnail o_we_custom_image" style="padding: 15px;" data-format-mimetype="image/webp" data-resize-width="690" data-original-id="975" data-original-src="/web/image/975-35d5af79/daanish_school_pak_logo.jpg" data-mimetype-before-conversion="image/jpeg" data-mimetype="image/webp" loading="lazy"/>
+                </div>
+                <div class="col-lg-5 offset-lg-1 pt16 pb16 o_colored_level">
+                    <h2 class="h3-fs"><strong>Special Thanks</strong><br/></h2>
+                    <p>I sincerely thank my Daanish School for seven unforgettable years of education, guidance, and personal growth. It provided me not only with quality learning but also with a supportive boarding life that taught me discipline, independence, confidence, and the true value of friendship. I will always remain grateful to my teachers, mentors, and the entire Daanish School family for shaping my future and giving me memories that I will cherish forever.</p>
+                    <p><a class="o_translate_inline btn btn-secondary" href="https://www.daanish.edu.pk/">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+    </section><section class="s_cards_soft o_cc pt48 pb32 o_colored_level o_cc3" data-vxml="001" data-snippet="s_cards_soft" data-name="Cards Soft">
+        <div class="container">
+            
+            
+            <div class="row o_grid_mode" data-row-count="26"><div class="o_grid_item g-col-lg-12 col-lg-12 g-height-6" style="grid-area: 1 / 1 / 7 / 13; z-index: 1;"><div class="s_hr pt32 pb32" data-snippet="s_hr" data-name="Separator">
+        <hr class="w-100 mx-auto"/>
+    </div><h2 style="text-align: center;">The Mentors Behind My Journey</h2><p class="lead" style="text-align: center;">The Personalities&amp;nbsp;at Daanish School played an important role in shaping my academic journey, character, and ambitions. Their guidance, encouragement, and dedication helped me overcome challenges, discover my potential, and develop a clear vision for my future. This section is dedicated to the respected teachers whose lessons, support, and belief in me will always remain a valuable part of my life.</p></div>
+                
+                
+                
+            <div data-name="Card" class="o_grid_item g-col-lg-6 g-height-21 col-lg-6" style="z-index: 2; grid-area: 6 / 1 / 27 / 7;">
+                    <div class="s_card card o_cc h-100 o_colored_level o_cc2" data-vxml="001" data-snippet="s_card" data-name="Card" style="border-width: 0px !important;">
+                        <div class="card-body">
+                            <h3 class="card-title h5-fs"><strong>Muhammad Farhan</strong></h3><p><span class="h5-fs"><em><strong>MPhil Physics</strong></em></span></p><p><em>Specialist in Laser-Induced Breakdown Spectroscopy (LIBS)</em></p>
+                            <p class="card-text">A respectful, humble, and hardworking teacher who has always guided and supported his students. He explains every physics topic clearly and conceptually, creating a comfortable learning environment without unnecessary strictness. His dedication, patience, and supportive nature make him a truly inspiring mentor.</p>
+                            <img src="/web/image/983-bf124fd0/ChatGPT%20Image%20Jul%203%2C%202026%2C%2011_18_35%20PM.webp" alt="" data-attachment-id="982" class="img img-fluid rounded o_we_custom_image" data-format-mimetype="image/webp" data-resize-width="690" data-original-id="982" data-original-src="/web/image/982-16f89ab8/ChatGPT%20Image%20Jul%203%2C%202026%2C%2011_18_35%20PM.png" data-mimetype-before-conversion="image/png" data-mimetype="image/webp" loading="lazy"/><p><br/></p><p><strong>Contact Details:</strong></p><p><span class="fa fa-envelope-o"/>&amp;nbsp;<a href="http://farhan864@gmail.com" class="o_translate_inline">farhan864@gmail.com</a></p><p><em><strong>"Thankful to my humble teacher for the seven years of support and teachings"</strong></em></p>
+                        </div>
+                    </div>
+                </div></div>
+        </div>
+    </section></div>
+    </t>
+</t>s

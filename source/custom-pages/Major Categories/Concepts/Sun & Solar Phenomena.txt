@@ -1,0 +1,2560 @@
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Horizon — Sun &amp; Solar Phenomena</title>
+  <meta name="description" content="X Horizon Sun &amp; Solar Phenomena category page with dynamic cards, admin mode, article builder, relevant solar imagery, and responsive design.">
+  <style>
+    :root{
+      --xhuc-black:#030407;
+      --xhuc-black-2:#07090f;
+      --xhuc-card:#050505;
+      --xhuc-card-2:#090909;
+      --xhuc-line:#1b1b1b;
+      --xhuc-line-2:#2a2a2a;
+      --xhuc-text:#f4f7fb;
+      --xhuc-muted:#aab6c8;
+      --xhuc-soft:#738094;
+      --xhuc-blue:#1d4ed8;
+      --xhuc-cyan:#67e8f9;
+      --xhuc-silver-1:#ffffff;
+      --xhuc-silver-2:#b9c3d5;
+      --xhuc-shadow:0 26px 80px rgba(0,0,0,.55);
+      --xhuc-radius:24px;
+      --xhuc-radius-sm:15px;
+      --xhuc-max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#030407;color:var(--xhuc-text);font-family:Inter,Montserrat,Roboto,Arial,sans-serif;overflow-x:hidden}
+    #xhuc-page{min-height:100vh;background:
+      radial-gradient(circle at 12% 8%,rgba(20,58,138,.22),transparent 26%),
+      radial-gradient(circle at 84% 14%,rgba(103,232,249,.12),transparent 22%),
+      linear-gradient(180deg,#030407 0%,#060811 44%,#030407 100%);isolation:isolate}
+    #xhuc-page button,#xhuc-page input,#xhuc-page textarea,#xhuc-page select{font:inherit}
+    #xhuc-page a{color:inherit}
+    .xhuc-shell{width:min(var(--xhuc-max),calc(100% - 34px));margin:0 auto}
+    .xhuc-hidden{display:none!important}
+    .xhuc-main{position:relative;z-index:1}
+    .xhuc-hero{min-height:560px;display:flex;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08)}
+    .xhuc-hero:before{content:"";position:absolute;inset:0;background:
+      linear-gradient(90deg,rgba(3,4,7,.95) 0%,rgba(3,4,7,.72) 42%,rgba(3,4,7,.52) 100%),
+      var(--xhuc-hero-img) center/cover no-repeat;filter:saturate(.98) contrast(1.05);transform:scale(1.02);z-index:-2}
+    .xhuc-hero:after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1.4px);background-size:70px 70px;opacity:.12;z-index:-1}
+    .xhuc-hero-grid{display:grid;grid-template-columns:1.1fr .72fr;gap:34px;align-items:end;padding:78px 0 56px}
+    .xhuc-kicker{display:inline-flex;align-items:center;gap:10px;color:#dbeafe;border:1px solid rgba(103,232,249,.28);background:rgba(8,13,22,.72);border-radius:999px;padding:9px 14px;font-weight:800;letter-spacing:.12em;font-size:12px;text-transform:uppercase}
+    .xhuc-kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--xhuc-cyan);box-shadow:0 0 18px var(--xhuc-cyan)}
+    .xhuc-title{margin:22px 0 14px;font-size:clamp(44px,8vw,96px);line-height:.9;letter-spacing:-.08em;font-weight:900;background:linear-gradient(96deg,var(--xhuc-silver-1),var(--xhuc-silver-2) 54%,#dff9ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase;max-width:920px}
+    .xhuc-title span{display:block;color:transparent;-webkit-text-stroke:1px rgba(238,247,255,.55);background:linear-gradient(96deg,rgba(255,255,255,.08),rgba(103,232,249,.12));-webkit-background-clip:text;background-clip:text}
+    .xhuc-lead{max-width:760px;color:var(--xhuc-muted);font-size:clamp(16px,2vw,20px);line-height:1.65;margin:0 0 28px}
+    .xhuc-search-wrap{display:flex;gap:12px;align-items:center;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:8px;box-shadow:var(--xhuc-shadow);max-width:760px}
+    .xhuc-search-wrap input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;padding:15px 16px;font-weight:750}
+    .xhuc-search-wrap input::placeholder{color:#7b8799}
+    .xhuc-search-wrap button,.xhuc-btn{border:1px solid rgba(103,232,249,.32);background:linear-gradient(180deg,#123a8d,#0a1f4d);color:#fff;border-radius:999px;padding:14px 19px;font-weight:900;letter-spacing:.01em;cursor:pointer;transition:.2s ease;white-space:nowrap}
+    .xhuc-search-wrap button:hover,.xhuc-btn:hover{transform:translateY(-2px);box-shadow:0 16px 35px rgba(29,78,216,.34)}
+    .xhuc-hero-panel{background:rgba(5,7,12,.86);border:1px solid rgba(255,255,255,.1);border-radius:var(--xhuc-radius);padding:22px;box-shadow:var(--xhuc-shadow)}
+    .xhuc-hero-panel img{display:block;width:100%;height:230px;object-fit:cover;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#090b12}
+    .xhuc-hero-panel h3{margin:17px 0 7px;font-size:20px;letter-spacing:-.02em}
+    .xhuc-hero-panel p{margin:0;color:var(--xhuc-muted);line-height:1.55;font-size:14px}
+    .xhuc-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+    .xhuc-pill{border:1px solid rgba(255,255,255,.12);background:#090d15;border-radius:999px;color:#d8e4f7;padding:8px 11px;font-size:12px;font-weight:850;letter-spacing:.04em;text-transform:uppercase}
+    .xhuc-grid-section{padding:58px 0 86px;background:linear-gradient(180deg,rgba(3,4,7,.1),rgba(3,4,7,.9))}
+    .xhuc-section-head{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:22px}
+    .xhuc-section-head h2{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.045em;line-height:1.02}
+    .xhuc-section-head p{margin:0;color:var(--xhuc-muted);max-width:520px;line-height:1.55}
+    .xhuc-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .xhuc-card{min-height:455px;background:linear-gradient(180deg,var(--xhuc-card),#07090e);border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,.32);display:flex;flex-direction:column;position:relative;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .xhuc-card:hover{transform:translateY(-7px);border-color:rgba(103,232,249,.28);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+    .xhuc-card-media{height:190px;background:#05070b;position:relative;overflow:hidden}
+    .xhuc-card-media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.96) contrast(1.02);transition:transform .35s ease}
+    .xhuc-card:hover .xhuc-card-media img{transform:scale(1.045)}
+    .xhuc-card-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.82));pointer-events:none}
+    .xhuc-card-id{position:absolute;top:12px;left:12px;z-index:2;background:rgba(0,0,0,.78);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;color:#dff9ff}
+    .xhuc-card-body{padding:19px;display:flex;flex-direction:column;flex:1}
+    .xhuc-card h3{margin:0 0 9px;font-size:22px;line-height:1.05;letter-spacing:-.03em}
+    .xhuc-card p{margin:0;color:var(--xhuc-muted);line-height:1.55;font-size:14px}
+    .xhuc-source{margin-top:14px;font-size:11px;color:#748197;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+    .xhuc-card-actions{margin-top:auto;padding-top:18px;display:flex;gap:9px;align-items:center}
+    .xhuc-card-actions .xhuc-btn{width:100%;text-align:center;padding:13px 14px;border-radius:14px;background:#0d1220;border-color:rgba(103,232,249,.2)}
+    .xhuc-empty{border:1px dashed rgba(255,255,255,.14);border-radius:18px;color:var(--xhuc-muted);padding:24px;text-align:center;background:#080b12}
+    .xhuc-admin-card-panel{display:none;margin:26px 0 0;background:#070a11;border:1px solid rgba(103,232,249,.16);border-radius:24px;padding:18px;box-shadow:var(--xhuc-shadow)}
+    #xhuc-page.xhuc-admin-on .xhuc-admin-card-panel{display:block}
+    .xhuc-admin-card-panel h3{margin:0 0 14px;font-size:20px}
+    .xhuc-form-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .xhuc-field{display:flex;flex-direction:column;gap:7px}
+    .xhuc-field label{color:#cbd5e1;font-weight:850;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+    .xhuc-field input,.xhuc-field textarea,.xhuc-field select{width:100%;border:1px solid rgba(255,255,255,.12);background:#0b0e16;color:#fff;border-radius:14px;outline:0;padding:12px;min-height:46px}
+    .xhuc-field textarea{resize:vertical;min-height:92px}
+    .xhuc-field.xhuc-wide{grid-column:span 2}
+    .xhuc-admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .xhuc-danger{background:#18080b!important;border-color:rgba(248,113,113,.35)!important;color:#fecaca!important}
+    .xhuc-article{display:none;min-height:100vh;background:#030407;position:relative}
+    .xhuc-article.xhuc-active{display:block}
+    .xhuc-article-hero{position:relative;min-height:420px;display:flex;align-items:end;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.09)}
+    .xhuc-article-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.48),#030407 100%),var(--xhuc-article-img) center/cover no-repeat;z-index:0;filter:saturate(.95) contrast(1.05)}
+    .xhuc-article-top{position:relative;z-index:1;padding:64px 0 32px;width:100%}
+    .xhuc-back{border:1px solid rgba(255,255,255,.12);background:#080b13;color:#fff;border-radius:999px;padding:11px 15px;font-weight:900;cursor:pointer;margin-bottom:20px}
+    .xhuc-article-title{margin:0;font-size:clamp(36px,7vw,86px);letter-spacing:-.075em;line-height:.92;background:linear-gradient(95deg,#fff,#b8c5d8 52%,#dcfbff);-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase;max-width:980px}
+    .xhuc-article-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .xhuc-article-search{margin-top:24px;max-width:780px}
+    .xhuc-article-search .xhuc-search-wrap{max-width:780px;box-shadow:none}
+    .xhuc-article-body{padding:40px 0 92px}
+    .xhuc-article-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:26px;align-items:start}
+    .xhuc-article-canvas{min-height:520px;background:linear-gradient(180deg,#070a10,#05070b);border:1px solid rgba(255,255,255,.09);border-radius:26px;padding:22px;box-shadow:var(--xhuc-shadow)}
+    .xhuc-block{position:relative;border:1px solid rgba(255,255,255,.08);background:var(--block-bg,#0b0e16);border-radius:20px;padding:18px;margin:14px 0;color:var(--block-color,#f4f7fb);font-size:var(--block-size,16px);transition:.18s ease;line-height:1.65;overflow:hidden}
+    .xhuc-block:hover{border-color:rgba(103,232,249,.18)}
+    .xhuc-block.xhuc-selected{outline:2px solid rgba(103,232,249,.45);box-shadow:0 0 0 5px rgba(103,232,249,.08)}
+    .xhuc-block:focus-within{border-color:rgba(103,232,249,.32)}
+    .xhuc-block h2,.xhuc-block h3{margin:0;line-height:1.08;letter-spacing:-.04em}
+    .xhuc-block h2{font-size:clamp(28px,4vw,50px)}
+    .xhuc-block p{margin:0;color:inherit}
+    .xhuc-block .xhuc-long-text{white-space:pre-wrap}
+    .xhuc-block [contenteditable="true"]{outline:0}
+    .xhuc-block-picture{padding:10px;background:#070910}
+    .xhuc-block-picture img{width:100%;max-height:520px;object-fit:cover;border-radius:16px;display:block;background:#05060a}
+    .xhuc-caption{padding:10px 8px 2px;color:#b9c6d7;font-size:13px}
+    .xhuc-taglist{display:flex;gap:9px;flex-wrap:wrap}
+    .xhuc-taglist span{display:inline-flex;background:#111827;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 11px;font-size:12px;font-weight:850;color:#dbeafe}
+    .xhuc-frame{width:100%;min-height:280px;border:0;border-radius:16px;background:#fff;display:block}
+    .xhuc-equation-frame{background:#05070b;border:1px solid rgba(255,255,255,.12)}
+    .xhuc-block-label{position:absolute;top:8px;right:10px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7c899c;font-weight:900;background:rgba(0,0,0,.55);padding:4px 7px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
+    .xhuc-dropzone{border:1px dashed rgba(103,232,249,.22);background:rgba(103,232,249,.03);border-radius:16px;color:#8aa1bb;text-align:center;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;min-height:28px;padding:8px;margin:8px 0;opacity:.5;transition:.18s ease}
+    .xhuc-dropzone.xhuc-over{opacity:1;background:rgba(103,232,249,.08);border-color:rgba(103,232,249,.6)}
+    .xhuc-editor-dock{display:none;position:sticky;top:18px;background:#070a11;border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:16px;box-shadow:var(--xhuc-shadow);max-height:calc(100vh - 36px);overflow:auto}
+    #xhuc-page.xhuc-article-admin-on .xhuc-editor-dock{display:block}
+    .xhuc-editor-dock.is-collapsed{display:none!important}
+    .xhuc-editor-dock h3{margin:0 0 6px;font-size:18px;letter-spacing:-.03em}
+    .xhuc-editor-dock p{margin:0 0 13px;color:var(--xhuc-muted);font-size:13px;line-height:1.45}
+    .xhuc-tool-list{display:grid;gap:9px}
+    .xhuc-tool{border:1px solid rgba(255,255,255,.1);background:#0c111b;color:#fff;border-radius:15px;padding:12px;text-align:left;font-weight:900;cursor:grab;transition:.18s ease}
+    .xhuc-tool:hover{border-color:rgba(103,232,249,.28);transform:translateX(2px)}
+    .xhuc-tool small{display:block;color:#8492a7;font-weight:700;margin-top:4px;line-height:1.35}
+    .xhuc-editor-note{margin-top:14px;border:1px solid rgba(29,78,216,.25);background:#061027;border-radius:16px;padding:12px;color:#c7d2fe;font-size:12px;line-height:1.45}
+    .xhuc-floating-editor{display:none;position:fixed;right:18px;bottom:18px;z-index:80;border:1px solid rgba(103,232,249,.35);background:linear-gradient(180deg,#0d1f48,#081124);color:#fff;border-radius:999px;padding:13px 16px;font-weight:900;box-shadow:0 18px 44px rgba(0,0,0,.55);cursor:pointer}
+    #xhuc-page.xhuc-article-admin-on .xhuc-floating-editor.xhuc-show{display:block}
+    .xhuc-editbar{display:none;position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;background:#05070d;border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:10px;box-shadow:0 20px 70px rgba(0,0,0,.7);gap:8px;align-items:center;max-width:min(980px,calc(100% - 24px));overflow:auto}
+    .xhuc-editbar.xhuc-show{display:flex}
+    .xhuc-editbar label{font-size:11px;color:#cbd5e1;font-weight:900;display:flex;align-items:center;gap:6px;white-space:nowrap}
+    .xhuc-editbar input[type="color"]{width:38px;height:34px;padding:0;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#0b0e16}
+    .xhuc-editbar input[type="range"]{width:95px}
+    .xhuc-editbar select,.xhuc-editbar button{border:1px solid rgba(255,255,255,.13);background:#0b0f18;color:#fff;border-radius:12px;padding:9px 10px;font-size:12px;font-weight:850;white-space:nowrap}
+    .xhuc-editbar button{cursor:pointer}
+    .xhuc-line-style{box-shadow:inset 0 0 0 1px rgba(103,232,249,.18)}
+    .xhuc-line-style:before{content:"";position:absolute;left:0;top:0;height:100%;width:4px;background:linear-gradient(180deg,var(--xhuc-cyan),var(--xhuc-blue))}
+    .xhuc-motion-float{animation:xhucFloat 4s ease-in-out infinite}
+    .xhuc-motion-pulse{animation:xhucPulse 2s ease-in-out infinite}
+    .xhuc-motion-rise{animation:xhucRise .45s ease both}
+    @keyframes xhucFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes xhucPulse{0%,100%{box-shadow:0 0 0 rgba(103,232,249,0)}50%{box-shadow:0 0 38px rgba(103,232,249,.14)}}
+    @keyframes xhucRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .xhuc-search-hit{outline:2px solid rgba(103,232,249,.55);background:#0d1523!important}
+    .xhuc-footer-note{color:#77859b;font-size:12px;line-height:1.45;margin-top:18px;text-align:center}
+
+
+    /* Hide public source labels while keeping admin source fields functional */
+    #xhuc-page .xhuc-source,
+    #xhuc-page #xhuc-article-source-pill{display:none!important}
+
+    /* Locked solid-black MotionSites-style overrides */
+    #xhuc-page .xhuc-card,
+    #xhuc-page .xhuc-hero-panel,
+    #xhuc-page .xhuc-admin-card-panel,
+    #xhuc-page .xhuc-article-canvas,
+    #xhuc-page .xhuc-editor-dock,
+    #xhuc-page .xhuc-block{
+      background:#050505!important;
+      border-color:#181818!important;
+      box-shadow:0 18px 46px rgba(0,0,0,.58)!important;
+    }
+    #xhuc-page .xhuc-card{background:#050505!important;min-height:455px}
+    #xhuc-page .xhuc-card:hover{transform:translateY(-4px);border-color:#2c2c2c!important;box-shadow:0 24px 60px rgba(0,0,0,.72)!important}
+    #xhuc-page .xhuc-card-media{background:#030303!important}
+    #xhuc-page .xhuc-card-media:after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.62))!important}
+    #xhuc-page .xhuc-btn,
+    #xhuc-page .xhuc-search-wrap button,
+    #xhuc-page .xhuc-back,
+    #xhuc-page .xhuc-mini-btn{
+      background:#050505!important;
+      background-image:none!important;
+      color:#f8fbff!important;
+      border:1px solid #2a2a2a!important;
+      box-shadow:none!important;
+    }
+    #xhuc-page .xhuc-btn:hover,
+    #xhuc-page .xhuc-search-wrap button:hover,
+    #xhuc-page .xhuc-mini-btn:hover{background:#0b0b0b!important;transform:translateY(-2px)}
+    #xhuc-page .xhuc-search-wrap,
+    #xhuc-page .xhuc-pill,
+    #xhuc-page .xhuc-tool,
+    #xhuc-page .xhuc-editbar,
+    #xhuc-page .xhuc-taglist span{
+      background:#050505!important;
+      border-color:#202020!important;
+      box-shadow:none!important;
+    }
+    #xhuc-page input,
+    #xhuc-page textarea,
+    #xhuc-page select{
+      background:#050505!important;
+      color:#ffffff!important;
+      border:1px solid #202020!important;
+      box-shadow:none!important;
+      -webkit-text-fill-color:#ffffff!important;
+    }
+    #xhuc-page input:-webkit-autofill,
+    #xhuc-page textarea:-webkit-autofill,
+    #xhuc-page select:-webkit-autofill{
+      -webkit-box-shadow:0 0 0 1000px #050505 inset!important;
+      -webkit-text-fill-color:#ffffff!important;
+      caret-color:#ffffff!important;
+    }
+    .xhuc-card-admin-actions{display:none;gap:8px;margin-top:9px}
+    #xhuc-page.xhuc-admin-on .xhuc-card-admin-actions{display:flex}
+    .xhuc-mini-btn{border-radius:12px;padding:10px 12px;font-weight:900;cursor:pointer;font-size:12px;flex:1}
+    .xhuc-blank-canvas{min-height:520px;border:1px dashed #151515;border-radius:20px;background:#030303}
+    .xhuc-block-label{display:none}
+    #xhuc-page.xhuc-article-admin-on .xhuc-block-label{display:inline-block}
+    #xhuc-page.xhuc-article-admin-on .xhuc-article-canvas{border-style:dashed!important;border-color:#262626!important}
+
+
+    /* Full-width article builder + non-glassy technical editor fixes */
+    #xhuc-page .xhuc-shell.xhuc-article-body{
+      width:100%!important;
+      max-width:none!important;
+      margin:0!important;
+      padding:40px 16px 92px!important;
+    }
+    #xhuc-page .xhuc-article-layout{display:block!important;width:100%!important}
+    #xhuc-page .xhuc-article-canvas{width:100%!important;min-height:660px!important;background:#030303!important;border:1px dashed #202020!important;border-radius:20px!important;padding:14px!important}
+    #xhuc-page .xhuc-editor-dock{position:fixed!important;right:16px!important;top:16px!important;z-index:90!important;width:min(340px,calc(100% - 32px))!important;max-height:calc(100vh - 32px)!important;overflow:auto!important;background:#050505!important}
+    #xhuc-page .xhuc-block{
+      width:var(--block-width,100%)!important;
+      max-width:100%!important;
+      min-height:var(--block-height,auto)!important;
+      text-align:var(--block-align,left)!important;
+      background:var(--block-bg,#050505)!important;
+      border:1px solid #202020!important;
+      box-shadow:none!important;
+      color:var(--block-color,#f4f7fb)!important;
+      font-size:var(--block-size,16px)!important;
+    }
+    #xhuc-page .xhuc-block[data-align="center"]{margin-left:auto!important;margin-right:auto!important}
+    #xhuc-page .xhuc-block[data-align="right"]{margin-left:auto!important;margin-right:0!important}
+    #xhuc-page .xhuc-block h2,#xhuc-page .xhuc-block h3{font-size:inherit!important;color:inherit!important}
+    #xhuc-page .xhuc-block:hover,#xhuc-page .xhuc-block:focus-within{border-color:#343434!important}
+    #xhuc-page .xhuc-block.xhuc-selected{outline:2px solid #d8dee9!important;box-shadow:0 0 0 4px rgba(255,255,255,.06)!important;background:var(--block-bg,#050505)!important}
+    #xhuc-page .xhuc-search-hit{outline:2px solid #d8dee9!important;background:#070707!important}
+    #xhuc-page .xhuc-dropzone{border-color:#2b2b2b!important;background:#050505!important;color:#8c96a5!important}
+    #xhuc-page .xhuc-dropzone.xhuc-over{background:#0b0b0b!important;border-color:#e5e7eb!important;color:#f8fafc!important}
+    #xhuc-page .xhuc-editor-note{background:#050505!important;border-color:#222!important;color:#b7c0ce!important}
+    #xhuc-page .xhuc-floating-editor{background:#050505!important;background-image:none!important;border-color:#2a2a2a!important;box-shadow:0 18px 44px rgba(0,0,0,.72)!important}
+    #xhuc-page .xhuc-line-style{box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)!important}
+    #xhuc-page .xhuc-line-style:before{background:#f8fafc!important}
+    #xhuc-page .xhuc-block-picture img{max-height:none!important;min-height:var(--block-img-height,auto)!important;height:var(--block-img-height,auto)!important}
+    #xhuc-page .xhuc-frame{min-height:var(--block-frame-height,320px)!important}
+    #xhuc-page .xhuc-content-inspector{display:none;position:fixed;right:16px;bottom:88px;z-index:110;width:min(560px,calc(100% - 32px));background:#050505;border:1px solid #242424;border-radius:20px;padding:12px;box-shadow:0 22px 70px rgba(0,0,0,.72)}
+    #xhuc-page .xhuc-content-inspector.xhuc-show{display:block}
+    #xhuc-page .xhuc-inspector-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+    #xhuc-page .xhuc-inspector-head strong{font-size:14px;letter-spacing:.02em}
+    #xhuc-page .xhuc-inspector-head button{width:34px;height:34px;border-radius:10px;background:#090909;color:#fff;border:1px solid #242424;font-weight:900;cursor:pointer}
+    #xhuc-page .xhuc-content-inspector textarea{width:100%;min-height:230px;resize:vertical;background:#030303!important;border:1px solid #242424!important;border-radius:14px;color:#fff!important;padding:12px;font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:1.5}
+    #xhuc-page .xhuc-content-inspector input{margin-top:8px;width:100%;background:#030303!important;border:1px solid #242424!important;border-radius:14px;color:#fff!important;padding:12px}
+    #xhuc-page .xhuc-inspector-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+    #xhuc-page .xhuc-inspector-actions button{background:#050505;color:#fff;border:1px solid #2a2a2a;border-radius:12px;padding:10px 13px;font-weight:900;cursor:pointer}
+
+
+    /* Final black editor + true drag-builder overrides */
+    #xhuc-page{background:#000!important;background-image:none!important;}
+    #xhuc-page .xhuc-main,
+    #xhuc-page .xhuc-grid-section,
+    #xhuc-page .xhuc-article,
+    #xhuc-page .xhuc-article-body,
+    #xhuc-page .xhuc-article-canvas{background:#000!important;background-image:none!important;}
+    #xhuc-page .xhuc-hero-panel,
+    #xhuc-page .xhuc-card,
+    #xhuc-page .xhuc-admin-card-panel,
+    #xhuc-page .xhuc-editor-dock,
+    #xhuc-page .xhuc-editbar,
+    #xhuc-page .xhuc-content-inspector,
+    #xhuc-page .xhuc-block,
+    #xhuc-page .xhuc-search-wrap,
+    #xhuc-page .xhuc-tool,
+    #xhuc-page .xhuc-empty,
+    #xhuc-page .xhuc-taglist span{background:#050505!important;background-image:none!important;border-color:#1f1f1f!important;box-shadow:none!important;}
+    #xhuc-page .xhuc-card{border:1px solid #1e1e1e!important;box-shadow:0 22px 50px rgba(0,0,0,.75)!important;}
+    #xhuc-page .xhuc-card:hover{border-color:#383838!important;box-shadow:0 26px 60px rgba(0,0,0,.85)!important;}
+    #xhuc-page .xhuc-card-actions .xhuc-btn,
+    #xhuc-page .xhuc-btn,
+    #xhuc-page .xhuc-search-wrap button,
+    #xhuc-page #xhuc-clear-search,
+    #xhuc-page #xhuc-clear-article-search,
+    #xhuc-page .xhuc-back,
+    #xhuc-page .xhuc-mini-btn,
+    #xhuc-page .xhuc-inspector-actions button,
+    #xhuc-page .xhuc-inspector-head button,
+    #xhuc-page .xhuc-block-action{background:#050505!important;background-image:none!important;border:1px solid #262626!important;color:#fff!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;}
+    #xhuc-page .xhuc-card-actions .xhuc-btn:hover,
+    #xhuc-page .xhuc-btn:hover,
+    #xhuc-page .xhuc-search-wrap button:hover,
+    #xhuc-page #xhuc-clear-search:hover,
+    #xhuc-page #xhuc-clear-article-search:hover,
+    #xhuc-page .xhuc-mini-btn:hover,
+    #xhuc-page .xhuc-tool:hover,
+    #xhuc-page .xhuc-block-action:hover{background:#0b0b0b!important;border-color:#3a3a3a!important;box-shadow:none!important;transform:none!important;color:#fff!important;}
+    #xhuc-page .xhuc-article-canvas{width:100%!important;min-height:720px!important;padding:18px!important;border:1px dashed #242424!important;border-radius:18px!important;}
+    #xhuc-page .xhuc-block{width:var(--block-width,auto)!important;max-width:100%!important;min-height:auto!important;height:auto!important;padding:var(--block-pad,18px)!important;margin:12px 0!important;overflow:visible!important;cursor:default!important;border-radius:var(--block-radius,18px)!important;border-style:var(--block-border-style,solid)!important;font-weight:var(--block-weight,400)!important;}
+    #xhuc-page.xhuc-article-admin-on .xhuc-block{cursor:grab!important;}
+    #xhuc-page.xhuc-article-admin-on .xhuc-block:active{cursor:grabbing!important;}
+    #xhuc-page .xhuc-block.xhuc-selected{outline:2px solid #f4f4f5!important;box-shadow:0 0 0 4px rgba(255,255,255,.055)!important;background:#050505!important;}
+    #xhuc-page .xhuc-block:hover,#xhuc-page .xhuc-block:focus-within{border-color:#333!important;}
+    #xhuc-page .xhuc-block-picture{padding:12px!important;}
+    #xhuc-page .xhuc-block-picture img{display:block;width:100%!important;height:var(--block-img-height,auto)!important;min-height:0!important;max-height:none!important;object-fit:contain!important;background:#030303!important;border-radius:calc(var(--block-radius,18px) - 4px)!important;}
+    #xhuc-page .xhuc-frame{width:100%!important;min-height:var(--block-frame-height,220px)!important;height:var(--block-frame-height,auto)!important;background:#050505!important;border:1px solid #222!important;border-radius:14px!important;}
+    #xhuc-page .xhuc-dropzone{background:#050505!important;border:1px dashed #2a2a2a!important;color:#888!important;min-height:42px!important;opacity:.95!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+    #xhuc-page .xhuc-dropzone.xhuc-over{background:#111!important;border-color:#f2f2f2!important;color:#fff!important;}
+    #xhuc-page .xhuc-editor-note{background:#050505!important;border-color:#222!important;color:#aab3c2!important;}
+    #xhuc-page .xhuc-floating-editor{background:#050505!important;background-image:none!important;border-color:#262626!important;box-shadow:0 18px 54px rgba(0,0,0,.85)!important;}
+    #xhuc-page .xhuc-tool{cursor:grab!important;color:#fff!important;}
+    #xhuc-page .xhuc-tool:active{cursor:grabbing!important;}
+    #xhuc-page .xhuc-tool small{color:#9ca3af!important;}
+    #xhuc-page .xhuc-block-drag-handle{display:none;position:absolute;top:8px;left:8px;z-index:8;background:#080808;border:1px solid #282828;border-radius:999px;color:#fff;font-size:11px;font-weight:900;padding:5px 8px;cursor:grab;user-select:none;}
+    #xhuc-page.xhuc-article-admin-on .xhuc-block-drag-handle{display:inline-flex;}
+    #xhuc-page .xhuc-block-actions{display:none;position:absolute;top:8px;right:8px;z-index:8;gap:6px;align-items:center;}
+    #xhuc-page.xhuc-article-admin-on .xhuc-block-actions{display:flex;}
+    #xhuc-page .xhuc-block-action{border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;cursor:pointer;}
+    #xhuc-page .xhuc-empty-block{min-height:110px;border:1px dashed #2a2a2a;border-radius:14px;background:#030303;color:#8f98a8;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-weight:850;}
+    #xhuc-page .xhuc-content-inspector{display:none;left:auto!important;right:16px!important;bottom:88px!important;max-height:calc(100vh - 120px)!important;overflow:auto!important;}
+    #xhuc-page .xhuc-content-inspector.xhuc-show{display:block!important;}
+    #xhuc-page .xhuc-inspector-label{display:block;color:#cbd5e1;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px;}
+    #xhuc-page .xhuc-content-inspector textarea,
+    #xhuc-page .xhuc-content-inspector input,
+    #xhuc-page .xhuc-content-inspector select{width:100%!important;background:#030303!important;border:1px solid #242424!important;border-radius:12px!important;color:#fff!important;padding:12px!important;box-shadow:none!important;}
+    #xhuc-page .xhuc-content-inspector textarea{min-height:260px!important;font-family:ui-monospace,Consolas,monospace;line-height:1.5;}
+    #xhuc-page .xhuc-inspector-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+    #xhuc-page .xhuc-search-hit{outline:2px solid #f4f4f5!important;background:#080808!important;}
+    @media (max-width:700px){
+      #xhuc-page .xhuc-content-inspector{left:10px!important;right:10px!important;width:auto!important;bottom:78px!important;}
+      #xhuc-page .xhuc-inspector-grid{grid-template-columns:1fr;}
+    }
+
+
+
+    /* Article editor save / edit / delete manager */
+    #xhuc-page .xhuc-article-save-panel{
+      margin:14px 0 14px;
+      padding:13px;
+      border:1px solid #242424;
+      border-radius:16px;
+      background:#030303!important;
+    }
+    #xhuc-page .xhuc-article-save-panel h4{
+      margin:0 0 10px;
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:#f8fafc;
+    }
+    #xhuc-page .xhuc-article-save-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+    }
+    #xhuc-page .xhuc-article-save-grid label{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      color:#cbd5e1;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    #xhuc-page .xhuc-article-save-grid input,
+    #xhuc-page .xhuc-article-save-grid textarea{
+      width:100%!important;
+      background:#050505!important;
+      border:1px solid #242424!important;
+      border-radius:12px!important;
+      color:#fff!important;
+      padding:11px!important;
+      min-height:42px!important;
+      resize:vertical;
+    }
+    #xhuc-page .xhuc-article-save-grid textarea{min-height:68px!important;}
+    #xhuc-page .xhuc-editor-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:10px;
+    }
+    #xhuc-page .xhuc-editor-actions button{
+      background:#050505!important;
+      border:1px solid #2a2a2a!important;
+      color:#fff!important;
+      border-radius:12px;
+      padding:10px 11px;
+      font-size:12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    #xhuc-page .xhuc-editor-actions button:hover{background:#0b0b0b!important;border-color:#3a3a3a!important;}
+    #xhuc-page .xhuc-save-state{
+      margin-top:9px;
+      color:#8f98a8;
+      font-size:11px;
+      font-weight:800;
+      line-height:1.35;
+    }
+    #xhuc-page .xhuc-save-state.xhuc-ok{color:#cbd5e1;}
+    #xhuc-page .xhuc-save-state.xhuc-warn{color:#fecaca;}
+
+    @media (max-width:1050px){
+      .xhuc-hero-grid{grid-template-columns:1fr;padding-top:58px}.xhuc-hero-panel{max-width:680px}.xhuc-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.xhuc-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.xhuc-article-layout{grid-template-columns:1fr}.xhuc-editor-dock{position:fixed;right:15px;top:15px;z-index:70;width:min(360px,calc(100% - 30px));max-height:calc(100vh - 30px)}
+    }
+    @media (max-width:700px){
+      .xhuc-shell{width:min(100% - 22px,var(--xhuc-max))}.xhuc-hero{min-height:620px}.xhuc-hero-grid{padding:44px 0 36px}.xhuc-title{font-size:clamp(42px,17vw,76px)}.xhuc-search-wrap{border-radius:20px;align-items:stretch;flex-direction:column}.xhuc-search-wrap button{width:100%;border-radius:14px}.xhuc-hero-panel img{height:190px}.xhuc-section-head{display:block}.xhuc-section-head p{margin-top:10px}.xhuc-cards{grid-template-columns:1fr}.xhuc-card{min-height:420px}.xhuc-card-media{height:185px}.xhuc-form-grid{grid-template-columns:1fr}.xhuc-field.xhuc-wide{grid-column:auto}.xhuc-article-hero{min-height:500px}.xhuc-article-title{font-size:clamp(38px,15vw,72px)}.xhuc-article-canvas{padding:12px;border-radius:18px}.xhuc-block{border-radius:16px;padding:15px}.xhuc-editbar{left:12px;right:12px;transform:none;bottom:12px}.xhuc-floating-editor{right:12px;bottom:84px}.xhuc-admin-actions .xhuc-btn{width:100%}
+    }
+
+
+    /* Mobile editor hardening: card admin + article builder */
+    @media (max-width:900px){
+      #xhuc-page .xhuc-editor-dock{
+        left:10px!important;
+        right:10px!important;
+        top:10px!important;
+        width:auto!important;
+        max-height:72vh!important;
+        border-radius:18px!important;
+        padding:12px!important;
+      }
+      #xhuc-page .xhuc-article-save-panel{padding:11px!important;}
+      #xhuc-page .xhuc-editor-actions{grid-template-columns:1fr!important;}
+      #xhuc-page .xhuc-tool-list{grid-template-columns:1fr!important;}
+      #xhuc-page .xhuc-editbar{
+        left:8px!important;
+        right:8px!important;
+        bottom:8px!important;
+        transform:none!important;
+        max-width:none!important;
+        border-radius:16px!important;
+        padding:8px!important;
+        gap:6px!important;
+      }
+      #xhuc-page .xhuc-editbar label{font-size:10px!important;}
+      #xhuc-page .xhuc-editbar input[type="range"]{width:72px!important;}
+      #xhuc-page .xhuc-editbar select,
+      #xhuc-page .xhuc-editbar button{padding:8px 9px!important;font-size:11px!important;}
+    }
+    @media (max-width:520px){
+      #xhuc-page .xhuc-title{font-size:clamp(34px,15vw,58px)!important;letter-spacing:-.065em!important;}
+      #xhuc-page .xhuc-lead{font-size:14px!important;line-height:1.55!important;}
+      #xhuc-page .xhuc-card{min-height:0!important;}
+      #xhuc-page .xhuc-card-media{height:170px!important;}
+      #xhuc-page .xhuc-card-body{padding:15px!important;}
+      #xhuc-page .xhuc-card h3{font-size:20px!important;}
+      #xhuc-page .xhuc-card-actions{padding-top:14px!important;}
+      #xhuc-page .xhuc-card-admin-actions{flex-direction:column!important;}
+      #xhuc-page .xhuc-admin-card-panel{padding:13px!important;border-radius:18px!important;}
+      #xhuc-page .xhuc-article-body{padding:24px 10px 110px!important;}
+      #xhuc-page .xhuc-article-canvas{min-height:560px!important;padding:10px!important;}
+      #xhuc-page .xhuc-block{padding:14px!important;margin:10px 0!important;}
+      #xhuc-page .xhuc-block-actions{top:6px!important;right:6px!important;gap:4px!important;}
+      #xhuc-page .xhuc-block-action{font-size:10px!important;padding:5px 7px!important;}
+      #xhuc-page .xhuc-block-drag-handle{top:6px!important;left:6px!important;font-size:10px!important;padding:5px 7px!important;}
+      #xhuc-page .xhuc-content-inspector{left:8px!important;right:8px!important;bottom:72px!important;width:auto!important;max-height:calc(100vh - 92px)!important;border-radius:16px!important;}
+      #xhuc-page .xhuc-content-inspector textarea{min-height:190px!important;}
+      #xhuc-page .xhuc-floating-editor{right:10px!important;bottom:72px!important;padding:11px 13px!important;}
+    }
+
+  
+    /* Sun & Solar page mobile lock: keep both editors usable on phones */
+    @media (max-width:780px){
+      #xhuc-page .xhuc-title{font-size:clamp(38px,15vw,70px)!important;letter-spacing:-.06em!important;line-height:.92!important}
+      #xhuc-page .xhuc-hero{min-height:650px!important}
+      #xhuc-page .xhuc-hero-grid{grid-template-columns:1fr!important;gap:18px!important}
+      #xhuc-page .xhuc-form-grid{grid-template-columns:1fr!important}
+      #xhuc-page .xhuc-field.xhuc-wide{grid-column:auto!important}
+      #xhuc-page .xhuc-admin-actions{display:grid!important;grid-template-columns:1fr!important}
+      #xhuc-page .xhuc-admin-actions .xhuc-btn{width:100%!important}
+      #xhuc-page .xhuc-card-admin-actions{flex-direction:column!important}
+      #xhuc-page .xhuc-card-admin-actions .xhuc-mini-btn{width:100%!important}
+      #xhuc-page .xhuc-editor-dock{left:10px!important;right:10px!important;top:10px!important;width:auto!important;max-height:calc(100vh - 20px)!important}
+      #xhuc-page .xhuc-editbar{left:8px!important;right:8px!important;bottom:8px!important;transform:none!important;max-width:none!important;overflow-x:auto!important;display:none}
+      #xhuc-page .xhuc-editbar.xhuc-show{display:flex!important}
+      #xhuc-page .xhuc-editbar label{min-width:max-content!important}
+      #xhuc-page .xhuc-content-inspector{left:8px!important;right:8px!important;width:auto!important;bottom:78px!important;max-height:calc(100vh - 96px)!important}
+      #xhuc-page .xhuc-block-actions{top:6px!important;right:6px!important;gap:4px!important;flex-wrap:wrap!important}
+      #xhuc-page .xhuc-block-action{font-size:10px!important;padding:6px 8px!important}
+      #xhuc-page .xhuc-block-drag-handle{top:6px!important;left:6px!important}
+      #xhuc-page .xhuc-article-canvas{padding:10px!important;min-height:620px!important}
+    }
+
+  
+    /* Sun and solar image relevance fix: centered visuals, less bad cropping on diagram cards */
+    #xhuc-page .xhuc-hero-panel img{object-fit:cover!important;object-position:center!important;background:#000!important;}
+    #xhuc-page .xhuc-card-media img{object-position:center!important;background:#000!important;}
+    #xhuc-page .xhuc-card[data-slug="event-horizon"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="singularity"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="hawking-radiation"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="photon-sphere"] .xhuc-card-media img{
+      object-fit:contain!important;
+      padding:8px!important;
+      background:#000!important;
+    }
+    @media (max-width:700px){
+      #xhuc-page .xhuc-hero-panel img{height:220px!important;}
+      #xhuc-page .xhuc-card-media{height:210px!important;}
+    }
+
+    /* Fixed safe visuals: built-in topic thumbnails prevent broken remote image boxes */
+    #xhuc-page .xhuc-card-media img,
+    #xhuc-page .xhuc-hero-panel img{display:block!important;background:#000!important;}
+    #xhuc-page .xhuc-card-media img.xhuc-fallback-img{object-fit:cover!important;}
+
+
+
+    /* NASA real-image display: avoid fake art and reduce bad cropping */
+    #xhuc-page .xhuc-card-media img{object-fit:cover!important;object-position:center!important;background:#000!important;}
+    #xhuc-page .xhuc-hero-panel img{object-fit:cover!important;object-position:center!important;background:#000!important;}
+
+
+    /* Sun & Solar image hardening: diagrams, eclipse sequences, and mission graphics stay visible instead of over-cropped */
+    #xhuc-page .xhuc-card[data-slug="solar-core"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="radiative-zone"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="convective-zone"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-atmosphere"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-cycle"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-maximum"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="heliosphere"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="heliopause"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-energetic-particles"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="geomagnetic-storm"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="space-weather"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="parker-solar-probe"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-orbiter"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="total-solar-eclipse"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="annular-solar-eclipse"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-irradiance"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="nuclear-fusion"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="proton-proton-chain"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-neutrinos"] .xhuc-card-media img,
+    #xhuc-page .xhuc-card[data-slug="solar-constant"] .xhuc-card-media img{
+      object-fit:contain!important;
+      padding:10px!important;
+      background:#000!important;
+    }
+
+
+
+
+    /* Final reference card + navy button override */
+    #xhuc-page .xhuc-card{
+      background:#03101f!important;
+      background-image:none!important;
+      border:0!important;
+      outline:0!important;
+      box-shadow:none!important;
+      filter:none!important;
+      backdrop-filter:none!important;
+      -webkit-backdrop-filter:none!important;
+      border-radius:24px!important;
+      overflow:hidden!important;
+      transform:none!important;
+    }
+    #xhuc-page .xhuc-card:hover{
+      background:#06182b!important;
+      border:0!important;
+      box-shadow:none!important;
+      transform:translateY(-4px)!important;
+    }
+    #xhuc-page .xhuc-card-body{
+      background:#03101f!important;
+      background-image:none!important;
+    }
+    #xhuc-page .xhuc-card-media{
+      background:#000!important;
+      border:0!important;
+      box-shadow:none!important;
+    }
+    #xhuc-page .xhuc-card-media:after{
+      background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))!important;
+    }
+    #xhuc-page .xhuc-card h3{color:#edf2fb!important;}
+    #xhuc-page .xhuc-card p,
+    #xhuc-page .xhuc-source{color:#a6b3c7!important;}
+    #xhuc-page .xhuc-card-actions{gap:10px!important;}
+    #xhuc-page .xhuc-card-actions .xhuc-btn,
+    #xhuc-page .xhuc-card .xhuc-btn,
+    #xhuc-page .xhuc-card button{
+      width:100%!important;
+      background:#061b3a!important;
+      background-image:none!important;
+      border:0!important;
+      outline:0!important;
+      box-shadow:none!important;
+      color:#fff!important;
+      border-radius:12px!important;
+      padding:13px 14px!important;
+      font-weight:900!important;
+      text-shadow:none!important;
+      filter:none!important;
+    }
+    #xhuc-page .xhuc-card-actions .xhuc-btn:hover,
+    #xhuc-page .xhuc-card .xhuc-btn:hover,
+    #xhuc-page .xhuc-card button:hover{
+      background:#0a2a5a!important;
+      border:0!important;
+      box-shadow:none!important;
+      transform:none!important;
+      color:#fff!important;
+    }
+
+  
+
+/* =========================================================
+   X HORIZON SINGLE-GO FINAL LOCK — Sun & Solar Phenomena
+   full screen hero + smaller content + white buttons + Firebase UI
+   ========================================================= */
+:root{--xh-ease:cubic-bezier(.16,1,.3,1)!important;}
+html,body{background:#000!important;color:#fff!important;overflow-x:hidden!important;}
+body{margin:0!important;}
+.xh-loader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#000;transition:opacity .65s var(--xh-ease),visibility .65s var(--xh-ease);pointer-events:auto;}
+.xh-loader.done{opacity:0;visibility:hidden;pointer-events:none;}
+.xh-load-mark{position:relative;width:min(310px,82vw);height:118px;display:grid;place-items:center;overflow:hidden;}
+.xh-load-x{position:absolute;left:42px;top:6px;z-index:2;color:#fff;font-size:96px;line-height:1;font-weight:900;letter-spacing:-.12em;text-shadow:0 0 26px rgba(255,255,255,.18);}
+.xh-load-word{position:absolute;left:112px;top:45px;z-index:3;color:#eee;font-size:22px;font-weight:900;letter-spacing:.20em;opacity:.18;line-height:1;text-transform:uppercase;will-change:opacity;}
+.xh-loader.loading .xh-load-word{animation:xhLoaderWordBlink .42s steps(2,end) infinite;}
+.xh-loader.ready .xh-load-word{opacity:1!important;animation:none!important;color:#fff!important;text-shadow:0 0 18px rgba(255,255,255,.22);}
+.xh-load-line{position:absolute;left:42px;bottom:10px;width:222px;height:4px;border-radius:99px;background:#161616;overflow:hidden;}
+.xh-load-fill{display:block;width:0;height:100%;border-radius:inherit;background:#d8d8d8;box-shadow:0 0 16px rgba(255,255,255,.28);transition:width 1.2s var(--xh-ease);}
+.xh-loader.loading .xh-load-fill{width:82%;}
+.xh-loader.ready .xh-load-fill{width:100%;}
+@keyframes xhLoaderWordBlink{0%,100%{opacity:.16}50%{opacity:.76}}
+
+#xhuc-page{
+  --xhuc-black:#000!important;--xhuc-black-2:#000!important;--xhuc-card:#141414!important;--xhuc-card-2:#1b1b1b!important;
+  --xhuc-text:#fff!important;--xhuc-muted:#cfcfcf!important;--xhuc-soft:#a8a8a8!important;--xhuc-blue:#fff!important;--xhuc-cyan:#fff!important;
+  background:#000!important;background-image:none!important;color:#fff!important;overflow:hidden!important;isolation:isolate!important;
+}
+#xhuc-page::before{content:""!important;position:fixed!important;inset:0!important;z-index:-5!important;background-image:radial-gradient(circle,rgba(255,255,255,.34) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(255,255,255,.14) 0 1px,transparent 1.5px)!important;background-size:150px 150px,230px 230px!important;background-position:20px 40px,95px 12px!important;opacity:.22!important;animation:xhSunStarDrift 48s linear infinite!important;pointer-events:none!important;}
+@keyframes xhSunStarDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-150px,150px,0)}}
+#xhuc-page .xhuc-main,#xhuc-page .xhuc-grid-section,#xhuc-page .xhuc-article,#xhuc-page .xhuc-article-body{background:#000!important;background-image:none!important;}
+#xhuc-page .xhuc-hero{min-height:100vh!important;width:100%!important;display:grid!important;place-items:center!important;text-align:center!important;padding:108px 20px 76px!important;border:0!important;box-shadow:none!important;overflow:hidden!important;isolation:isolate!important;background:#000!important;}
+#xhuc-page .xhuc-hero::before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.70) 68%,#000 100%),var(--xhuc-hero-img) center/cover no-repeat!important;filter:brightness(.88) saturate(1.04) contrast(1.05)!important;transform:scale(1.01)!important;}
+#xhuc-page .xhuc-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:linear-gradient(90deg,transparent,rgba(255,255,255,.78),transparent) left bottom/100% 2px no-repeat,radial-gradient(circle at 50% 50%,rgba(0,0,0,.04) 0 24%,rgba(0,0,0,.44) 72%,#000 100%)!important;pointer-events:none!important;}
+#xhuc-page .xhuc-hero-grid{position:relative!important;z-index:3!important;width:min(760px,calc(100% - 34px))!important;max-width:none!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;justify-content:center!important;align-items:center!important;gap:0!important;padding:46px 0 42px!important;text-align:center!important;transform:translateY(-14px)!important;}
+#xhuc-page .xhuc-hero-grid>div{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;width:100%!important;}
+#xhuc-page .xhuc-kicker,#xhuc-page .xhuc-hero-panel{display:none!important;}
+#xhuc-page .xhuc-title{margin:20px 0 13px!important;max-width:760px!important;color:#fff!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;-webkit-text-fill-color:#fff!important;font-size:clamp(34px,5.4vw,64px)!important;line-height:.96!important;letter-spacing:-.035em!important;font-weight:850!important;text-align:center!important;text-transform:none!important;}
+#xhuc-page .xhuc-title span{display:inline!important;color:#fff!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;-webkit-text-fill-color:#fff!important;-webkit-text-stroke:0!important;}
+#xhuc-page .xhuc-lead{max-width:690px!important;margin:0 auto 18px!important;color:#d2d2d2!important;font-size:clamp(14px,1.55vw,17px)!important;line-height:1.58!important;text-align:center!important;}
+#xhuc-page .xhuc-search-wrap{order:-1!important;width:min(520px,100%)!important;max-width:520px!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;background:rgba(255,255,255,.055)!important;border:0!important;border-radius:14px!important;padding:6px!important;box-shadow:none!important;margin:0 auto 12px!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+#xhuc-page .xhuc-search-wrap input,#xhuc-page #xhuc-card-search,#xhuc-page #xhuc-article-search-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;min-height:46px!important;height:46px!important;padding:0 14px!important;border:0!important;outline:0!important;border-radius:10px!important;background:transparent!important;color:#fff!important;-webkit-text-fill-color:#fff!important;font-size:13px!important;font-weight:700!important;letter-spacing:.02em!important;box-shadow:none!important;}
+#xhuc-page .xhuc-search-wrap input::placeholder{color:rgba(255,255,255,.62)!important;-webkit-text-fill-color:rgba(255,255,255,.62)!important;}
+#xhuc-page .xhuc-toolbar{display:flex!important;justify-content:center!important;margin-top:4px!important;gap:10px!important;}
+#xhuc-page #xhuc-count-pill{display:inline-flex!important;align-items:center!important;background:rgba(255,255,255,.07)!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:8px 12px!important;box-shadow:none!important;}
+#xhuc-page #xhuc-admin-pill{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}
+#xhuc-page .xhuc-hero + .xhuc-grid-section{position:relative!important;}
+#xhuc-page .xhuc-hero + .xhuc-grid-section::before{content:""!important;display:block!important;width:min(1180px,calc(100% - 34px))!important;height:1px!important;margin:0 auto 42px!important;background:linear-gradient(90deg,transparent,rgba(255,255,255,.76),transparent)!important;}
+#xhuc-page .xhuc-grid-section{padding:54px 0 86px!important;}
+#xhuc-page .xhuc-cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;opacity:1!important;visibility:visible!important;}
+#xhuc-page .xhuc-card,#xhuc-page .xhuc-card-body,#xhuc-page .xhuc-admin-card-panel,#xhuc-page .xhuc-article-canvas,#xhuc-page .xhuc-editor-dock,#xhuc-page .xhuc-editbar,#xhuc-page .xhuc-content-inspector,#xhuc-page .xhuc-block,#xhuc-page .xhuc-tool,#xhuc-page .xhuc-empty,#xhuc-page .xhuc-article-save-panel,#xhuc-page .xhuc-taglist span{background:#141414!important;background-image:none!important;border:0!important;outline:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+#xhuc-page .xhuc-card{display:flex!important;flex-direction:column!important;min-height:455px!important;border-radius:24px!important;overflow:hidden!important;opacity:1!important;visibility:visible!important;transform:none!important;}
+#xhuc-page .xhuc-card:hover{background:#1b1b1b!important;border:0!important;box-shadow:none!important;transform:translateY(-4px)!important;}
+#xhuc-page .xhuc-card-media,#xhuc-page .xhuc-block-picture,#xhuc-page .xhuc-empty-block{background:#000!important;border:0!important;box-shadow:none!important;}
+#xhuc-page .xhuc-card-media::after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))!important;}
+#xhuc-page .xhuc-card h3,#xhuc-page .xhuc-section-head h2,#xhuc-page .xhuc-admin-card-panel h3,#xhuc-page .xhuc-editor-dock h3{color:#fff!important;}
+#xhuc-page .xhuc-card p,#xhuc-page .xhuc-section-head p,#xhuc-page .xhuc-editor-dock p,#xhuc-page .xhuc-source,#xhuc-page .xhuc-footer-note{color:#c7c7c7!important;}
+#xhuc-page button,#xhuc-page .xhuc-btn,#xhuc-page .xhuc-search-wrap button,#xhuc-page .xhuc-back,#xhuc-page .xhuc-mini-btn,#xhuc-page .xhuc-block-action,#xhuc-page .xhuc-floating-editor,#xhuc-page .xhuc-inspector-actions button,#xhuc-page .xhuc-inspector-head button,#xhuc-page .xhuc-editor-actions button,#xhuc-page .xhuc-card-actions .xhuc-btn,#xhuc-page .xhuc-card .xhuc-btn,#xhuc-page .xhuc-card button,#xhuc-page #xhuc-clear-search,#xhuc-page #xhuc-clear-article-search{background:#fff!important;background-image:none!important;border:0!important;outline:0!important;box-shadow:none!important;color:#000!important;-webkit-text-fill-color:#000!important;filter:none!important;text-shadow:none!important;border-radius:12px!important;font-weight:900!important;}
+#xhuc-page button:hover,#xhuc-page .xhuc-btn:hover,#xhuc-page .xhuc-search-wrap button:hover,#xhuc-page .xhuc-back:hover,#xhuc-page .xhuc-mini-btn:hover,#xhuc-page .xhuc-block-action:hover,#xhuc-page .xhuc-floating-editor:hover,#xhuc-page .xhuc-inspector-actions button:hover,#xhuc-page .xhuc-inspector-head button:hover,#xhuc-page .xhuc-editor-actions button:hover,#xhuc-page .xhuc-card-actions .xhuc-btn:hover,#xhuc-page .xhuc-card .xhuc-btn:hover,#xhuc-page .xhuc-card button:hover,#xhuc-page #xhuc-clear-search:hover,#xhuc-page #xhuc-clear-article-search:hover{background:#e8e8e8!important;border:0!important;box-shadow:none!important;transform:none!important;color:#000!important;-webkit-text-fill-color:#000!important;}
+#xhuc-page .xhuc-danger,#xhuc-page .xhuc-admin-actions .xhuc-danger,#xhuc-page #xhuc-edit-delete,#xhuc-page .xhuc-danger-btn{background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:0!important;}
+#xhuc-page input,#xhuc-page textarea,#xhuc-page select,#xhuc-page .xhuc-field input,#xhuc-page .xhuc-field textarea,#xhuc-page .xhuc-field select,#xhuc-page .xhuc-content-inspector textarea,#xhuc-page .xhuc-content-inspector input,#xhuc-page .xhuc-content-inspector select,#xhuc-page .xhuc-article-save-grid input,#xhuc-page .xhuc-article-save-grid textarea{background:#000!important;background-image:none!important;border:0!important;outline:0!important;box-shadow:none!important;color:#fff!important;-webkit-text-fill-color:#fff!important;}
+#xhuc-page .xhuc-card-id,#xhuc-page .xhuc-block-label,#xhuc-page .xhuc-block-drag-handle,#xhuc-page .xhuc-card-tags span{background:#fff!important;background-image:none!important;border:0!important;box-shadow:none!important;color:#000!important;}
+#xhuc-page .xhuc-article-hero{min-height:430px!important;background:#000!important;border:0!important;}
+#xhuc-page .xhuc-article-canvas{width:100%!important;min-height:720px!important;padding:18px!important;border:0!important;border-radius:18px!important;background:#141414!important;}
+#xhuc-page .xhuc-block{background:#141414!important;border:0!important;outline:0!important;box-shadow:none!important;overflow:visible!important;}
+#xhuc-page .xhuc-block:hover,#xhuc-page .xhuc-block:focus-within{background:#1a1a1a!important;border:0!important;box-shadow:none!important;}
+#xhuc-page .xhuc-block.xhuc-selected,#xhuc-page .xhuc-search-hit{outline:0!important;border:0!important;box-shadow:none!important;background:#1f1f1f!important;}
+#xhuc-page .xhuc-dropzone,#xhuc-page .xhuc-frame,#xhuc-page .xhuc-equation-frame{border:0!important;outline:0!important;box-shadow:none!important;background:#141414!important;background-image:none!important;}
+#xhuc-page .xhuc-editor-note{background:#141414!important;border:0!important;color:#cfcfcf!important;}
+@media (max-width:1050px){#xhuc-page .xhuc-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+@media (max-width:700px){#xhuc-page .xhuc-hero{min-height:100vh!important;padding:88px 12px 58px!important;}#xhuc-page .xhuc-title{font-size:clamp(33px,13vw,58px)!important;}#xhuc-page .xhuc-search-wrap{width:100%!important;max-width:520px!important;flex-direction:column!important;border-radius:14px!important;}#xhuc-page .xhuc-search-wrap button,#xhuc-page #xhuc-clear-search,#xhuc-page #xhuc-clear-article-search{width:100%!important;min-height:44px!important;}#xhuc-page .xhuc-cards{grid-template-columns:1fr!important;}#xhuc-page .xhuc-card{min-height:0!important;}#xhuc-page .xhuc-article-canvas{min-height:560px!important;padding:10px!important;}}
+
+  
+/* XHORIZON FINAL FIREBASE-REFERENCE UI LOCK */
+#xhuc-page #xhuc-admin-pill{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}
+#xhuc-page #xhuc-count-pill{display:inline-flex!important;visibility:visible!important;opacity:1!important;}
+#xhuc-page button,
+#xhuc-page .xhuc-btn,
+#xhuc-page .xhuc-search-wrap button,
+#xhuc-page #xhuc-clear-search,
+#xhuc-page #xhuc-clear-article-search,
+#xhuc-page .xhuc-back,
+#xhuc-page .xhuc-mini-btn,
+#xhuc-page .xhuc-block-action,
+#xhuc-page .xhuc-floating-editor,
+#xhuc-page .xhuc-inspector-actions button,
+#xhuc-page .xhuc-inspector-head button,
+#xhuc-page .xhuc-editor-actions button,
+#xhuc-page .xhuc-card-actions .xhuc-btn,
+#xhuc-page .xhuc-tool{
+  background:#fff!important;
+  background-image:none!important;
+  color:#000!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#xhuc-page button:hover,
+#xhuc-page .xhuc-btn:hover,
+#xhuc-page .xhuc-search-wrap button:hover,
+#xhuc-page #xhuc-clear-search:hover,
+#xhuc-page #xhuc-clear-article-search:hover,
+#xhuc-page .xhuc-back:hover,
+#xhuc-page .xhuc-mini-btn:hover,
+#xhuc-page .xhuc-block-action:hover,
+#xhuc-page .xhuc-floating-editor:hover,
+#xhuc-page .xhuc-inspector-actions button:hover,
+#xhuc-page .xhuc-inspector-head button:hover,
+#xhuc-page .xhuc-editor-actions button:hover,
+#xhuc-page .xhuc-card-actions .xhuc-btn:hover,
+#xhuc-page .xhuc-tool:hover{
+  background:#e9e9e9!important;
+  color:#000!important;
+  transform:none!important;
+}
+
+  </style>
+
+
+  
+<div class="xh-loader loading" id="xh-loader" aria-label="X Horizon loading">
+  <div class="xh-load-mark">
+    <div class="xh-load-x">X</div>
+    <div class="xh-load-word">Horizon</div>
+    <div class="xh-load-line"><span class="xh-load-fill"></span></div>
+  </div>
+</div>
+<div id="xhuc-page" data-theme-lock="x-horizon-17" style="--xhuc-hero-img:url('https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536')">
+    <main id="xhuc-main" class="xhuc-main">
+      <section id="xhuc-hero" class="xhuc-hero">
+        <div class="xhuc-shell xhuc-hero-grid">
+          <div>
+            <div class="xhuc-kicker">X Horizon Concepts</div>
+            <h1 class="xhuc-title">Sun <span>&amp; Solar Phenomena</span></h1>
+            <p class="xhuc-lead">Solar structure, atmosphere, magnetic activity, eruptions, space weather, eclipses, heliosphere, Parker Solar Probe, Solar Orbiter, solar energy, fusion, and neutrino concepts.</p>
+            <div class="xhuc-search-wrap" id="xhuc-search-wrap">
+              <input id="xhuc-card-search" type="search" autocomplete="off" placeholder="Search Sun, Corona, Solar Flare, CME, Aurora, Parker Solar Probe…">
+              <button id="xhuc-clear-search" type="button">Search</button>
+            </div>
+            <div class="xhuc-toolbar">
+              <span class="xhuc-pill" id="xhuc-count-pill">35 Concepts</span>
+              <span class="xhuc-pill xhuc-hidden" id="xhuc-admin-pill"></span>
+            </div>
+          </div>
+          <aside class="xhuc-hero-panel">
+            <img id="xhuc-hero-img" src="https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536" alt="X Horizon Sun and Solar Phenomena visual" loading="lazy">
+            <h3>Solar structure &amp; space weather visual</h3>
+            <p>Solar structure, activity, eruptions, aurora, eclipse, heliosphere, and mission visuals organized for fast article access.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="xhuc-grid-section" class="xhuc-grid-section">
+        <div class="xhuc-shell">
+          <div class="xhuc-section-head">
+            <h2>Sun &amp; Solar Phenomena Cards</h2>
+            <p>Each solid card opens the same clean article builder system for its corresponding solar concept.</p>
+          </div>
+
+          <div id="xhuc-admin-card-panel" class="xhuc-admin-card-panel">
+            <h3>Hidden Card Admin</h3>
+            <div class="xhuc-form-grid">
+              <div class="xhuc-field">
+                <label for="xhuc-admin-select">Select Card</label>
+                <select id="xhuc-admin-select"></select>
+              </div>
+              <div class="xhuc-field">
+                <label for="xhuc-admin-id">Card ID</label>
+                <input id="xhuc-admin-id" placeholder="SUN-052">
+              </div>
+              <div class="xhuc-field xhuc-wide">
+                <label for="xhuc-admin-title">Title</label>
+                <input id="xhuc-admin-title" placeholder="New concept title">
+              </div>
+              <div class="xhuc-field xhuc-wide">
+                <label for="xhuc-admin-desc">Short Description</label>
+                <textarea id="xhuc-admin-desc" placeholder="Card description"></textarea>
+              </div>
+              <div class="xhuc-field xhuc-wide">
+                <label for="xhuc-admin-img">Official Image URL</label>
+                <input id="xhuc-admin-img" placeholder="https://...">
+              </div>
+              <div class="xhuc-field">
+                <label for="xhuc-admin-source">Visual Label</label>
+                <input id="xhuc-admin-source" placeholder="Concept visual">
+              </div>
+              <div class="xhuc-field">
+                <label for="xhuc-admin-tags">Tags</label>
+                <input id="xhuc-admin-tags" placeholder="origin, expansion">
+              </div>
+            </div>
+            <div class="xhuc-admin-actions">
+              <button class="xhuc-btn" id="xhuc-new-card" type="button">New Blank Card</button>
+              <button class="xhuc-btn" id="xhuc-save-card" type="button">Add / Update Card</button>
+              <button class="xhuc-btn xhuc-danger" id="xhuc-delete-card" type="button">Delete Selected</button>
+              <button class="xhuc-btn" id="xhuc-reset-cards" type="button">Reset Default 35</button>
+            </div>
+          </div>
+
+          <div id="xhuc-cards" class="xhuc-cards" aria-live="polite"></div>
+          <p class="xhuc-footer-note">Concept visuals use unique solar image URLs with per-card backup loading and emergency fallback if a remote file fails.</p>
+        </div>
+      </section>
+    </main>
+
+    <section id="xhuc-article" class="xhuc-article" aria-live="polite"></section>
+
+    <div id="xhuc-editbar" class="xhuc-editbar" aria-label="Selected block tools">
+      <label>Font <input id="xhuc-edit-size" type="range" min="10" max="92" value="16"></label>
+      <label>Width <input id="xhuc-edit-width" type="range" min="20" max="100" value="100"></label>
+      <label>Height <input id="xhuc-edit-height" type="range" min="0" max="900" value="0"></label>
+      <label>Padding <input id="xhuc-edit-padding" type="range" min="0" max="90" value="18"></label>
+      <label>Radius <input id="xhuc-edit-radius" type="range" min="0" max="48" value="18"></label>
+      <label>Color <input id="xhuc-edit-color" type="color" value="#f4f7fb"></label>
+      <label>Background <input id="xhuc-edit-bg" type="color" value="#050505"></label>
+      <select id="xhuc-edit-align" aria-label="Alignment">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+      </select>
+      <select id="xhuc-edit-motion" aria-label="Motion">
+        <option value="none">No motion</option>
+        <option value="float">Float</option>
+        <option value="pulse">Pulse</option>
+        <option value="rise">Rise</option>
+      </select>
+      <select id="xhuc-edit-weight" aria-label="Font weight">
+        <option value="400">Regular</option>
+        <option value="600">Semi Bold</option>
+        <option value="800">Bold</option>
+        <option value="900">Black</option>
+      </select>
+      <select id="xhuc-edit-border" aria-label="Border style">
+        <option value="solid">Solid Border</option>
+        <option value="dashed">Dashed Border</option>
+        <option value="dotted">Dotted Border</option>
+        <option value="none">No Border</option>
+      </select>
+      <button id="xhuc-edit-line" type="button">Line</button>
+      <button id="xhuc-edit-edit" type="button">Edit Content</button>
+      <button id="xhuc-edit-up" type="button">Up</button>
+      <button id="xhuc-edit-down" type="button">Down</button>
+      <button id="xhuc-edit-copy" type="button">Duplicate</button>
+      <button id="xhuc-edit-delete" type="button" class="xhuc-danger">Delete</button>
+    </div>
+
+    <div id="xhuc-content-inspector" class="xhuc-content-inspector" aria-label="Selected content editor">
+      <div class="xhuc-inspector-head">
+        <strong id="xhuc-inspector-title">Edit Content Block</strong>
+        <button id="xhuc-inspector-close" type="button">×</button>
+      </div>
+      <label id="xhuc-inspector-url-label" class="xhuc-inspector-label" for="xhuc-inspector-url">Image URL / Source URL</label>
+      <input id="xhuc-inspector-url" type="url" placeholder="Paste image URL here">
+      <label id="xhuc-inspector-caption-label" class="xhuc-inspector-label" for="xhuc-inspector-caption">Caption / Source</label>
+      <input id="xhuc-inspector-caption" type="text" placeholder="Caption or official source">
+      <label id="xhuc-inspector-text-label" class="xhuc-inspector-label" for="xhuc-inspector-text">Text / Embed Code / Equation Code</label>
+      <textarea id="xhuc-inspector-text" spellcheck="false" placeholder="Paste text, external embed code, or equation code here"></textarea>
+      <div class="xhuc-inspector-grid">
+        <label class="xhuc-inspector-label">Width %<input id="xhuc-inspector-width" type="number" min="10" max="100" step="1"></label>
+        <label class="xhuc-inspector-label">Frame / image height px<input id="xhuc-inspector-height" type="number" min="0" max="1600" step="10"></label>
+      </div>
+      <div class="xhuc-inspector-actions">
+        <button id="xhuc-inspector-save" type="button">Apply</button>
+        <button id="xhuc-inspector-cancel" type="button">Cancel</button>
+      </div>
+    </div>
+
+    <button id="xhuc-floating-editor" class="xhuc-floating-editor" type="button">Editor Tools</button>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+
+    /* Root Firebase/admin configurator bridge copied from working reference. */
+    window.XHorizonFirebaseConfigurator = {
+      unlock: function(key, onSuccess, onError){
+        key = String(key || '').trim();
+        if(!key) return false;
+
+        if(window.XHorizonAdmin && typeof window.XHorizonAdmin.unlock === 'function'){
+          return window.XHorizonAdmin.unlock(key, onSuccess, onError);
+        }
+
+        if(window.XHorizonMainAdmin && typeof window.XHorizonMainAdmin.validate === 'function'){
+          Promise.resolve(window.XHorizonMainAdmin.validate(key)).then(function(ok){
+            if(ok){
+              if(typeof onSuccess === 'function') onSuccess();
+            }else if(typeof onError === 'function'){
+              onError(new Error('Invalid admin key'));
+            }
+          }).catch(function(err){
+            if(typeof onError === 'function') onError(err);
+          });
+          return true;
+        }
+
+        if(typeof onError === 'function') onError(new Error('Admin root config missing'));
+        return false;
+      }
+    };
+
+
+    try {
+      [
+        'xhuc_sun_solar_phenomena_cards_v1_old',
+        'xhuc_sun_solar_phenomena_cards_v1_unique_images_old'
+      ].forEach(k=>localStorage.removeItem(k));
+      localStorage.setItem('xhuc_sun_solar_phenomena_image_version','solar-phenomena-unique-working-urls-v2');
+    } catch(e){}
+
+
+
+
+    window.XHorizonPageFirebaseStatus = {
+      page:'sun-solar-phenomena',
+      mode:'root-admin-configurator',
+      hasPageHardcodedAdminKey:false,
+      usesRootFirebaseAdmin:true
+    };
+
+    /* Admin keys are verified only by root Firebase config. */
+    const STORAGE_CARDS = 'xhuc_sun_solar_phenomena_cards_v2_unique_working_urls';
+    const STORAGE_ARTICLES = 'xhuc_sun_solar_phenomena_articles_v2_unique_working_urls';
+    const page = document.getElementById('xhuc-page');
+    const main = document.getElementById('xhuc-main');
+    const articleMount = document.getElementById('xhuc-article');
+    const cardGrid = document.getElementById('xhuc-cards');
+    const cardSearch = document.getElementById('xhuc-card-search');
+    const countPill = document.getElementById('xhuc-count-pill');
+    const adminPill = document.getElementById('xhuc-admin-pill');
+    const floatingEditor = document.getElementById('xhuc-floating-editor');
+    const editbar = document.getElementById('xhuc-editbar');
+    const inspector = document.getElementById('xhuc-content-inspector');
+    const CARD_IMAGE_DATA_VERSION = 'solar-phenomena-unique-working-urls-v2';
+    try{
+      const oldKeys = [];
+      for(let i=0;i<localStorage.length;i++){
+        const k = localStorage.key(i);
+        if(k && /^xhuc_sun_solar_phenomena_cards_/i.test(k) && k !== STORAGE_CARDS) oldKeys.push(k);
+      }
+      oldKeys.forEach(k => localStorage.removeItem(k));
+      if(localStorage.getItem('xhuc_sun_solar_phenomena_image_version') !== CARD_IMAGE_DATA_VERSION){
+        localStorage.removeItem(STORAGE_CARDS);
+        localStorage.setItem('xhuc_sun_solar_phenomena_image_version', CARD_IMAGE_DATA_VERSION);
+      }
+    }catch(err){ console.warn('Solar image cache purge skipped', err); }
+
+    const NASA_FALLBACK_VISUAL = "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536";
+    const HERO_NASA_VISUAL = "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536";
+    const FALLBACK = ''; // shared generated fallback disabled
+    const CARD_BACKUP_VISUALS = {
+      "sun": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024",
+      "solar-core": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+      "radiative-zone": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280",
+      "convective-zone": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768",
+      "photosphere": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp",
+      "chromosphere": "https://science.nasa.gov/wp-content/uploads/2024/07/bin-li-aurora-ny-alesund-2.jpg?w=1985",
+      "corona": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle_2010-2020.en.jpg",
+      "solar-atmosphere": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle3.en.jpg",
+      "solar-magnetic-field": "https://svs.gsfc.nasa.gov/vis/a010000/a014400/a014450/14450_AnnularEclipseSequence_print.jpg",
+      "sunspot": "https://science.nasa.gov/wp-content/uploads/2024/09/coronal-mass-ejection-large-label.png?w=1024",
+      "solar-flare": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg",
+      "coronal-mass-ejection": "https://science.nasa.gov/wp-content/uploads/2024/08/aurora-electron-excitement.jpg?w=1024",
+      "solar-wind": "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536",
+      "solar-prominence": "https://science.nasa.gov/wp-content/uploads/2023/09/462977main_sun_layers_full-1024x768-1.jpg",
+      "solar-filament": "https://science.nasa.gov/wp-content/uploads/2023/09/MM_FATS_Infographic_w_NASA_ID-705x1024-1.png",
+      "solar-granulation": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024",
+      "solar-cycle": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+      "solar-maximum": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280",
+      "solar-minimum": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768",
+      "heliosphere": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp",
+      "heliopause": "https://science.nasa.gov/wp-content/uploads/2024/07/bin-li-aurora-ny-alesund-2.jpg?w=1985",
+      "solar-energetic-particles": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle_2010-2020.en.jpg",
+      "geomagnetic-storm": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle3.en.jpg",
+      "aurora": "https://svs.gsfc.nasa.gov/vis/a010000/a014400/a014450/14450_AnnularEclipseSequence_print.jpg",
+      "space-weather": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg",
+      "parker-solar-probe": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg",
+      "solar-orbiter": "https://science.nasa.gov/wp-content/uploads/2024/08/aurora-electron-excitement.jpg?w=1024",
+      "total-solar-eclipse": "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536",
+      "annular-solar-eclipse": "https://science.nasa.gov/wp-content/uploads/2023/09/462977main_sun_layers_full-1024x768-1.jpg",
+      "solar-irradiance": "https://science.nasa.gov/wp-content/uploads/2023/09/MM_FATS_Infographic_w_NASA_ID-705x1024-1.png",
+      "nuclear-fusion": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024",
+      "proton-proton-chain": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+      "solar-neutrinos": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280",
+      "solar-constant": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768",
+      "solar-luminosity": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp"
+};
+
+
+    const defaultCards = [
+      {
+            "id": "SUN-001",
+            "slug": "sun",
+            "title": "Sun",
+            "desc": "The star at the center of the solar system, a massive sphere of hot plasma whose gravity holds planets, comets, dust, and smaller bodies in orbit.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536",
+            "source": "NASA SOHO solar prominence image",
+            "tags": "sun, star, solar system, plasma",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536",
+            "imageQuery": "Sun Sun solar phenomena NASA visual",
+            "backupImage": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024"
+      },
+      {
+            "id": "SUN-002",
+            "slug": "solar-core",
+            "title": "Solar Core",
+            "desc": "The deepest region of the Sun where temperature and pressure are high enough for hydrogen nuclei to fuse into helium and release energy.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/09/462977main_sun_layers_full-1024x768-1.jpg",
+            "source": "NASA Sun layers diagram",
+            "tags": "solar core, fusion, solar interior",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/09/462977main_sun_layers_full-1024x768-1.jpg",
+            "imageQuery": "Solar Core Sun solar phenomena NASA visual",
+            "backupImage": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920"
+      },
+      {
+            "id": "SUN-003",
+            "slug": "radiative-zone",
+            "title": "Radiative Zone",
+            "desc": "A thick interior layer where energy slowly moves outward mainly through radiation as photons are absorbed and re-emitted through dense plasma.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/09/MM_FATS_Infographic_w_NASA_ID-705x1024-1.png",
+            "source": "NASA solar interior infographic",
+            "tags": "radiative zone, photons, solar interior",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/09/MM_FATS_Infographic_w_NASA_ID-705x1024-1.png",
+            "imageQuery": "Radiative Zone Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280"
+      },
+      {
+            "id": "SUN-004",
+            "slug": "convective-zone",
+            "title": "Convective Zone",
+            "desc": "The outer interior layer where hot plasma rises, cools, sinks, and transfers energy through convection toward the visible solar surface.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001434/GSFC_20171208_Archive_e001434~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=571&w=664",
+            "source": "NASA solar convection visual",
+            "tags": "convective zone, plasma, solar interior",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001434/GSFC_20171208_Archive_e001434~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=571&w=664",
+            "imageQuery": "Convective Zone Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768"
+      },
+      {
+            "id": "SUN-005",
+            "slug": "photosphere",
+            "title": "Photosphere",
+            "desc": "The visible surface layer of the Sun where most sunlight escapes into space and where sunspots and granulation can be observed.",
+            "image": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024",
+            "source": "NASA solar photosphere image",
+            "tags": "photosphere, visible surface, sunlight",
+            "articleImage": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024",
+            "imageQuery": "Photosphere Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp"
+      },
+      {
+            "id": "SUN-006",
+            "slug": "chromosphere",
+            "title": "Chromosphere",
+            "desc": "A reddish layer above the photosphere, visible during eclipses and active in spicules, heating, and magnetic solar activity.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000763/GSFC_20171208_Archive_e000763~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1200&w=1200",
+            "source": "NASA chromosphere and solar atmosphere image",
+            "tags": "chromosphere, solar atmosphere, spicules",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000763/GSFC_20171208_Archive_e000763~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1200&w=1200",
+            "imageQuery": "Chromosphere Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/07/bin-li-aurora-ny-alesund-2.jpg?w=1985"
+      },
+      {
+            "id": "SUN-007",
+            "slug": "corona",
+            "title": "Corona",
+            "desc": "The Sun\u2019s outer atmosphere, an extremely hot and faint plasma region that extends far into space and becomes visible during total eclipses.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002111/GSFC_20171208_Archive_e002111~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=540&w=720",
+            "source": "NASA solar corona image",
+            "tags": "corona, outer atmosphere, eclipse",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002111/GSFC_20171208_Archive_e002111~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=540&w=720",
+            "imageQuery": "Corona Sun solar phenomena NASA visual",
+            "backupImage": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle_2010-2020.en.jpg"
+      },
+      {
+            "id": "SUN-008",
+            "slug": "solar-atmosphere",
+            "title": "Solar Atmosphere",
+            "desc": "The layered outer environment of the Sun, including the photosphere, chromosphere, transition region, corona, and escaping solar wind.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/09/solar-flare-label.png?w=1024",
+            "source": "NASA solar atmosphere labeled visual",
+            "tags": "solar atmosphere, corona, chromosphere",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/09/solar-flare-label.png?w=1024",
+            "imageQuery": "Solar Atmosphere Sun solar phenomena NASA visual",
+            "backupImage": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle3.en.jpg"
+      },
+      {
+            "id": "SUN-009",
+            "slug": "solar-magnetic-field",
+            "title": "Solar Magnetic Field",
+            "desc": "The changing magnetic field generated by the Sun\u2019s moving plasma, responsible for sunspots, loops, flares, prominences, and solar eruptions.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/06/march-14-picturing-magnetic-field-lines-2.webp",
+            "source": "NASA solar magnetic field lines visual",
+            "tags": "solar magnetic field, magnetic loops, plasma",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/06/march-14-picturing-magnetic-field-lines-2.webp",
+            "imageQuery": "Solar Magnetic Field Sun solar phenomena NASA visual",
+            "backupImage": "https://svs.gsfc.nasa.gov/vis/a010000/a014400/a014450/14450_AnnularEclipseSequence_print.jpg"
+      },
+      {
+            "id": "SUN-010",
+            "slug": "sunspot",
+            "title": "Sunspot",
+            "desc": "A cooler, darker region on the photosphere created by intense magnetic fields that suppress local convection and mark active solar regions.",
+            "image": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+            "source": "NASA sunspot image",
+            "tags": "sunspot, active region, magnetic field",
+            "articleImage": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+            "imageQuery": "Sunspot Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/09/coronal-mass-ejection-large-label.png?w=1024"
+      },
+      {
+            "id": "SUN-011",
+            "slug": "solar-flare",
+            "title": "Solar Flare",
+            "desc": "A sudden burst of radiation from magnetic energy release in the solar atmosphere, often associated with active regions and strong X-ray emission.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280",
+            "source": "NASA Solar Dynamics Observatory flare image",
+            "tags": "solar flare, eruption, x-ray, active region",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280",
+            "imageQuery": "Solar Flare Sun solar phenomena NASA visual",
+            "backupImage": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg"
+      },
+      {
+            "id": "SUN-012",
+            "slug": "coronal-mass-ejection",
+            "title": "Coronal Mass Ejection",
+            "desc": "A huge eruption of plasma and magnetic field from the Sun\u2019s corona that can travel through interplanetary space and affect planets.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768",
+            "source": "NASA SOHO coronal mass ejection image",
+            "tags": "CME, coronal mass ejection, solar storm",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768",
+            "imageQuery": "Coronal Mass Ejection Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/08/aurora-electron-excitement.jpg?w=1024"
+      },
+      {
+            "id": "SUN-013",
+            "slug": "solar-wind",
+            "title": "Solar Wind",
+            "desc": "A continuous stream of charged particles flowing outward from the Sun and filling the heliosphere with magnetized plasma.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp",
+            "source": "NASA solar wind and heliosphere visual",
+            "tags": "solar wind, charged particles, heliosphere",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp",
+            "imageQuery": "Solar Wind Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536"
+      },
+      {
+            "id": "SUN-014",
+            "slug": "solar-prominence",
+            "title": "Solar Prominence",
+            "desc": "A bright arching structure of relatively cool dense plasma suspended by magnetic fields above the Sun\u2019s surface.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002115/GSFC_20171208_Archive_e002115~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1876&w=2400",
+            "source": "NASA solar prominence image",
+            "tags": "solar prominence, magnetic arch, plasma",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002115/GSFC_20171208_Archive_e002115~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1876&w=2400",
+            "imageQuery": "Solar Prominence Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2023/09/462977main_sun_layers_full-1024x768-1.jpg"
+      },
+      {
+            "id": "SUN-015",
+            "slug": "solar-filament",
+            "title": "Solar Filament",
+            "desc": "A long thread of cooler plasma held above the photosphere by magnetic fields; seen against the solar disk, a prominence appears as a dark filament.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001936/GSFC_20171208_Archive_e001936~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1638&w=1557",
+            "source": "NASA solar filament image",
+            "tags": "solar filament, prominence, magnetic field",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001936/GSFC_20171208_Archive_e001936~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1638&w=1557",
+            "imageQuery": "Solar Filament Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2023/09/MM_FATS_Infographic_w_NASA_ID-705x1024-1.png"
+      },
+      {
+            "id": "SUN-016",
+            "slug": "solar-granulation",
+            "title": "Solar Granulation",
+            "desc": "A cellular surface pattern produced by hot plasma rising and cooler plasma sinking in the top of the convective zone.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000393/GSFC_20171208_Archive_e000393~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1685&w=1800",
+            "source": "NASA solar granulation image",
+            "tags": "solar granulation, convection, photosphere",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000393/GSFC_20171208_Archive_e000393~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1685&w=1800",
+            "imageQuery": "Solar Granulation Sun solar phenomena NASA visual",
+            "backupImage": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024"
+      },
+      {
+            "id": "SUN-017",
+            "slug": "solar-cycle",
+            "title": "Solar Cycle",
+            "desc": "The roughly 11-year rise and fall of solar magnetic activity, tracked by sunspots, flares, CMEs, and changes in space weather.",
+            "image": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle_2010-2020.en.jpg",
+            "source": "NASA Space Place solar cycle visual",
+            "tags": "solar cycle, eleven years, sunspots",
+            "articleImage": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle_2010-2020.en.jpg",
+            "imageQuery": "Solar Cycle Sun solar phenomena NASA visual",
+            "backupImage": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920"
+      },
+      {
+            "id": "SUN-018",
+            "slug": "solar-maximum",
+            "title": "Solar Maximum",
+            "desc": "The most active phase of the solar cycle, when sunspots, flares, coronal mass ejections, and geomagnetic storms become more common.",
+            "image": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle3.en.jpg",
+            "source": "NASA Space Place solar maximum visual",
+            "tags": "solar maximum, active sun, flares",
+            "articleImage": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle3.en.jpg",
+            "imageQuery": "Solar Maximum Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280"
+      },
+      {
+            "id": "SUN-019",
+            "slug": "solar-minimum",
+            "title": "Solar Minimum",
+            "desc": "The quieter phase of the solar cycle, when sunspots are fewer and the Sun generally produces fewer large eruptions.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/05/coronal-hole-sdo.jpg",
+            "source": "NASA quiet Sun and coronal hole visual",
+            "tags": "solar minimum, quiet sun, coronal holes",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/05/coronal-hole-sdo.jpg",
+            "imageQuery": "Solar Minimum Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768"
+      },
+      {
+            "id": "SUN-020",
+            "slug": "heliosphere",
+            "title": "Heliosphere",
+            "desc": "The vast bubble around the solar system shaped by the solar wind as it pushes against the surrounding interstellar medium.",
+            "image": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg",
+            "source": "NASA SVS heliosphere visual",
+            "tags": "heliosphere, solar wind, interstellar medium",
+            "articleImage": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg",
+            "imageQuery": "Heliosphere Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp"
+      },
+      {
+            "id": "SUN-021",
+            "slug": "heliopause",
+            "title": "Heliopause",
+            "desc": "The outer boundary where the solar wind\u2019s influence gives way to the surrounding interstellar environment beyond the heliosphere.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/10/heliosphere-boundary.webp",
+            "source": "NASA heliopause boundary visual",
+            "tags": "heliopause, boundary, interstellar space",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/10/heliosphere-boundary.webp",
+            "imageQuery": "Heliopause Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/07/bin-li-aurora-ny-alesund-2.jpg?w=1985"
+      },
+      {
+            "id": "SUN-022",
+            "slug": "solar-energetic-particles",
+            "title": "Solar Energetic Particles",
+            "desc": "High-energy charged particles accelerated by flares, CMEs, and shocks, important for astronaut safety, spacecraft operations, and radiation storms.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/09/solar-storm-impacts-graphic.png?w=1024",
+            "source": "NASA solar storm particle impact graphic",
+            "tags": "solar energetic particles, radiation, solar storm",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/09/solar-storm-impacts-graphic.png?w=1024",
+            "imageQuery": "Solar Energetic Particles Sun solar phenomena NASA visual",
+            "backupImage": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle_2010-2020.en.jpg"
+      },
+      {
+            "id": "SUN-023",
+            "slug": "geomagnetic-storm",
+            "title": "Geomagnetic Storm",
+            "desc": "A disturbance of Earth\u2019s magnetosphere caused by solar wind structures or CMEs that interact strongly with Earth\u2019s magnetic field.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/10/feb-2022-storm-magnetosphere.webp",
+            "source": "NASA geomagnetic storm magnetosphere visual",
+            "tags": "geomagnetic storm, magnetosphere, space weather",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/10/feb-2022-storm-magnetosphere.webp",
+            "imageQuery": "Geomagnetic Storm Sun solar phenomena NASA visual",
+            "backupImage": "https://spaceplace.nasa.gov/solar-cycles/en/solar-cycle3.en.jpg"
+      },
+      {
+            "id": "SUN-024",
+            "slug": "aurora",
+            "title": "Aurora",
+            "desc": "Colorful light produced when solar particles guided by magnetic fields excite atoms and molecules in a planet\u2019s upper atmosphere.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/07/bin-li-aurora-ny-alesund-2.jpg?w=1985",
+            "source": "NASA aurora image",
+            "tags": "aurora, northern lights, solar particles",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/07/bin-li-aurora-ny-alesund-2.jpg?w=1985",
+            "imageQuery": "Aurora Sun solar phenomena NASA visual",
+            "backupImage": "https://svs.gsfc.nasa.gov/vis/a010000/a014400/a014450/14450_AnnularEclipseSequence_print.jpg"
+      },
+      {
+            "id": "SUN-025",
+            "slug": "space-weather",
+            "title": "Space Weather",
+            "desc": "Conditions in near-Earth space driven by solar activity, including solar wind, flares, CMEs, radiation storms, and geomagnetic disturbances.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/09/coronal-mass-ejection-large-label.png?w=1024",
+            "source": "NASA space weather CME visual",
+            "tags": "space weather, solar activity, Earth impacts",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/09/coronal-mass-ejection-large-label.png?w=1024",
+            "imageQuery": "Space Weather Sun solar phenomena NASA visual",
+            "backupImage": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg"
+      },
+      {
+            "id": "SUN-026",
+            "slug": "parker-solar-probe",
+            "title": "Parker Solar Probe",
+            "desc": "NASA\u2019s mission that flies through the Sun\u2019s outer atmosphere to measure solar wind, magnetic fields, energetic particles, and coronal processes close to their source.",
+            "image": "https://svs.gsfc.nasa.gov/vis/a010000/a014000/a014055/ParkerSolarProbe_WISPR_Still_print.jpg",
+            "source": "NASA Parker Solar Probe WISPR visual",
+            "tags": "Parker Solar Probe, mission, corona, solar wind",
+            "articleImage": "https://svs.gsfc.nasa.gov/vis/a010000/a014000/a014055/ParkerSolarProbe_WISPR_Still_print.jpg",
+            "imageQuery": "Parker Solar Probe Sun solar phenomena NASA visual",
+            "backupImage": "https://svs.gsfc.nasa.gov/vis/a020000/a020200/a020299/Heliosphere_Final_v02_1080.jpg"
+      },
+      {
+            "id": "SUN-027",
+            "slug": "solar-orbiter",
+            "title": "Solar Orbiter",
+            "desc": "An ESA/NASA Sun-observing spacecraft designed to take close-up images, study the solar wind, and observe the Sun\u2019s polar regions.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/09/solar-orbiter-sun.jpg",
+            "source": "NASA Solar Orbiter mission visual",
+            "tags": "Solar Orbiter, mission, solar poles",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/09/solar-orbiter-sun.jpg",
+            "imageQuery": "Solar Orbiter Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/08/aurora-electron-excitement.jpg?w=1024"
+      },
+      {
+            "id": "SUN-028",
+            "slug": "total-solar-eclipse",
+            "title": "Total Solar Eclipse",
+            "desc": "An eclipse where the Moon completely covers the Sun\u2019s bright disk, revealing the faint corona around the dark lunar silhouette.",
+            "image": "https://svs.gsfc.nasa.gov/vis/a010000/a014500/a014527/Moon2024TSE_Thumbnail_print.jpg",
+            "source": "NASA SVS total solar eclipse visual",
+            "tags": "total solar eclipse, Moon, corona",
+            "articleImage": "https://svs.gsfc.nasa.gov/vis/a010000/a014500/a014527/Moon2024TSE_Thumbnail_print.jpg",
+            "imageQuery": "Total Solar Eclipse Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2023/05/soho-prominences-1920x640-1.jpg?w=1536"
+      },
+      {
+            "id": "SUN-029",
+            "slug": "annular-solar-eclipse",
+            "title": "Annular Solar Eclipse",
+            "desc": "An eclipse where the Moon appears slightly too small to cover the Sun completely, leaving a bright ring of sunlight around it.",
+            "image": "https://svs.gsfc.nasa.gov/vis/a010000/a014400/a014450/14450_AnnularEclipseSequence_print.jpg",
+            "source": "NASA SVS annular eclipse sequence",
+            "tags": "annular solar eclipse, ring of fire, Moon",
+            "articleImage": "https://svs.gsfc.nasa.gov/vis/a010000/a014400/a014450/14450_AnnularEclipseSequence_print.jpg",
+            "imageQuery": "Annular Solar Eclipse Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2023/09/462977main_sun_layers_full-1024x768-1.jpg"
+      },
+      {
+            "id": "SUN-030",
+            "slug": "solar-irradiance",
+            "title": "Solar Irradiance",
+            "desc": "The solar power received per unit area, measured to understand how the Sun\u2019s output changes and how solar energy reaches Earth.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2024/02/total-solar-irradiance.png",
+            "source": "NASA solar irradiance graph",
+            "tags": "solar irradiance, solar energy, TSI",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2024/02/total-solar-irradiance.png",
+            "imageQuery": "Solar Irradiance Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2023/09/MM_FATS_Infographic_w_NASA_ID-705x1024-1.png"
+      },
+      {
+            "id": "SUN-031",
+            "slug": "nuclear-fusion",
+            "title": "Nuclear Fusion",
+            "desc": "The process in the Sun\u2019s core where hydrogen nuclei combine into helium, releasing energy that eventually becomes sunlight.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/05/sun-core-fusion.jpg",
+            "source": "NASA solar fusion concept visual",
+            "tags": "nuclear fusion, hydrogen, helium, energy",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/05/sun-core-fusion.jpg",
+            "imageQuery": "Nuclear Fusion Sun solar phenomena NASA visual",
+            "backupImage": "https://images-assets.nasa.gov/image/PIA17669/PIA17669~orig.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1024&w=1024"
+      },
+      {
+            "id": "SUN-032",
+            "slug": "proton-proton-chain",
+            "title": "Proton-Proton Chain",
+            "desc": "The main fusion pathway in the Sun, where hydrogen nuclei are converted into helium through a series of reactions that release energy and neutrinos.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/05/proton-proton-chain.jpg",
+            "source": "NASA proton-proton chain visual",
+            "tags": "proton-proton chain, fusion, solar core",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/05/proton-proton-chain.jpg",
+            "imageQuery": "Proton-Proton Chain Sun solar phenomena NASA visual",
+            "backupImage": "https://images-assets.nasa.gov/image/PIA25628/PIA25628~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920"
+      },
+      {
+            "id": "SUN-033",
+            "slug": "solar-neutrinos",
+            "title": "Solar Neutrinos",
+            "desc": "Nearly massless particles produced by fusion reactions in the Sun\u2019s core that stream through space and provide evidence of nuclear processes inside the Sun.",
+            "image": "https://apod.nasa.gov/apod/image/9806/sun_neutrinos.png",
+            "source": "NASA/APOD solar neutrino visual",
+            "tags": "solar neutrinos, fusion, particles",
+            "articleImage": "https://apod.nasa.gov/apod/image/9806/sun_neutrinos.png",
+            "imageQuery": "Solar Neutrinos Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/06/x-flare-may-8-2024-131-171-red-crop2.jpg?w=1280"
+      },
+      {
+            "id": "SUN-034",
+            "slug": "solar-constant",
+            "title": "Solar Constant",
+            "desc": "The average amount of solar energy reaching the top of Earth\u2019s atmosphere at Earth\u2019s average distance from the Sun.",
+            "image": "https://science.nasa.gov/wp-content/uploads/2023/07/Sun_Earth_solar_constant.jpg",
+            "source": "NASA Sun-Earth solar energy visual",
+            "tags": "solar constant, irradiance, Earth",
+            "articleImage": "https://science.nasa.gov/wp-content/uploads/2023/07/Sun_Earth_solar_constant.jpg",
+            "imageQuery": "Solar Constant Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768"
+      },
+      {
+            "id": "SUN-035",
+            "slug": "solar-luminosity",
+            "title": "Solar Luminosity",
+            "desc": "The total power output of the Sun across all wavelengths, produced by nuclear fusion and radiated into space.",
+            "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001435/GSFC_20171208_Archive_e001435~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+            "source": "NASA full Sun luminosity visual",
+            "tags": "solar luminosity, total power, sunlight",
+            "articleImage": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001435/GSFC_20171208_Archive_e001435~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1920",
+            "imageQuery": "Solar Luminosity Sun solar phenomena NASA visual",
+            "backupImage": "https://science.nasa.gov/wp-content/uploads/2024/10/earth-sun-heliosphere-solar-wind.webp"
+      }
+];
+
+    let cards = load(STORAGE_CARDS, defaultCards);
+    cards = cards.map(card => Object.assign({}, card, {
+      image: card.image || getCardVisual(card, 'card'),
+      articleImage: card.articleImage || card.image || getCardVisual(card, 'hero')
+    }));
+    save(STORAGE_CARDS, cards);
+    let articles = load(STORAGE_ARTICLES, createDefaultArticles(cards));
+    let adminUnlocked = false;
+    let articleAdminUnlocked = false;
+    let currentSlug = null;
+    let selectedBlockId = null;
+    let draggedTool = null;
+    let draggedBlockId = null;
+
+    function load(key, fallback){
+      try{ const stored = localStorage.getItem(key); return stored ? JSON.parse(stored) : fallback; }
+      catch(err){ console.warn('Storage load failed', err); return fallback; }
+    }
+    function save(key, value){
+      try{ localStorage.setItem(key, JSON.stringify(value)); } catch(err){ console.warn('Storage save failed', err); }
+    }
+    function slugify(text){return String(text||'').toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || 'concept'}
+    function uid(prefix='b'){return prefix + '-' + Math.random().toString(36).slice(2,9)}
+    function esc(str){return String(str ?? '').replace(/[&<>'"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]))}
+    function normalizeKey(value){return String(value||'').trim().toLowerCase()}
+    async function runRootAdminUnlock(value, scope){
+      const key = String(value || '').trim();
+      if(!key) return false;
+      const adminStatus = document.getElementById('xhuc-admin-pill');
+      const countStatus = document.getElementById('xhuc-count-pill');
+      if(adminStatus){ adminStatus.classList.add('xhuc-hidden'); adminStatus.textContent = ''; adminStatus.style.display = 'none'; }
+      if(countStatus){ countStatus.classList.remove('xhuc-hidden'); countStatus.style.display = 'inline-flex'; }
+
+      let accepted = false;
+      const applyUnlock = function(){
+        if(accepted) return;
+        accepted = true;
+        if(scope === 'article'){
+          unlockArticleAdmin();
+        }else{
+          unlockAdmin();
+        }
+        if(adminStatus){ adminStatus.classList.add('xhuc-hidden'); adminStatus.textContent = ''; adminStatus.style.display = 'none'; }
+        if(countStatus){ countStatus.classList.remove('xhuc-hidden'); countStatus.style.display = 'inline-flex'; }
+      };
+
+      function truthyResult(v){
+        return v === true || !!(v && (v.ok === true || v.success === true || v.allowed === true || v.unlocked === true));
+      }
+
+      async function tryUnlockCall(fn){
+        try{
+          let callbackSeen = false;
+          const result = fn(key, function(){ callbackSeen = true; applyUnlock(); }, function(err){ console.warn('X Horizon Firebase unlock rejected:', err); });
+          if(result && typeof result.then === 'function'){
+            const resolved = await result;
+            if(truthyResult(resolved)) applyUnlock();
+            return accepted || truthyResult(resolved);
+          }
+          if(truthyResult(result)){
+            // Some root bridges return true only to mean "request started". Give callback a moment before accepting result-only success.
+            await new Promise(function(resolve){ setTimeout(resolve, 80); });
+            if(callbackSeen || accepted) return true;
+            applyUnlock();
+            return true;
+          }
+          await new Promise(function(resolve){ setTimeout(resolve, 250); });
+          return accepted;
+        }catch(err){
+          console.warn('X Horizon Firebase unlock failed:', err);
+          return false;
+        }
+      }
+
+      if(window.XHorizonAdmin && typeof window.XHorizonAdmin.unlock === 'function'){
+        if(await tryUnlockCall(window.XHorizonAdmin.unlock.bind(window.XHorizonAdmin))) return true;
+      }
+
+      if(window.XHorizonMainAdmin && typeof window.XHorizonMainAdmin.validate === 'function'){
+        try{
+          const ok = await Promise.resolve(window.XHorizonMainAdmin.validate(key));
+          if(ok){ applyUnlock(); return true; }
+        }catch(err){ console.warn('X Horizon Firebase validate failed:', err); }
+      }
+
+      if(window.XHorizonFirebaseConfigurator && typeof window.XHorizonFirebaseConfigurator.unlock === 'function'){
+        if(await tryUnlockCall(window.XHorizonFirebaseConfigurator.unlock.bind(window.XHorizonFirebaseConfigurator))) return true;
+      }
+
+      console.warn('Firebase admin key was not accepted by the root reference bridge.');
+      return false;
+    }
+    window.XHorizonRequestAdminUnlock = runRootAdminUnlock;
+    function svgData(svg){ return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg); }
+    function hashSeed(value){
+      const str = String(value || 'x horizon');
+      let h = 0;
+      for(let i=0;i<str.length;i++) h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+      return Math.abs(h);
+    }
+    function getConceptPalette(title){
+      const t = String(title || '').toLowerCase();
+      if(t.includes('flare') || t.includes('ejection') || t.includes('prominence') || t.includes('filament')) return {a:'#090303',b:'#2b0b0b',c:'#fb923c',d:'#fde68a',type:'eruption'};
+      if(t.includes('magnetic') || t.includes('sunspot')) return {a:'#050505',b:'#1f1308',c:'#f59e0b',d:'#67e8f9',type:'magnetic'};
+      if(t.includes('wind') || t.includes('heliosphere') || t.includes('heliopause') || t.includes('storm') || t.includes('aurora') || t.includes('space weather')) return {a:'#030407',b:'#071225',c:'#38bdf8',d:'#fde68a',type:'wind'};
+      if(t.includes('eclipse')) return {a:'#000000',b:'#050505',c:'#fbbf24',d:'#f8fafc',type:'eclipse'};
+      if(t.includes('probe') || t.includes('orbiter')) return {a:'#030407',b:'#101827',c:'#60a5fa',d:'#fed7aa',type:'mission'};
+      if(t.includes('fusion') || t.includes('core') || t.includes('proton') || t.includes('neutrino') || t.includes('irradiance') || t.includes('constant') || t.includes('luminosity')) return {a:'#090303',b:'#341100',c:'#f97316',d:'#fff7ed',type:'energy'};
+      return {a:'#040200',b:'#201000',c:'#f97316',d:'#fde68a',type:'sun'};
+    }
+    function conceptSubtitle(card){
+      const t = String(card?.title || '').toLowerCase();
+      if(t.includes('flare')) return 'Magnetic radiation burst';
+      if(t.includes('ejection')) return 'Plasma eruption';
+      if(t.includes('wind')) return 'Charged particle stream';
+      if(t.includes('aurora')) return 'Solar particles lighting atmosphere';
+      if(t.includes('eclipse')) return 'Sun-Moon-Earth alignment';
+      if(t.includes('probe') || t.includes('orbiter')) return 'Solar mission';
+      if(t.includes('fusion')) return 'Solar core energy source';
+      return card?.source || 'Sun & solar phenomenon';
+    }
+    function drawConceptShapes(type, w, h){
+      if(type === 'eruption') return `<circle cx="${w*0.70}" cy="${h*0.42}" r="${Math.min(w,h)*0.16}" fill="rgba(249,115,22,.72)"/><path d="M ${w*0.45} ${h*0.43} C ${w*0.55} ${h*0.12}, ${w*0.82} ${h*0.10}, ${w*0.92} ${h*0.42}" stroke="rgba(253,230,138,.82)" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+      if(type === 'magnetic') return `<circle cx="${w*0.66}" cy="${h*0.46}" r="${Math.min(w,h)*0.14}" fill="rgba(251,146,60,.55)"/><path d="M ${w*0.34} ${h*0.64} C ${w*0.45} ${h*0.24}, ${w*0.79} ${h*0.24}, ${w*0.90} ${h*0.64}" stroke="rgba(103,232,249,.68)" stroke-width="6" fill="none"/>`;
+      if(type === 'wind') return `<circle cx="${w*0.28}" cy="${h*0.42}" r="${Math.min(w,h)*0.10}" fill="rgba(249,115,22,.75)"/><path d="M ${w*0.38} ${h*0.38} C ${w*0.55} ${h*0.30}, ${w*0.72} ${h*0.35}, ${w*0.96} ${h*0.23}" stroke="rgba(56,189,248,.66)" stroke-width="8" fill="none"/><path d="M ${w*0.38} ${h*0.52} C ${w*0.58} ${h*0.65}, ${w*0.75} ${h*0.60}, ${w*0.98} ${h*0.73}" stroke="rgba(253,230,138,.48)" stroke-width="6" fill="none"/>`;
+      if(type === 'eclipse') return `<circle cx="${w*0.66}" cy="${h*0.45}" r="${Math.min(w,h)*0.18}" fill="rgba(251,191,36,.85)"/><circle cx="${w*0.66}" cy="${h*0.45}" r="${Math.min(w,h)*0.135}" fill="#000"/><circle cx="${w*0.66}" cy="${h*0.45}" r="${Math.min(w,h)*0.21}" fill="none" stroke="rgba(248,250,252,.40)" stroke-width="4"/>`;
+      if(type === 'mission') return `<circle cx="${w*0.72}" cy="${h*0.38}" r="${Math.min(w,h)*0.13}" fill="rgba(249,115,22,.72)"/><path d="M ${w*0.28} ${h*0.64} L ${w*0.52} ${h*0.50} L ${w*0.44} ${h*0.72} Z" fill="rgba(147,197,253,.82)"/><path d="M ${w*0.52} ${h*0.50} C ${w*0.62} ${h*0.44}, ${w*0.68} ${h*0.42}, ${w*0.74} ${h*0.38}" stroke="rgba(248,250,252,.55)" stroke-width="4" fill="none"/>`;
+      if(type === 'energy') return `<circle cx="${w*0.66}" cy="${h*0.44}" r="${Math.min(w,h)*0.17}" fill="rgba(249,115,22,.78)"/><circle cx="${w*0.66}" cy="${h*0.44}" r="${Math.min(w,h)*0.07}" fill="rgba(255,255,255,.92)"/><path d="M ${w*0.20} ${h*0.70} C ${w*0.38} ${h*0.50}, ${w*0.58} ${h*0.68}, ${w*0.85} ${h*0.34}" stroke="rgba(253,230,138,.62)" stroke-width="6" fill="none"/>`;
+      return `<circle cx="${w*0.66}" cy="${h*0.44}" r="${Math.min(w,h)*0.18}" fill="rgba(249,115,22,.75)"/><circle cx="${w*0.66}" cy="${h*0.44}" r="${Math.min(w,h)*0.25}" fill="none" stroke="rgba(253,230,138,.22)" stroke-width="12"/>`;
+    }
+    function buildConceptVisual(card, variant='card'){
+      const title = String(card?.title || 'X Horizon');
+      const sub = conceptSubtitle(card);
+      const p = getConceptPalette(title);
+      const w = variant === 'hero' ? 1600 : 1200;
+      const h = variant === 'hero' ? 900 : 760;
+      const seed = hashSeed(title + '|' + sub + '|' + variant);
+      let stars = '';
+      for(let i=0;i<52;i++){
+        const x = (seed * (i + 11) * 73) % w;
+        const y = (seed * (i + 5) * 37) % h;
+        const r = ((seed + i*13) % 3) + 1;
+        const op = (((seed >> (i % 8)) & 7) + 2) / 12;
+        stars += `<circle cx="${x}" cy="${y}" r="${r}" fill="rgba(255,255,255,${op.toFixed(2)})"/>`;
+      }
+      const shapes = drawConceptShapes(p.type, w, h);
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="${p.a}"/>
+            <stop offset="100%" stop-color="${p.b}"/>
+          </linearGradient>
+          <radialGradient id="neb1" cx="78%" cy="38%" r="42%">
+            <stop offset="0%" stop-color="${p.c}" stop-opacity=".50"/>
+            <stop offset="100%" stop-color="${p.c}" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="neb2" cx="30%" cy="68%" r="46%">
+            <stop offset="0%" stop-color="${p.d}" stop-opacity=".22"/>
+            <stop offset="100%" stop-color="${p.d}" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bg)"/>
+        <rect width="100%" height="100%" fill="url(#neb1)"/>
+        <rect width="100%" height="100%" fill="url(#neb2)"/>
+        ${stars}
+        ${shapes}
+        <rect x="36" y="36" width="${variant === 'hero' ? 260 : 188}" height="40" rx="20" fill="rgba(0,0,0,.46)" stroke="rgba(255,255,255,.10)"/>
+        <text x="${variant === 'hero' ? 166 : 130}" y="62" text-anchor="middle" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="${variant === 'hero' ? 20 : 18}" font-weight="900" letter-spacing="3">X HORIZON</text>
+        <text x="52" y="${variant === 'hero' ? 690 : 560}" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="${variant === 'hero' ? 88 : 66}" font-weight="900" letter-spacing="2">${title.replace(/&/g,'&amp;')}</text>
+        <text x="52" y="${variant === 'hero' ? 748 : 612}" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif" font-size="${variant === 'hero' ? 28 : 22}" font-weight="700" letter-spacing="1">${sub.replace(/&/g,'&amp;')}</text>
+      </svg>`;
+      return svgData(svg);
+    }
+    function getCardVisual(card, variant='card'){
+      const staticUrl = String(card?.image || card?.articleImage || '').trim();
+      if(staticUrl) return staticUrl;
+      const slug = String(card?.slug || '').trim();
+      return (slug && CARD_BACKUP_VISUALS[slug]) ? CARD_BACKUP_VISUALS[slug] : HERO_NASA_VISUAL;
+    }
+    function buildSolarEmergencyVisual(card, variant='card'){
+      const title = String(card?.title || 'Solar Concept');
+      const slug = String(card?.slug || 'solar-concept');
+      const cat = String(card?.tags || 'Sun & Solar Phenomena');
+      const escSvg = str => String(str).replace(/[&<>\"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m] || m));
+      const seed = slug.split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 80;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+        <defs>
+          <radialGradient id="sun" cx="50%" cy="45%" r="48%"><stop offset="0%" stop-color="#fff9b1"/><stop offset="45%" stop-color="#ffb020"/><stop offset="73%" stop-color="#f97316"/><stop offset="100%" stop-color="#7c1d00" stop-opacity="0.05"/></radialGradient>
+          <radialGradient id="bg" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#361100"/><stop offset="55%" stop-color="#050505"/><stop offset="100%" stop-color="#000000"/></radialGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="13" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="1400" height="900" fill="url(#bg)"/>
+        <circle cx="980" cy="280" r="180" fill="url(#sun)" filter="url(#glow)"/>
+        <g fill="none" stroke-linecap="round" opacity=".64">
+          <path d="M760 310 C870 ${80+seed}, 1070 ${80+seed}, 1185 310" stroke="#ffd166" stroke-width="7"/>
+          <path d="M720 365 C850 ${590-seed}, 1120 ${585-seed}, 1230 360" stroke="#fb7185" stroke-width="5"/>
+          <path d="M130 650 C430 430, 600 750, 970 420" stroke="#f97316" stroke-width="6" opacity=".7"/>
+        </g>
+        <text x="70" y="672" fill="#ffffff" font-size="74" font-family="Arial, sans-serif" font-weight="900">${escSvg(title)}</text>
+        <text x="74" y="735" fill="#fde68a" font-size="25" font-family="Arial, sans-serif" font-weight="800" letter-spacing="7">X HORIZON • SOLAR PHENOMENA</text>
+        <text x="74" y="785" fill="#aab6c8" font-size="20" font-family="Arial, sans-serif">${escSvg(cat).slice(0,95)}</text>
+      </svg>`;
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+    function imgError(el){
+      if(!el) return;
+      const slug = String(el.dataset?.xhucCardSlug || '').trim();
+      const step = Number(el.dataset.xhucErrorStep || 0);
+      const card = cards.find(c => c.slug === slug) || {slug, title: el.dataset?.xhucTitle || 'Solar Concept'};
+      const candidates = [
+        el.dataset?.xhucBackup,
+        card.backupImage,
+        CARD_BACKUP_VISUALS[slug],
+        card.articleImage && card.articleImage !== card.image ? card.articleImage : ''
+      ].filter(Boolean).filter(src => src !== el.src);
+      const src = candidates[step];
+      el.dataset.xhucErrorStep = String(step + 1);
+      if(src){
+        el.src = src;
+        el.classList.add('xhuc-fallback-img');
+        return;
+      }
+      const emergency = buildSolarEmergencyVisual(card, el.dataset?.xhucVariant || 'card');
+      if(emergency && el.src !== emergency){
+        el.onerror = null;
+        el.src = emergency;
+        el.classList.add('xhuc-fallback-img');
+        el.style.display = 'block';
+        return;
+      }
+      el.onerror = null;
+      el.style.display = 'none';
+      const parent = el.closest('.xhuc-card-media, .xhuc-hero-panel, .xhuc-block-picture');
+      if(parent){ parent.style.background = '#030303'; }
+    }
+    window.xhucImgError = imgError;
+
+    const xhucImageCache = new Map();
+    function setImageSafe(img, src){
+      if(!img) return;
+      img.dataset.xhucErrorStep = '0';
+      img.onerror = function(){ imgError(img); };
+      img.src = src || NASA_FALLBACK_VISUAL;
+    }
+    async function resolveMissionImage(card, variant='card'){
+      const cacheKey = `${String(card?.slug || card?.title || 'visual').toLowerCase()}::${variant}`;
+      if(xhucImageCache.has(cacheKey)) return xhucImageCache.get(cacheKey);
+      const finalSrc = getCardVisual(card, variant) || NASA_FALLBACK_VISUAL;
+      xhucImageCache.set(cacheKey, finalSrc);
+      return finalSrc;
+    }
+    function hydrateCardImages(){
+      document.querySelectorAll('#xhuc-cards img[data-xhuc-card-slug]').forEach(img => {
+        const card = cards.find(c => c.slug === img.dataset.xhucCardSlug);
+        if(!card) return;
+        resolveMissionImage(card, 'card').then(src => setImageSafe(img, src));
+      });
+    }
+    function hydrateHeroImage(){
+      const heroImg = document.getElementById('xhuc-hero-img');
+      const heroCard = {title:'Sun & Solar Phenomena', source:'Solar structure and space weather imagery'};
+      resolveMissionImage(heroCard, 'hero').then(src => {
+        const finalSrc = src || NASA_FALLBACK_VISUAL;
+        heroImg.dataset.xhucTitle = heroCard.title;
+        heroImg.dataset.xhucSource = heroCard.source;
+        heroImg.dataset.xhucVariant = 'hero';
+        setImageSafe(heroImg, finalSrc);
+        page.style.setProperty('--xhuc-hero-img', `url('${finalSrc}')`);
+      });
+    }
+
+    function createDefaultArticles(cardList){
+      const obj = {};
+      cardList.forEach(card => {
+        const articleImage = card.articleImage || card.image || getCardVisual(card, 'hero') || NASA_FALLBACK_VISUAL;
+        const articleSource = card.articleSource || card.source || 'Concept visual';
+        obj[card.slug] = {
+          slug: card.slug,
+          title: card.title,
+          image: articleImage,
+          source: articleSource,
+          tags: card.tags,
+          customImage: false,
+          blocks: []
+        };
+      });
+      return obj;
+    }
+
+
+    function ensureArticleMeta(card){
+      if(!card) return null;
+      if(!articles[card.slug]) articles[card.slug] = createDefaultArticles([card])[card.slug];
+      const article = articles[card.slug];
+      const cardArticleImage = card.articleImage || card.image || getCardVisual(card, 'hero') || NASA_FALLBACK_VISUAL;
+      const cardArticleSource = card.articleSource || card.source || 'Concept visual';
+      article.slug = article.slug || card.slug;
+      article.title = article.title || card.title;
+      if(!article.customImage || !article.image || article.image === FALLBACK){
+        article.image = cardArticleImage;
+        article.source = cardArticleSource;
+      }
+      article.source = article.source || cardArticleSource;
+      article.tags = article.tags || card.tags || '';
+      article.blocks = Array.isArray(article.blocks) ? article.blocks : [];
+      return article;
+    }
+
+    function starterText(title){
+      const t = String(title).toLowerCase();
+      if(t.includes('core') || t.includes('fusion') || t.includes('proton') || t.includes('neutrino')) return 'This article can explain the solar interior, nuclear fusion, proton-proton reactions, neutrino production, energy transport, numerical values, and why these processes power the Sun.';
+      if(t.includes('radiative') || t.includes('convective') || t.includes('photosphere') || t.includes('chromosphere') || t.includes('corona') || t.includes('atmosphere')) return 'This article can explain the Sun layer by layer, including structure, temperature, density, plasma behavior, observations, and how energy escapes into space.';
+      if(t.includes('magnetic') || t.includes('sunspot') || t.includes('flare') || t.includes('ejection') || t.includes('prominence') || t.includes('filament')) return 'This article can explain magnetic field formation, active regions, plasma loops, eruptions, radiation output, space-weather effects, and major spacecraft observations.';
+      if(t.includes('wind') || t.includes('heliosphere') || t.includes('heliopause') || t.includes('energetic') || t.includes('storm') || t.includes('space weather') || t.includes('aurora')) return 'This article can explain solar wind, charged particles, magnetosphere interaction, geomagnetic storms, auroras, radiation risks, and how solar activity affects Earth and spacecraft.';
+      if(t.includes('parker') || t.includes('orbiter')) return 'This article can explain mission goals, instruments, orbit, major observations, solar science importance, and how the spacecraft studies the Sun close to its source.';
+      if(t.includes('eclipse')) return 'This article can explain eclipse geometry, umbra and penumbra, total versus annular types, corona visibility, observation safety, and scientific importance.';
+      if(t.includes('cycle') || t.includes('maximum') || t.includes('minimum')) return 'This article can explain the solar magnetic cycle, sunspot number, activity changes, solar maximum, solar minimum, and effects on space weather.';
+      return 'This article can explain definition, origin, structure, physical process, observations, importance, missions, numerical facts, and summary for this solar concept.';
+    }
+    function unlockAdmin(){
+      adminUnlocked = true;
+      page.classList.add('xhuc-admin-on');
+      if(adminPill){ adminPill.classList.add('xhuc-hidden'); adminPill.textContent = ''; }
+      renderAdminSelect();
+    }
+
+    function unlockArticleAdmin(){
+      articleAdminUnlocked = true;
+      page.classList.add('xhuc-article-admin-on');
+      articleMount.classList.add('xhuc-article-admin-on');
+      const dock = document.getElementById('xhuc-editor-dock');
+      if(dock) dock.classList.remove('is-collapsed');
+      floatingEditor.classList.remove('xhuc-show');
+      renderArticleBlocks();
+    }
+
+    function renderCards(filter=''){
+      const q = normalizeKey(filter);
+      const shown = cards.filter(card => !q || [card.id,card.title,card.desc,card.tags,card.source].join(' ').toLowerCase().includes(q));
+      cardGrid.innerHTML = shown.length ? shown.map(card => `
+        <article class="xhuc-card" data-slug="${esc(card.slug)}" data-card-id="${esc(card.id)}">
+          <div class="xhuc-card-media">
+            <span class="xhuc-card-id">${esc(card.id)}</span>
+            <img src="${esc(getCardVisual(card, 'card'))}" data-xhuc-card-slug="${esc(card.slug)}" data-xhuc-title="${esc(card.title)}" data-xhuc-source="${esc(card.source || 'Concept visual')}" data-xhuc-variant="card" data-xhuc-backup="${esc(card.backupImage || '')}" alt="${esc(card.title)} visual reference" loading="lazy" onerror="xhucImgError(this)">
+          </div>
+          <div class="xhuc-card-body">
+            <h3>${esc(card.title)}</h3>
+            <p>${esc(card.desc)}</p>
+            <div class="xhuc-source">${esc(card.source || 'NASA direct image visual')}</div>
+            <div class="xhuc-card-actions"><button class="xhuc-btn" type="button" data-open-article="${esc(card.slug)}">Open Article</button></div>
+            <div class="xhuc-card-admin-actions"><button class="xhuc-mini-btn" type="button" data-edit-card="${esc(card.id)}">Edit Card</button><button class="xhuc-mini-btn xhuc-danger" type="button" data-delete-card-inline="${esc(card.id)}">Delete</button></div>
+          </div>
+        </article>`).join('') : '<div class="xhuc-empty">No concept cards match this search.</div>';
+      countPill.textContent = `${shown.length} / ${cards.length} Concepts`;
+      renderAdminSelect();
+      hydrateCardImages();
+    }
+
+    function renderAdminSelect(){
+      const select = document.getElementById('xhuc-admin-select');
+      if(!select) return;
+      select.innerHTML = '<option value="">Create new card</option>' + cards.map(c => `<option value="${esc(c.id)}">${esc(c.id)} — ${esc(c.title)}</option>`).join('');
+    }
+
+    function fillCardForm(card){
+      document.getElementById('xhuc-admin-id').value = card?.id || nextCardId();
+      document.getElementById('xhuc-admin-title').value = card?.title || '';
+      document.getElementById('xhuc-admin-desc').value = card?.desc || '';
+      document.getElementById('xhuc-admin-img').value = card?.image || '';
+      document.getElementById('xhuc-admin-source').value = card?.source || '';
+      document.getElementById('xhuc-admin-tags').value = card?.tags || '';
+    }
+
+    function nextCardId(){
+      const nums = cards.map(c => parseInt(String(c.id).replace(/\D/g,''),10)).filter(Boolean);
+      const next = (Math.max(0,...nums)+1).toString().padStart(3,'0');
+      return 'SUN-' + next;
+    }
+
+    function saveCardFromForm(){
+      const id = document.getElementById('xhuc-admin-id').value.trim() || nextCardId();
+      const title = document.getElementById('xhuc-admin-title').value.trim();
+      if(!title){ alert('Add a title first.'); return; }
+      const card = {
+        id,
+        slug: slugify(title),
+        title,
+        desc: document.getElementById('xhuc-admin-desc').value.trim() || 'Add a clean concept description from card admin.',
+        image: document.getElementById('xhuc-admin-img').value.trim() || '',
+        source: document.getElementById('xhuc-admin-source').value.trim() || 'Custom visual',
+        tags: document.getElementById('xhuc-admin-tags').value.trim()
+      };
+      const indexById = cards.findIndex(c => c.id === id);
+      const indexBySlug = cards.findIndex(c => c.slug === card.slug);
+      const index = indexById >= 0 ? indexById : indexBySlug;
+      if(index >= 0) cards[index] = card; else cards.push(card);
+      if(!articles[card.slug]) articles[card.slug] = createDefaultArticles([card])[card.slug];
+      save(STORAGE_CARDS,cards); save(STORAGE_ARTICLES,articles); renderCards(cardSearch.value); renderAdminSelect(); const sel=document.getElementById('xhuc-admin-select'); if(sel) sel.value=id;
+    }
+
+    function deleteCardById(id){
+      const card = cards.find(c => c.id === id);
+      if(!card) return;
+      if(!confirm('Delete ' + card.title + '?')) return;
+      cards = cards.filter(c => c.id !== id);
+      delete articles[card.slug];
+      save(STORAGE_CARDS,cards); save(STORAGE_ARTICLES,articles); fillCardForm(null); renderCards(cardSearch.value);
+    }
+
+    function deleteSelectedCard(){
+      const id = document.getElementById('xhuc-admin-select').value;
+      if(!id){ alert('Select a card to delete.'); return; }
+      deleteCardById(id);
+    }
+
+    function openArticle(slug){
+      const card = cards.find(c => c.slug === slug);
+      if(!card) return;
+      currentSlug = slug;
+      articleAdminUnlocked = false;
+      page.classList.remove('xhuc-article-admin-on');
+      articleMount.classList.remove('xhuc-article-admin-on');
+      editbar.classList.remove('xhuc-show'); closeInspector();
+      const article = ensureArticleMeta(card);
+      main.classList.add('xhuc-hidden');
+      articleMount.classList.add('xhuc-active');
+      articleMount.style.setProperty('--xhuc-article-img', `url('${article.image || card.image || getCardVisual(card, 'hero') || NASA_FALLBACK_VISUAL}')`);
+      renderArticleShell(card);
+      resolveMissionImage(card, 'hero').then(src => {
+        const liveArticle = getArticle();
+        if(liveArticle && !liveArticle.customImage && src && src !== FALLBACK){
+          liveArticle.image = src;
+          articleMount.style.setProperty('--xhuc-article-img', `url('${src}')`);
+          save(STORAGE_ARTICLES, articles);
+        }
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function closeArticle(){
+      currentSlug = null;
+      articleAdminUnlocked = false;
+      page.classList.remove('xhuc-article-admin-on');
+      articleMount.classList.remove('xhuc-article-admin-on');
+      selectedBlockId = null;
+      articleMount.classList.remove('xhuc-active');
+      articleMount.innerHTML = '';
+      main.classList.remove('xhuc-hidden');
+      editbar.classList.remove('xhuc-show');
+      floatingEditor.classList.remove('xhuc-show');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function renderArticleShell(card){
+      const article = ensureArticleMeta(card);
+      const articleTitle = article.title || card.title;
+      const articleImage = article.image || card.image || getCardVisual(card, 'hero') || NASA_FALLBACK_VISUAL;
+      const articleSource = article.source || card.source || 'NASA direct image visual';
+      const articleTags = article.tags || card.tags || '';
+      articleMount.style.setProperty('--xhuc-article-img', `url('${articleImage}')`);
+      articleMount.innerHTML = `
+        <div class="xhuc-article-hero">
+          <div class="xhuc-shell xhuc-article-top">
+            <button class="xhuc-back" type="button" id="xhuc-back-btn">← Back to cards</button>
+            <h2 class="xhuc-article-title" id="xhuc-article-page-title">${esc(articleTitle)}</h2>
+            <div class="xhuc-article-meta">
+              <span class="xhuc-pill">${esc(card.id)}</span>
+              <span class="xhuc-pill" id="xhuc-article-source-pill">${esc(articleSource)}</span>
+            </div>
+            <div class="xhuc-article-search">
+              <div class="xhuc-search-wrap">
+                <input id="xhuc-article-search-input" type="search" autocomplete="off" placeholder="Search inside this article…">
+                <button id="xhuc-clear-article-search" type="button">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xhuc-shell xhuc-article-body">
+          <div class="xhuc-article-layout">
+            <div id="xhuc-article-canvas" class="xhuc-article-canvas"></div>
+            <aside id="xhuc-editor-dock" class="xhuc-editor-dock" aria-label="Article editor tools">
+              <h3>Article Builder</h3>
+              <p>Drag any content type onto the blank page. After dropping, paste URL, text, embed code, or equation code in the editor panel.</p>
+              <div class="xhuc-article-save-panel" aria-label="Article save system">
+                <h4>Article Save System</h4>
+                <div class="xhuc-article-save-grid">
+                  <label for="xhuc-article-edit-title">Article Title
+                    <input id="xhuc-article-edit-title" type="text" value="${esc(articleTitle)}" placeholder="Article title">
+                  </label>
+                  <label for="xhuc-article-edit-image">Hero Image URL
+                    <input id="xhuc-article-edit-image" type="url" value="${esc(articleImage)}" placeholder="https://...">
+                  </label>
+                  <label for="xhuc-article-edit-source">Visual Label
+                    <input id="xhuc-article-edit-source" type="text" value="${esc(articleSource)}" placeholder="Concept visual label">
+                  </label>
+                  <label for="xhuc-article-edit-tags">Article Tags
+                    <textarea id="xhuc-article-edit-tags" placeholder="tag one, tag two">${esc(articleTags)}</textarea>
+                  </label>
+                </div>
+                <div class="xhuc-editor-actions">
+                  <button id="xhuc-save-article-now" type="button">Save Article</button>
+                  <button id="xhuc-save-article-info" type="button">Save Info</button>
+                  <button id="xhuc-delete-article-content" class="xhuc-danger" type="button">Delete Article</button>
+                  <button id="xhuc-reset-article-content" type="button">Reset Article</button>
+                </div>
+                <div id="xhuc-save-state" class="xhuc-save-state">Loaded from browser storage.</div>
+              </div>
+              <div class="xhuc-tool-list">
+                ${toolButton('embed','Embed Code','Simulation, iframe, 3D model, calculator, or custom HTML/CSS/JS.')}
+                ${toolButton('equation','Equation Embed','Paste your external equation code and preview it inside an isolated frame.')}
+                ${toolButton('picture','Picture','Mission image, caption, preview placement.')}
+                ${toolButton('heading','Heading','Add an editable article heading.')}
+                ${toolButton('short','Short Description','Add a compact intro/summary block.')}
+                ${toolButton('long','Long Context','Add a full editable explanation section.')}
+                ${toolButton('tags','Tags','Add searchable article tags.')}
+              </div>
+              <div class="xhuc-editor-note">Use Save Article for manual saving. Drag blocks to reorder them. Every block has Edit, Copy, and Delete controls when article admin is unlocked.</div>
+            </aside>
+          </div>
+        </div>`;
+      document.getElementById('xhuc-back-btn').addEventListener('click', closeArticle);
+      const articleSearchInput = document.getElementById('xhuc-article-search-input');
+      const articleSearchButton = document.getElementById('xhuc-clear-article-search');
+      async function runArticleSearchOrAdminUnlock(){
+        const value = articleSearchInput ? articleSearchInput.value.trim() : '';
+        articleSearch(value);
+        if(!value) return;
+        const ok = await runRootAdminUnlock(value, 'article');
+        if(ok && articleSearchInput){ articleSearchInput.value = ''; articleSearch(''); }
+      }
+      if(articleSearchButton){
+        articleSearchButton.textContent = 'Search';
+        articleSearchButton.addEventListener('click', runArticleSearchOrAdminUnlock);
+      }
+      if(articleSearchInput){
+        articleSearchInput.addEventListener('input', e => articleSearch(e.target.value));
+        articleSearchInput.addEventListener('keydown', e => {
+          if(e.key === 'Enter'){
+            e.preventDefault();
+            runArticleSearchOrAdminUnlock();
+          }
+        });
+      }
+      bindArticleManager();
+      bindTools();
+      renderArticleBlocks();
+      resolveMissionImage(article.customImage ? {image: article.image, imageQuery: card.imageQuery || card.title, title: card.title} : card).then(src => {
+        const finalSrc = src || NASA_FALLBACK_VISUAL;
+        articleMount.style.setProperty('--xhuc-article-img', `url('${finalSrc}')`);
+        const imgInput = document.getElementById('xhuc-article-edit-image');
+        if(imgInput && !article.customImage) imgInput.value = finalSrc;
+      });
+    }
+
+
+    function bindArticleManager(){
+      const saveBtn = document.getElementById('xhuc-save-article-now');
+      const infoBtn = document.getElementById('xhuc-save-article-info');
+      const deleteBtn = document.getElementById('xhuc-delete-article-content');
+      const resetBtn = document.getElementById('xhuc-reset-article-content');
+      if(saveBtn) saveBtn.addEventListener('click', saveArticleNow);
+      if(infoBtn) infoBtn.addEventListener('click', saveArticleInfo);
+      if(deleteBtn) deleteBtn.addEventListener('click', deleteCurrentArticleContent);
+      if(resetBtn) resetBtn.addEventListener('click', resetCurrentArticleContent);
+      setSaveState('Ready');
+    }
+
+    function setSaveState(text, mode='ok'){
+      const state = document.getElementById('xhuc-save-state');
+      if(!state) return;
+      const stamp = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      state.textContent = `${text} • ${stamp}`;
+      state.classList.toggle('xhuc-ok', mode !== 'warn');
+      state.classList.toggle('xhuc-warn', mode === 'warn');
+    }
+
+    function saveArticleNow(){
+      const article = getArticle();
+      if(!article) return;
+      captureInlineEdits();
+      saveArticles('Saved');
+      renderArticleBlocks();
+      showEditbar();
+    }
+
+    function saveArticleInfo(){
+      const article = getArticle();
+      const card = cards.find(c => c.slug === currentSlug);
+      if(!article || !card) return;
+      captureInlineEdits();
+      const title = document.getElementById('xhuc-article-edit-title')?.value.trim() || card.title;
+      const image = document.getElementById('xhuc-article-edit-image')?.value.trim() || card.image || getCardVisual(card, 'hero') || NASA_FALLBACK_VISUAL;
+      const source = document.getElementById('xhuc-article-edit-source')?.value.trim() || card.source || 'NASA direct image visual';
+      const tags = document.getElementById('xhuc-article-edit-tags')?.value.trim() || card.tags || '';
+      article.title = title;
+      article.image = image;
+      article.source = source;
+      article.tags = tags;
+      article.customImage = true;
+      articleMount.style.setProperty('--xhuc-article-img', `url('${image}')`);
+      const titleNode = document.getElementById('xhuc-article-page-title');
+      const sourceNode = document.getElementById('xhuc-article-source-pill');
+      if(titleNode) titleNode.textContent = title;
+      if(sourceNode) sourceNode.textContent = source;
+      saveArticles('Article info saved');
+    }
+
+    function deleteCurrentArticleContent(){
+      const article = getArticle();
+      if(!article) return;
+      if(!confirm('Delete all content blocks from this article? Card will stay safe.')) return;
+      article.blocks = [];
+      selectedBlockId = null;
+      closeInspector();
+      editbar.classList.remove('xhuc-show');
+      saveArticles('Article content deleted');
+      renderArticleBlocks();
+    }
+
+    function resetCurrentArticleContent(){
+      const card = cards.find(c => c.slug === currentSlug);
+      if(!card) return;
+      if(!confirm('Reset this article info and blocks to blank default?')) return;
+      articles[currentSlug] = createDefaultArticles([card])[currentSlug];
+      selectedBlockId = null;
+      closeInspector();
+      editbar.classList.remove('xhuc-show');
+      saveArticles('Article reset');
+      renderArticleShell(card);
+      if(articleAdminUnlocked){
+        page.classList.add('xhuc-article-admin-on');
+        articleMount.classList.add('xhuc-article-admin-on');
+      }
+    }
+
+    function toolButton(type,title,desc){
+      return `<button class="xhuc-tool" draggable="true" type="button" data-tool="${type}">${title}<small>${desc}</small></button>`;
+    }
+
+    function bindTools(){
+      const dock = document.getElementById('xhuc-editor-dock');
+      if(!dock) return;
+      dock.querySelectorAll('.xhuc-tool').forEach(btn => {
+        btn.addEventListener('dragstart', e => {
+          draggedTool = btn.dataset.tool;
+          draggedBlockId = null;
+          e.dataTransfer.setData('text/plain', draggedTool);
+          e.dataTransfer.setData('application/xhuc-tool', draggedTool);
+          collapseEditorDuringDrag(true);
+        });
+        btn.addEventListener('dragend', () => collapseEditorDuringDrag(false));
+        btn.addEventListener('click', () => addBlock(btn.dataset.tool, getArticle().blocks.length, true));
+      });
+    }
+
+    function collapseEditorDuringDrag(on){
+      const dock = document.getElementById('xhuc-editor-dock');
+      if(!dock) return;
+      if(on){ dock.classList.add('is-collapsed'); floatingEditor.classList.add('xhuc-show'); }
+      else { setTimeout(() => { dock.classList.remove('is-collapsed'); floatingEditor.classList.remove('xhuc-show'); }, 140); }
+    }
+
+    function getArticle(){return articles[currentSlug];}
+    function saveArticles(note='Autosaved'){
+      const article = getArticle();
+      if(article) article.updatedAt = new Date().toISOString();
+      save(STORAGE_ARTICLES,articles);
+      setSaveState(note);
+    }
+
+    function renderArticleBlocks(){
+      const canvas = document.getElementById('xhuc-article-canvas');
+      const article = getArticle();
+      if(!canvas || !article) return;
+      let html = '';
+      article.blocks.forEach((block, index) => {
+        if(articleAdminUnlocked) html += dropzone(index);
+        html += blockHTML(block, index);
+      });
+      if(articleAdminUnlocked) html += dropzone(article.blocks.length);
+      canvas.innerHTML = html || '<div class="xhuc-blank-canvas" aria-label="Blank article canvas"></div>';
+      bindDropzones();
+      bindBlocks();
+      applySelectedState();
+    }
+
+    function dropzone(index){return `<div class="xhuc-dropzone" data-drop-index="${index}">Drop content here</div>`}
+
+    function blockHTML(block, index){
+      const style = block.style || {};
+      const size = parseInt(style.size || 16,10);
+      const widthRaw = style.width === 'auto' ? 'auto' : parseInt(style.width || 100,10);
+      const width = widthRaw === 'auto' ? 'auto' : Math.max(10, Math.min(100, widthRaw)) + '%';
+      const height = Math.max(0, parseInt(style.height || 0,10));
+      const align = ['left','center','right'].includes(style.align) ? style.align : 'left';
+      const color = style.color || '#f4f7fb';
+      const bg = style.bg || '#050505';
+      const motion = style.motion && style.motion !== 'none' ? ' xhuc-motion-' + style.motion : '';
+      const line = style.line ? ' xhuc-line-style' : '';
+      const frameH = height ? height + 'px' : 'auto';
+      const pad = Math.max(0, Math.min(90, parseInt(style.padding ?? 18,10))) + 'px';
+      const radius = Math.max(0, Math.min(48, parseInt(style.radius ?? 18,10))) + 'px';
+      const borderStyle = ['solid','dashed','dotted','none'].includes(style.borderStyle) ? style.borderStyle : 'solid';
+      const weight = ['400','600','800','900'].includes(String(style.weight)) ? String(style.weight) : '400';
+      const base = `draggable="${articleAdminUnlocked ? 'true' : 'false'}" data-block-id="${esc(block.id)}" data-block-index="${index}" data-block-type="${esc(block.type)}" data-align="${esc(align)}" style="--block-size:${size}px;--block-width:${width};--block-align:${esc(align)};--block-color:${esc(color)};--block-bg:${esc(bg)};--block-frame-height:${frameH};--block-img-height:${frameH};--block-pad:${pad};--block-radius:${radius};--block-border-style:${esc(borderStyle)};--block-weight:${weight}"`;
+      const adminTools = articleAdminUnlocked ? `<span class="xhuc-block-drag-handle" title="Drag this block">Drag</span><div class="xhuc-block-actions"><button class="xhuc-block-action" type="button" data-block-edit="${esc(block.id)}">Edit</button><button class="xhuc-block-action" type="button" data-block-copy="${esc(block.id)}">Copy</button><button class="xhuc-block-action xhuc-danger" type="button" data-block-delete="${esc(block.id)}">Delete</button></div>` : '';
+      const label = articleAdminUnlocked ? `<span class="xhuc-block-label">${esc(block.type)}</span>` : '';
+      const emptyAdmin = msg => articleAdminUnlocked ? `<div class="xhuc-empty-block">${esc(msg)}</div>` : '';
+      const content = String(block.content || '');
+
+      if(block.type === 'heading') return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}<h2 contenteditable="${articleAdminUnlocked}">${esc(content)}</h2></section>`;
+      if(block.type === 'short') return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}<p contenteditable="${articleAdminUnlocked}">${esc(content)}</p></section>`;
+      if(block.type === 'long') return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}<div class="xhuc-long-text" contenteditable="${articleAdminUnlocked}">${esc(content)}</div></section>`;
+      if(block.type === 'tags'){
+        const tags = content.split(',').map(t => t.trim()).filter(Boolean);
+        const tagHTML = tags.length ? tags.map(t=>`<span>${esc(t)}</span>`).join('') : emptyAdmin('Paste comma-separated tags in Edit.');
+        return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}<div class="xhuc-taglist" contenteditable="${articleAdminUnlocked}">${tagHTML}</div></section>`;
+      }
+      if(block.type === 'picture'){
+        const img = content ? `<img src="${esc(content)}" data-xhuc-title="${esc(currentCard?.title || 'Article Image')}" data-xhuc-source="${esc(currentCard?.source || 'Concept visual')}" data-xhuc-variant="hero" alt="Article image" loading="lazy" onerror="xhucImgError(this)">` : emptyAdmin('Paste image URL in Edit.');
+        const cap = block.caption ? `<div class="xhuc-caption" contenteditable="${articleAdminUnlocked}">${esc(block.caption)}</div>` : (articleAdminUnlocked ? `<div class="xhuc-caption" contenteditable="${articleAdminUnlocked}">Add caption/source in Edit</div>` : '');
+        return `<section class="xhuc-block xhuc-block-picture${motion}${line}" ${base}>${adminTools}${label}${img}${cap}</section>`;
+      }
+      if(block.type === 'equation'){
+        const inner = content ? `<iframe class="xhuc-frame xhuc-equation-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" srcdoc="${esc(frameDoc(content))}"></iframe>` : emptyAdmin('Paste external equation code in Edit.');
+        return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}${inner}</section>`;
+      }
+      if(block.type === 'embed'){
+        const inner = content ? `<iframe class="xhuc-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" srcdoc="${esc(frameDoc(content))}"></iframe>` : emptyAdmin('Paste simulation / iframe / embed code in Edit.');
+        return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}${inner}</section>`;
+      }
+      return `<section class="xhuc-block${motion}${line}" ${base}>${adminTools}${label}<div contenteditable="${articleAdminUnlocked}">${esc(content)}</div></section>`;
+    }
+
+    function frameDoc(code){
+      return `<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><style>html,body{margin:0;min-height:100%;background:#05070b;color:#f8fbff;font-family:Inter,Arial,sans-serif}body{padding:18px;box-sizing:border-box}.xh-frame-note{border:1px solid rgba(255,255,255,.12);background:#090d15;border-radius:14px;padding:18px;line-height:1.5}</style></head><body>${code}</body></html>`;
+    }
+    function equationStarter(){return ""}
+    function embedStarter(){return ""}
+
+    function bindDropzones(){
+      document.querySelectorAll('.xhuc-dropzone').forEach(zone => {
+        zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('xhuc-over'); });
+        zone.addEventListener('dragleave', () => zone.classList.remove('xhuc-over'));
+        zone.addEventListener('drop', e => {
+          e.preventDefault(); zone.classList.remove('xhuc-over');
+          const index = parseInt(zone.dataset.dropIndex,10);
+          const movingBlock = e.dataTransfer.getData('application/xhuc-block') || draggedBlockId;
+          const type = e.dataTransfer.getData('application/xhuc-tool') || e.dataTransfer.getData('text/plain') || draggedTool;
+          if(movingBlock){ moveBlockToIndex(movingBlock,index); }
+          else if(type){ addBlock(type,index,true); }
+          collapseEditorDuringDrag(false);
+          draggedTool = null; draggedBlockId = null;
+        });
+      });
+    }
+
+    function bindBlocks(){
+      document.querySelectorAll('.xhuc-block').forEach(blockEl => {
+        blockEl.addEventListener('dragstart', e => {
+          if(!articleAdminUnlocked) return;
+          if(e.target.closest('input,textarea,select,button,[contenteditable="true"]')){ e.preventDefault(); return; }
+          draggedBlockId = blockEl.dataset.blockId;
+          draggedTool = null;
+          e.dataTransfer.setData('application/xhuc-block', draggedBlockId);
+          e.dataTransfer.setData('text/plain', draggedBlockId);
+        });
+        blockEl.addEventListener('dragend', () => { draggedBlockId = null; });
+        blockEl.addEventListener('click', e => {
+          if(!articleAdminUnlocked) return;
+          const editBtn = e.target.closest('[data-block-edit]');
+          const copyBtn = e.target.closest('[data-block-copy]');
+          const delBtn = e.target.closest('[data-block-delete]');
+          if(editBtn){ selectedBlockId = editBtn.dataset.blockEdit; applySelectedState(); showEditbar(); openInspector(); return; }
+          if(copyBtn){ selectedBlockId = copyBtn.dataset.blockCopy; duplicateBlock(); return; }
+          if(delBtn){ selectedBlockId = delBtn.dataset.blockDelete; deleteBlock(); return; }
+          selectedBlockId = blockEl.dataset.blockId; showEditbar(); applySelectedState();
+        });
+        blockEl.addEventListener('dblclick', e => {
+          if(!articleAdminUnlocked) return;
+          selectedBlockId = blockEl.dataset.blockId; applySelectedState(); showEditbar(); openInspector();
+        });
+        blockEl.addEventListener('blur', e => {
+          if(!articleAdminUnlocked) return;
+          const block = getBlock(blockEl.dataset.blockId);
+          if(!block) return;
+          if(['heading','short','long'].includes(block.type)){
+            const editable = blockEl.querySelector('[contenteditable="true"]');
+            if(editable) block.content = editable.innerText.trim();
+          }
+          if(block.type === 'picture'){
+            const cap = blockEl.querySelector('.xhuc-caption');
+            if(cap) block.caption = cap.innerText.trim();
+          }
+          if(block.type === 'tags'){
+            block.content = Array.from(blockEl.querySelectorAll('span')).map(s=>s.innerText.trim()).filter(Boolean).join(', ');
+          }
+          saveArticles();
+        }, true);
+      });
+    }
+
+
+    function captureInlineEdits(){
+      document.querySelectorAll('.xhuc-block').forEach(blockEl => {
+        const block = getBlock(blockEl.dataset.blockId);
+        if(!block) return;
+        if(['heading','short','long'].includes(block.type)){
+          const editable = blockEl.querySelector('[contenteditable="true"]');
+          if(editable) block.content = editable.innerText.trim();
+        }
+        if(block.type === 'picture'){
+          const cap = blockEl.querySelector('.xhuc-caption');
+          if(cap) block.caption = cap.innerText.trim();
+        }
+        if(block.type === 'tags'){
+          block.content = Array.from(blockEl.querySelectorAll('span')).map(s=>s.innerText.trim()).filter(Boolean).join(', ');
+        }
+      });
+    }
+
+    function addBlock(type, index, openEditor=false){
+      if(!articleAdminUnlocked){ alert('Unlock article editor from the article search bar first.'); return; }
+      const article = getArticle();
+      if(!article) return;
+      const block = makeBlock(type);
+      article.blocks.splice(index,0,block);
+      selectedBlockId = block.id;
+      saveArticles(); renderArticleBlocks(); showEditbar();
+      if(openEditor) setTimeout(openInspector, 30);
+    }
+
+    function makeBlock(type){
+      const base = {id:uid(type), type, content:'', caption:'', style:{size:16,width:100,height:0,align:'left',color:'#f4f7fb',bg:'#050505',motion:'none',line:false,padding:18,radius:18,borderStyle:'solid',weight:'400'}};
+      if(type === 'heading'){base.style.size = 40;}
+      if(type === 'short'){base.style.size = 20; base.style.color = '#cbd5e1';}
+      if(type === 'long'){base.style.size = 16;}
+      if(type === 'picture'){base.style.bg = '#050505'; base.style.height = 0;}
+      if(type === 'tags'){base.style.size = 14;}
+      if(type === 'embed'){base.style.bg = '#050505'; base.style.height = 0;}
+      if(type === 'equation'){base.style.bg = '#050505'; base.style.height = 0;}
+      return base;
+    }
+
+    function getBlock(id){
+      const article = getArticle();
+      if(!article) return null;
+      return article.blocks.find(b => b.id === id);
+    }
+    function blockIndex(id){
+      const article = getArticle();
+      return article ? article.blocks.findIndex(b => b.id === id) : -1;
+    }
+    function applySelectedState(){
+      document.querySelectorAll('.xhuc-block').forEach(el => el.classList.toggle('xhuc-selected', el.dataset.blockId === selectedBlockId));
+    }
+    function showEditbar(){
+      const block = getBlock(selectedBlockId);
+      if(!block) return;
+      editbar.classList.add('xhuc-show');
+      document.getElementById('xhuc-edit-size').value = parseInt(block.style?.size || 16,10);
+      document.getElementById('xhuc-edit-width').value = parseInt(block.style?.width || 100,10);
+      document.getElementById('xhuc-edit-height').value = parseInt(block.style?.height || 0,10);
+      document.getElementById('xhuc-edit-padding').value = parseInt(block.style?.padding ?? 18,10);
+      document.getElementById('xhuc-edit-radius').value = parseInt(block.style?.radius ?? 18,10);
+      document.getElementById('xhuc-edit-color').value = block.style?.color || '#f4f7fb';
+      document.getElementById('xhuc-edit-bg').value = block.style?.bg || '#050505';
+      document.getElementById('xhuc-edit-align').value = block.style?.align || 'left';
+      document.getElementById('xhuc-edit-motion').value = block.style?.motion || 'none';
+      document.getElementById('xhuc-edit-weight').value = String(block.style?.weight || '400');
+      document.getElementById('xhuc-edit-border').value = block.style?.borderStyle || 'solid';
+    }
+    function updateSelectedStyle(prop,value){
+      const block = getBlock(selectedBlockId); if(!block) return;
+      block.style = block.style || {}; block.style[prop] = value; saveArticles(); renderArticleBlocks(); showEditbar();
+    }
+    function moveBlock(dir){
+      const article = getArticle(); const i = blockIndex(selectedBlockId); if(!article || i<0) return;
+      const n = i + dir; if(n<0 || n>=article.blocks.length) return;
+      const [b] = article.blocks.splice(i,1); article.blocks.splice(n,0,b); saveArticles(); renderArticleBlocks();
+    }
+    function moveBlockToIndex(blockId,index){
+      const article = getArticle();
+      if(!article) return;
+      const oldIndex = article.blocks.findIndex(b => b.id === blockId);
+      if(oldIndex < 0) return;
+      const [block] = article.blocks.splice(oldIndex,1);
+      let target = Math.max(0, Math.min(article.blocks.length, index));
+      if(oldIndex < index) target = Math.max(0, target - 1);
+      article.blocks.splice(target,0,block);
+      selectedBlockId = block.id;
+      saveArticles(); renderArticleBlocks(); showEditbar();
+    }
+    function duplicateBlock(){
+      const article = getArticle(); const i = blockIndex(selectedBlockId); if(!article || i<0) return;
+      const copy = JSON.parse(JSON.stringify(article.blocks[i])); copy.id = uid(copy.type); article.blocks.splice(i+1,0,copy); selectedBlockId = copy.id; saveArticles(); renderArticleBlocks(); showEditbar();
+    }
+    function deleteBlock(){
+      const article = getArticle(); const i = blockIndex(selectedBlockId); if(!article || i<0) return;
+      if(!confirm('Delete this article block?')) return;
+      article.blocks.splice(i,1); selectedBlockId = null; saveArticles(); renderArticleBlocks(); editbar.classList.remove('xhuc-show'); closeInspector();
+    }
+    function editSelectedBlock(){ openInspector(); }
+
+    function openInspector(){
+      const block = getBlock(selectedBlockId); if(!block || !inspector) return;
+      document.getElementById('xhuc-inspector-title').textContent = 'Edit ' + block.type.toUpperCase();
+      const text = document.getElementById('xhuc-inspector-text');
+      const url = document.getElementById('xhuc-inspector-url');
+      const caption = document.getElementById('xhuc-inspector-caption');
+      const urlLabel = document.getElementById('xhuc-inspector-url-label');
+      const captionLabel = document.getElementById('xhuc-inspector-caption-label');
+      const textLabel = document.getElementById('xhuc-inspector-text-label');
+      const w = document.getElementById('xhuc-inspector-width');
+      const h = document.getElementById('xhuc-inspector-height');
+
+      url.value = block.type === 'picture' ? (block.content || '') : '';
+      caption.value = block.caption || '';
+      text.value = block.type === 'picture' ? '' : (block.content || '');
+      w.value = parseInt(block.style?.width || 100,10);
+      h.value = parseInt(block.style?.height || 0,10);
+
+      const isPicture = block.type === 'picture';
+      const isCode = block.type === 'embed' || block.type === 'equation';
+      url.style.display = isPicture ? 'block' : 'none';
+      urlLabel.style.display = isPicture ? 'block' : 'none';
+      caption.style.display = isPicture ? 'block' : 'none';
+      captionLabel.style.display = isPicture ? 'block' : 'none';
+      text.style.display = isPicture ? 'none' : 'block';
+      textLabel.style.display = isPicture ? 'none' : 'block';
+      if(block.type === 'heading') text.placeholder = 'Write heading text here';
+      else if(block.type === 'short') text.placeholder = 'Write short description here';
+      else if(block.type === 'long') text.placeholder = 'Write long article context here';
+      else if(block.type === 'tags') text.placeholder = 'Paste tags separated by commas';
+      else if(isCode) text.placeholder = 'Paste external HTML / CSS / JS / iframe / equation code here';
+      else text.placeholder = 'Write content here';
+      inspector.classList.add('xhuc-show');
+      setTimeout(() => (isPicture ? url : text).focus(), 40);
+    }
+    function closeInspector(){ if(inspector) inspector.classList.remove('xhuc-show'); }
+    function applyInspector(){
+      const block = getBlock(selectedBlockId); if(!block) return;
+      const text = document.getElementById('xhuc-inspector-text');
+      const url = document.getElementById('xhuc-inspector-url');
+      const caption = document.getElementById('xhuc-inspector-caption');
+      const w = document.getElementById('xhuc-inspector-width');
+      const h = document.getElementById('xhuc-inspector-height');
+      if(block.type === 'picture'){
+        block.content = url.value.trim();
+        block.caption = caption.value.trim();
+      } else {
+        block.content = text.value;
+      }
+      block.style = block.style || {};
+      block.style.width = Math.max(10, Math.min(100, parseInt(w.value || block.style.width || 100,10)));
+      block.style.height = Math.max(0, Math.min(1600, parseInt(h.value || 0,10)));
+      saveArticles(); renderArticleBlocks(); showEditbar(); closeInspector();
+    }
+
+    function articleSearch(value){
+      const q = normalizeKey(value);
+      document.querySelectorAll('.xhuc-block').forEach(el => {
+        const text = el.innerText.toLowerCase();
+        const match = !q || text.includes(q) || (el.dataset.blockType || '').includes(q);
+        el.style.display = match ? '' : 'none';
+        el.classList.toggle('xhuc-search-hit', !!q && match);
+      });
+    }
+
+    floatingEditor.addEventListener('click', () => {
+      const dock = document.getElementById('xhuc-editor-dock');
+      if(dock){ dock.classList.remove('is-collapsed'); floatingEditor.classList.remove('xhuc-show'); }
+    });
+
+    cardSearch.addEventListener('input', e => {
+      renderCards(e.target.value);
+    });
+
+    async function runSearchOrAdminUnlock(){
+      const value = cardSearch ? cardSearch.value.trim() : '';
+      renderCards(value);
+      if(!value) return;
+      const ok = await runRootAdminUnlock(value, 'card');
+      if(ok){ cardSearch.value = ''; renderCards(''); }
+    }
+
+    cardSearch.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        runSearchOrAdminUnlock();
+      }
+    });
+
+    const mainSearchButton = document.getElementById('xhuc-clear-search');
+    if(mainSearchButton){
+      mainSearchButton.textContent = 'Search';
+      mainSearchButton.addEventListener('click', runSearchOrAdminUnlock);
+    }
+    cardGrid.addEventListener('click', e => {
+      const editBtn = e.target.closest('[data-edit-card]');
+      if(editBtn){
+        const card = cards.find(c => c.id === editBtn.dataset.editCard);
+        if(card){
+          const sel=document.getElementById('xhuc-admin-select');
+          if(sel) sel.value=card.id;
+          fillCardForm(card);
+          document.getElementById('xhuc-admin-card-panel').scrollIntoView({behavior:'smooth', block:'start'});
+        }
+        return;
+      }
+      const delBtn = e.target.closest('[data-delete-card-inline]');
+      if(delBtn){ deleteCardById(delBtn.dataset.deleteCardInline); return; }
+      const btn = e.target.closest('[data-open-article]');
+      if(btn) openArticle(btn.dataset.openArticle);
+    });
+
+    document.getElementById('xhuc-admin-select').addEventListener('change', e => {
+      const card = cards.find(c => c.id === e.target.value);
+      fillCardForm(card || null);
+    });
+    document.getElementById('xhuc-new-card').addEventListener('click', () => fillCardForm(null));
+    document.getElementById('xhuc-save-card').addEventListener('click', saveCardFromForm);
+    document.getElementById('xhuc-delete-card').addEventListener('click', deleteSelectedCard);
+    document.getElementById('xhuc-reset-cards').addEventListener('click', () => {
+      if(confirm('Reset all cards and default articles to the corrected Sun & Solar Phenomena list?')){
+        cards = JSON.parse(JSON.stringify(defaultCards));
+        articles = createDefaultArticles(cards);
+        save(STORAGE_CARDS,cards); save(STORAGE_ARTICLES,articles); renderCards(''); fillCardForm(null);
+      }
+    });
+
+    document.getElementById('xhuc-edit-size').addEventListener('input', e => updateSelectedStyle('size', e.target.value));
+    document.getElementById('xhuc-edit-width').addEventListener('input', e => updateSelectedStyle('width', e.target.value));
+    document.getElementById('xhuc-edit-height').addEventListener('input', e => updateSelectedStyle('height', e.target.value));
+    document.getElementById('xhuc-edit-padding').addEventListener('input', e => updateSelectedStyle('padding', e.target.value));
+    document.getElementById('xhuc-edit-radius').addEventListener('input', e => updateSelectedStyle('radius', e.target.value));
+    document.getElementById('xhuc-edit-color').addEventListener('input', e => updateSelectedStyle('color', e.target.value));
+    document.getElementById('xhuc-edit-bg').addEventListener('input', e => updateSelectedStyle('bg', e.target.value));
+    document.getElementById('xhuc-edit-align').addEventListener('change', e => updateSelectedStyle('align', e.target.value));
+    document.getElementById('xhuc-edit-motion').addEventListener('change', e => updateSelectedStyle('motion', e.target.value));
+    document.getElementById('xhuc-edit-weight').addEventListener('change', e => updateSelectedStyle('weight', e.target.value));
+    document.getElementById('xhuc-edit-border').addEventListener('change', e => updateSelectedStyle('borderStyle', e.target.value));
+    document.getElementById('xhuc-edit-line').addEventListener('click', () => { const b=getBlock(selectedBlockId); if(!b)return; b.style.line = !b.style.line; saveArticles(); renderArticleBlocks(); showEditbar(); });
+    document.getElementById('xhuc-edit-up').addEventListener('click', () => moveBlock(-1));
+    document.getElementById('xhuc-edit-down').addEventListener('click', () => moveBlock(1));
+    document.getElementById('xhuc-edit-edit').addEventListener('click', editSelectedBlock);
+    document.getElementById('xhuc-edit-copy').addEventListener('click', duplicateBlock);
+    document.getElementById('xhuc-edit-delete').addEventListener('click', deleteBlock);
+    document.getElementById('xhuc-inspector-save').addEventListener('click', applyInspector);
+    document.getElementById('xhuc-inspector-cancel').addEventListener('click', closeInspector);
+    document.getElementById('xhuc-inspector-close').addEventListener('click', closeInspector);
+
+    document.getElementById('xhuc-hero-img').addEventListener('error', e => imgError(e.target));
+
+    hydrateHeroImage();
+    renderCards('');
+    fillCardForm(null);
+  })();
+  </script>
+
+<script>
+(function(){
+  'use strict';
+  function ready(fn){ if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  function initLoader(){
+    var loader = document.getElementById('xh-loader');
+    if(!loader) return;
+    requestAnimationFrame(function(){ loader.classList.add('loading'); });
+    var finish = function(){ loader.classList.add('ready'); setTimeout(function(){ loader.classList.add('done'); }, 520); };
+    if(document.readyState === 'complete') setTimeout(finish, 650);
+    else window.addEventListener('load', function(){ setTimeout(finish, 650); }, {once:true});
+    setTimeout(finish, 2600);
+  }
+  function lockLabels(){
+    var mainBtn = document.getElementById('xhuc-clear-search');
+    if(mainBtn) mainBtn.textContent = 'Search';
+    document.querySelectorAll('#xhuc-clear-article-search').forEach(function(btn){ btn.textContent = 'Search'; });
+    var adminPill = document.getElementById('xhuc-admin-pill');
+    if(adminPill){ adminPill.classList.add('xhuc-hidden'); adminPill.textContent=''; adminPill.style.display='none'; }
+    var countPill = document.getElementById('xhuc-count-pill');
+    if(countPill){ countPill.classList.remove('xhuc-hidden'); countPill.style.display='inline-flex'; }
+  }
+  function ensureCardsVisible(){
+    var grid = document.getElementById('xhuc-cards');
+    if(grid){ grid.style.display = 'grid'; grid.style.opacity = '1'; grid.style.visibility = 'visible'; }
+    document.querySelectorAll('.xhuc-card').forEach(function(card){ card.style.display='flex'; card.style.opacity='1'; card.style.visibility='visible'; });
+  }
+  function strengthenRootBridge(){
+    var previous = window.XHorizonFirebaseConfigurator && window.XHorizonFirebaseConfigurator.unlock;
+    window.XHorizonFirebaseConfigurator = window.XHorizonFirebaseConfigurator || {};
+    window.XHorizonFirebaseConfigurator.unlock = function(key, onSuccess, onError){
+      var cleanKey = String(key || '').trim();
+      if(!cleanKey) return false;
+      var success = function(){ if(typeof onSuccess === 'function') onSuccess(); return true; };
+      try{
+        if(window.XHorizonAdmin && typeof window.XHorizonAdmin.unlock === 'function'){
+          var res = window.XHorizonAdmin.unlock(cleanKey, success, onError);
+          if(res && typeof res.then === 'function'){
+            return res.then(function(ok){ if(ok) success(); return !!ok; }).catch(function(err){ if(typeof onError === 'function') onError(err); return false; });
+          }
+          return res;
+        }
+        if(window.XHorizonMainAdmin && typeof window.XHorizonMainAdmin.validate === 'function'){
+          return Promise.resolve(window.XHorizonMainAdmin.validate(cleanKey)).then(function(ok){ if(ok) success(); else if(typeof onError === 'function') onError(new Error('Admin key rejected')); return !!ok; }).catch(function(err){ if(typeof onError === 'function') onError(err); return false; });
+        }
+        if(typeof previous === 'function'){
+          return previous.call(window.XHorizonFirebaseConfigurator, cleanKey, onSuccess, onError);
+        }
+      }catch(err){ if(typeof onError === 'function') onError(err); return false; }
+      if(typeof onError === 'function') onError(new Error('Root admin validator missing'));
+      return false;
+    };
+  }
+  ready(function(){
+    initLoader();
+    strengthenRootBridge();
+    lockLabels();
+    ensureCardsVisible();
+    setTimeout(function(){ lockLabels(); ensureCardsVisible(); }, 300);
+    setTimeout(function(){ lockLabels(); ensureCardsVisible(); }, 1200);
+    document.addEventListener('click', function(e){
+      if(e.target && e.target.id === 'xhuc-clear-article-search') setTimeout(lockLabels, 0);
+      if(e.target && e.target.matches('[data-open-article]')) setTimeout(lockLabels, 250);
+    }, true);
+  });
+})();
+</script>
+
+
+
+
+
+
+
+<style id="xhorizon-final-white-button-lock">
+#xhuc-page button,#xhuc-page .xhuc-btn,#xhuc-page .xhuc-search-wrap button,#xhuc-page .xhuc-back,#xhuc-page .xhuc-mini-btn,#xhuc-page .xhuc-block-action,#xhuc-page .xhuc-floating-editor,#xhuc-page .xhuc-inspector-actions button,#xhuc-page .xhuc-inspector-head button,#xhuc-page .xhuc-editor-actions button,#xhuc-page .xhuc-card-actions .xhuc-btn,#xhuc-page #xhuc-clear-search,#xhuc-page #xhuc-clear-article-search{background:#fff!important;background-image:none!important;color:#000!important;-webkit-text-fill-color:#000!important;border:0!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;}
+#xhuc-page button:hover,#xhuc-page .xhuc-btn:hover,#xhuc-page .xhuc-search-wrap button:hover,#xhuc-page .xhuc-back:hover,#xhuc-page .xhuc-mini-btn:hover,#xhuc-page .xhuc-block-action:hover,#xhuc-page .xhuc-floating-editor:hover,#xhuc-page .xhuc-inspector-actions button:hover,#xhuc-page .xhuc-inspector-head button:hover,#xhuc-page .xhuc-editor-actions button:hover,#xhuc-page .xhuc-card-actions .xhuc-btn:hover,#xhuc-page #xhuc-clear-search:hover,#xhuc-page #xhuc-clear-article-search:hover{background:#e8e8e8!important;color:#000!important;-webkit-text-fill-color:#000!important;transform:none!important;}
+#xhuc-admin-pill{display:none!important;visibility:hidden!important;opacity:0!important;}
+#xhuc-count-pill{display:inline-flex!important;visibility:visible!important;opacity:1!important;}
+</style>
